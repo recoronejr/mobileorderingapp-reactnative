@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 import { white } from 'color-name';
-import App from '../../App';
 import {signIn, errorMessage} from '../user-management/Firebase_Helper';
 
 export const Login = ({ navigation }) => {
