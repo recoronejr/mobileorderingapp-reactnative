@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
-import { white } from 'color-name';
-import {signIn, errorMessage} from '../user-management/Firebase_Helper';
+import { useNavigation } from '@react-navigation/native';
+import FirebaseController from './Firebase_Helper'
 
-export const Login = ({ navigation }) => {
+const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const firebaseController = new FirebaseController()
+    const navigation = useNavigation();
     return (
         
         <View style={styles.container}>
@@ -19,19 +21,33 @@ export const Login = ({ navigation }) => {
             </View>
 
             <View rounded style={styles.passwordcontainer}>
-                <TextInput placeholder='Password' defaultValue = {password} onChangeText={password=> setPassword(password)}  style={styles.passwordinput}  secureTextEntry= {true} />
+                <TextInput placeholder='Password' defaultValue = {password} onChangeText={password => setPassword(password)}  style={styles.passwordinput}  secureTextEntry= {true} />
              </View>
 
-            <Button title = 'Forgot Password' hasText transparent />
+            {/* <Button title = 'Forgot Password' hasText transparent /> */}
 
             <Button title = 'Login' rounded style={styles.loginbtn}  
              onPress={() => {
-                signIn(email,password)
-                console.log(errorMessage);
+                // if (firebaseController.signIn(email,password) === true) {
+                //     console.log("true")
+                //     navigate("Main")
+                // }
+                // else {
+                //     console.log('false')
+                // }
+                firebaseController.signIn(email,password)
+                const user = firebaseController.getUser()
                 
+                if (user === null){
+                    console.log('Try Again')
+                }
+                else{
+                    
+                    navigation.navigate('Main')
+                }
                 
             }}/>
-            <Button title = 'Sign Up' hasText transparent style={styles.signupbtn} />
+            {/* <Button title = 'Sign Up' hasText transparent style={styles.signupbtn} /> */}
             <Text style ={styles.signintxt} >
                 
             </Text>
@@ -45,7 +61,7 @@ export const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#717AF9',
+        backgroundColor: '#ffffff',
         
     },
     loginbtn: {
@@ -100,4 +116,4 @@ const styles = StyleSheet.create({
 
     });
   
-export default Login;
+    export default LoginScreen;

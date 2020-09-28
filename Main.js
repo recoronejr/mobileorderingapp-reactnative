@@ -3,28 +3,32 @@ import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'rea
 import { signOut, firebaseUser, db, user } from './controller/user-management/Firebase_Helper'
 import * as firebase from 'firebase';
 import User from './model/User';
+import FirebaseController from './controller/user-management/Firebase_Helper'
+
+const firebaseController = new FirebaseController()
 
 export default class MainScreen extends React.Component {
+    
     constructor(props) {
         super(props)
         this.state = {
             userData: null,
         }; 
-        
     }
     componentDidMount() {
-        const user = firebase.auth().currentUser;
-        const userDocument = db.collection('Users').doc(user.uid)
-            .onSnapshot(doc => {
-                const userData = new User()
-                userData.firstName = doc.data().firstName;
-                userData.lastName = doc.data().lastName;
-                userData.phoneNumber = doc.data().phoneNumber;
-                userData.email = doc.data().email;
-                this.setState({
-                    userData
-                })
-            })
+        // const user = firebase.auth().currentUser;
+        // const userDocument = firebaseController.firestore()
+        //     .collection('Users').doc(user.uid)
+        //     .onSnapshot(doc => {
+        //         const userData = new User()
+        //         userData.firstName = doc.data().firstName;
+        //         userData.lastName = doc.data().lastName;
+        //         userData.phoneNumber = doc.data().phoneNumber;
+        //         userData.email = doc.data().email;
+        //         this.setState({
+        //             userData
+        //         })
+        //     })
 
     }
     
@@ -34,16 +38,15 @@ export default class MainScreen extends React.Component {
 
         return (
             <View style = {styles.container}>
-                <Text>Welcome {this.state.userData ? this.state.userData.firstName : null},</Text>
+                <View style = {styles.welcometxt}>
+                <Text>Welcome {this.state.userData ? this.state.userData.firstName : null}</Text>
+                </View>
                 <View>
                     <Button
 
                     title='Sign Out'
                     onPress={() =>  
-                        firebase.auth()
-                        .signOut()
-                        .then(() => console.log('User signed out!'))
-                        .then(() => navigate('Login'))
+                        firebaseController.signOut()
                     }
                     />
                 </View>
@@ -58,5 +61,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: 'center',
     },
+    welcometxt: {
+        marginTop: 50,
+    }
 
 });
