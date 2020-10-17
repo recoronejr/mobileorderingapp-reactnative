@@ -18,25 +18,6 @@ export default class FirebaseController {
   firestore() {
     return firebase.firestore()
   }
-  getUser() {
-    return firebase.auth().currentUser;
-  }
-  addUserTest() {
-    firestoreDb
-    .collection('Users')
-    .add({
-      name: 'Ada Lovelace',
-      age: 30,
-    })
-    .then(() => {
-      console.log('User added!');
-    });
-  }
-  signOut() {
-    firebase.auth()
-    .signOut()
-    .then(() => console.log('User signed out!'));
-  }
   signUp(firstName,lastName,phoneNumber,email,password){
     firebase.auth()
     .createUserWithEmailAndPassword(email, password)
