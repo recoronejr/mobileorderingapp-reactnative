@@ -1,68 +1,73 @@
 import * as React from 'react';
-import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
+import { Navigator, View, Button, Text, StyleSheet, TextInput, Image, Dimensions, ActivityIndicator } from 'react-native';
 import { signOut, firebaseUser, db, user } from './controller/user-management/Firebase_Helper'
-import * as firebase from 'firebase';
 import User from './model/User';
 import FirebaseController from './controller/user-management/Firebase_Helper'
-
-const firebaseController = new FirebaseController()
 
 export default class MainScreen extends React.Component {
     
     constructor(props) {
         super(props)
         this.state = {
-            userData: null,
-        }; 
+            isLoading: true,
+            dataSource: null,
+        }
     }
     componentDidMount() {
-        // const user = firebase.auth().currentUser;
-        // const userDocument = firebaseController.firestore()
-        //     .collection('Users').doc(user.uid)
-        //     .onSnapshot(doc => {
-        //         const userData = new User()
-        //         userData.firstName = doc.data().firstName;
-        //         userData.lastName = doc.data().lastName;
-        //         userData.phoneNumber = doc.data().phoneNumber;
-        //         userData.email = doc.data().email;
-        //         this.setState({
-        //             userData
-        //         })
-        //     })
-
+        return fetch("http://localhost:8000/getAllMerchantOauth")
+        .then(response => response.json())
+        .then( (responseJson) => {
+            this.setState({
+                isLoading: false,
+                dataSource: responseJson.merchants,
+            })
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
     
     render() {
-        
         const { navigation: { navigate } } = this.props;
-
-        return (
-            <View style = {styles.container}>
-                <View style = {styles.welcometxt}>
-                <Text>Welcome {this.state.userData ? this.state.userData.firstName : null}</Text>
+        console.log(this.state.isLoading);
+        if  (this.state.isLoading) {
+            return (
+                <View style = {styles.container}>
+                  <ActivityIndicator />  
                 </View>
-                <View>
-                    <Button
-
-                    title='Sign Out'
-                    onPress={() =>  
-                        firebaseController.signOut()
-                    }
-                    />
+                
+            );
+        } 
+        else {
+                let merchants = this.state.dataSource.map((val,key) => {
+                    return 
+                        <View key = {key}> 
+                            <Text>{val.merchant_id}</Text>
+                            <Text>{val.access_token}</Text>
+                        </View>
+                });
+            return (    
+                <View style = {styles.container}>
+                    <Text>Content Loaded</Text>
+                    {/* <Text>{merchants}</Text> */}
+                    
                 </View>
-            </View>
-        );
+            );  
+        }
+        
     }
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center",
-        justifyContent: 'center',
     },
     welcometxt: {
         marginTop: 50,
-    }
+    },
+    mapStyle: {
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+      },
 
 });
