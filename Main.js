@@ -40,13 +40,14 @@ export default class MainScreen extends React.Component {
             );
         } 
         else {
-                let merchants = this.state.dataSource.map((val,key) => {
-                    return 
-                        <View key = {key}> 
-                            <Text>{val.merchant_id}</Text>
-                            <Text>{val.access_token}</Text>
-                        </View>
-                });
+                // Will return null until datasource is properly saved to state
+                // let merchants = this.state.dataSource.map((val,key) => {
+                //     return 
+                //         <View key = {key}> 
+                //             <Text>{val.merchant_id}</Text>
+                //             <Text>{val.access_token}</Text>
+                //         </View>
+                // });
             return (    
                 <View style = {styles.container}>
                     <Text>Content Loaded</Text>
