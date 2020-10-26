@@ -9,22 +9,23 @@ export default class MainScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLoading: true,
+            isLoading: false,
             dataSource: null,
         }
     }
     componentDidMount() {
-        return fetch("http://localhost:8000/getAllMerchantOauth")
-        .then(response => response.json())
-        .then( (responseJson) => {
-            this.setState({
-                isLoading: false,
-                dataSource: responseJson.merchants,
-            })
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+        // Get All Locations Here!
+        // return fetch("http://localhost:8000/getAllMerchantOauth")
+        // .then(response => response.json())
+        // .then( (responseJson) => {
+        //     this.setState({
+        //         isLoading: false,
+        //         dataSource: responseJson.merchants,
+        //     })
+        // })
+        // .catch((error) => {
+        //     console.log(error);
+        // });
     }
     
     render() {
