@@ -14,6 +14,10 @@ git clone https://github.com/recoronejr/mobileorderingapp-reactnative.git
 ## Contributing
 The Group Members of our Senior Design Project are Reco Gunnels, Brian Smith, TJ Harvey, Connor Cook. 
 
+## Current Status
+
+![Running on iOS 14 Simulator](https://imgflip.com/gif/4k1iq9)
+
 
 
 ## License
