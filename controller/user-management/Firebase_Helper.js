@@ -59,18 +59,17 @@ export default class FirebaseController {
   signIn(email,password){
     
     firebase.auth().signInWithEmailAndPassword(email, password).then(cred => {
-      userDocument = firestore()
+      return firestore()
       .collection('Users')
       .doc(cred.user.uid)
-      .then(() => { return true})
     })
     .catch(function(error) {
       // Handle Errors here
-      
+      console.log(error);
       return false
   
-    });            
-  };
+    })           
+  }
   setFirstName (firstName) {
       userDocument = firestore().collection('Users').doc(uid).set({
         firstName: firstName

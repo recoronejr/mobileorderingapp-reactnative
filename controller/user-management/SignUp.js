@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text,Button } from "react-native";
+import LoginScreen from './Login';
 
-class SignUp extends Component {
-  render() {
+const SignUpScreen = ({ navigation }) => {
     return (
       <View
         style={{
@@ -14,9 +14,10 @@ class SignUp extends Component {
         <View style={{ backgroundColor: "blue", flex: 0.3 }} />
         <View style={{ backgroundColor: "red", flex: 0.5 }} />
         <Text>Hello World!</Text>
+        <Button title = 'Login'onPress={() => {navigation.navigate("Login")}}/>
       </View>
-    );
-  }
+    )
+
 }
 
-export default SignUp;
+export default SignUpScreen;

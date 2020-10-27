@@ -30,7 +30,6 @@ export default class MainScreen extends React.Component {
     
     render() {
         const { navigation: { navigate } } = this.props;
-        console.log(this.state.isLoading);
         if  (this.state.isLoading) {
             return (
                 <View style = {styles.container}>
