@@ -20,7 +20,6 @@ const App = ({navigation}) => {
   const [isSignedIn, setSignedIn] = useState();
 
   firebase.auth().onAuthStateChanged(function(user) {
-    console.log(user)
     if (user) {
       // User is signed in.
       setSignedIn(true);

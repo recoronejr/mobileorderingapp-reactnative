@@ -1,8 +1,11 @@
 import * as React from 'react';
+import { SafeAreaView } from 'react-navigation'
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image, Dimensions, ActivityIndicator } from 'react-native';
 import { signOut, firebaseUser, db, user } from './controller/user-management/Firebase_Helper'
 import User from './model/User';
 import FirebaseController from './controller/user-management/Firebase_Helper'
+import Mapscreen from './src/screens/Mapscreen'
+import Map from './src/components/Map'
 
 export default class MainScreen extends React.Component {
     
@@ -47,12 +50,8 @@ export default class MainScreen extends React.Component {
                 //             <Text>{val.access_token}</Text>
                 //         </View>
                 // });
-            return (    
-                <View style = {styles.container}>
-                    <Text>Content Loaded</Text>
-                    {/* <Text>{merchants}</Text> */}
-                    
-                </View>
+            return (
+                <MapScreen/>
             );  
         }
         
