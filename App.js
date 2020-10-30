@@ -32,7 +32,15 @@ const App = ({navigation}) => {
   return ( isSignedIn ? 
   
     <NavigationContainer>
-      <Tab.Navigator headerMode="none" initialRouteName="Main">
+      <Tab.Navigator headerMode="none" 
+      initialRouteName="Main"
+      screenOptions={{
+        tabBarOptions: {
+            style: {
+                backgroundColor: '#f9f9f9',
+            },
+        },
+    }}>
           <Tab.Screen name="Main" component={MainScreen} />
           <Tab.Screen name="Orders" component={OrderScreen} />
         <Tab.Screen name="Account" component={AccountScreen} />

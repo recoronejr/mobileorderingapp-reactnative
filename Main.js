@@ -4,8 +4,7 @@ import { Navigator, View, Button, Text, StyleSheet, TextInput, Image, Dimensions
 import { signOut, firebaseUser, db, user } from './controller/user-management/Firebase_Helper'
 import User from './model/User';
 import FirebaseController from './controller/user-management/Firebase_Helper'
-import Mapscreen from './src/screens/Mapscreen'
-import Map from './src/components/Map'
+import MapScreen from './src/screens/Mapscreen';
 
 export default class MainScreen extends React.Component {
     
@@ -51,7 +50,7 @@ export default class MainScreen extends React.Component {
                 //         </View>
                 // });
             return (
-                <MapScreen/>
+                <MapScreen />
             );  
         }
         

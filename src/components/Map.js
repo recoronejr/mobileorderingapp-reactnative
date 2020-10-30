@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet } from 'react-native'
 import MapView from 'react-native-maps'
 
 
-const Map = () => {
+const Map = ({navigation}) => {
     return (
         <MapView
             style={styles.map}
