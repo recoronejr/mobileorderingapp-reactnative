@@ -15,20 +15,16 @@ export default class FirebaseController {
   constructor() {
   
   }
-  firestore() {
-    return firebase.firestore()
-  }
   signUp(firstName,lastName,phoneNumber,email,password){
+    var uid;
     firebase.auth()
     .createUserWithEmailAndPassword(email, password)
     .then(cred => {
       console.log('User account created & signed in!');
-      userDocument = db.collection('Users').doc(cred.user.uid);
-      console.log(cred.user.uid)
       uid = cred.user.uid
     })
     .then(() => {
-    db
+    firebase.firestore()
     .collection('Users')
     .doc(uid)
     .set({
