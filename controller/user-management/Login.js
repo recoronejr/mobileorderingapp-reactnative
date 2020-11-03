@@ -66,11 +66,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(153, 178, 221)'
     },
     card: {
-        marginTop: 75,
+        marginTop: 150,
         alignSelf: 'center',
         backgroundColor: '#ffffff',
-        width: '40%',
-        height: '40%',
+        width: '80%',
+        height: '50%',
         justifyContent: "center",
         alignItems: "center",
         shadowColor: "#000",
@@ -103,11 +103,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     emailInput: {
-
+        width: '60%',
 
     },
     passwordinput: {
-
+        width: '60%',
         
     },
     passwordcontainer: {
