@@ -22,7 +22,7 @@ const Map = ({navigation}) => {
 
 const styles = StyleSheet.create({
     map:{
-        height: "100%"
+        height: "60%"
     }
 })
 

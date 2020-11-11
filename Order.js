@@ -19,7 +19,7 @@ export default class OrderScreen extends React.Component {
         return (
             <View style = {styles.container}>
                 <View style = {styles.mainLbl}>
-                <Text>Order Here</Text>
+                <Text>You have no active orders</Text>
                 </View>
                 
             </View>

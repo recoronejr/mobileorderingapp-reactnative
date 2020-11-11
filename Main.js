@@ -16,18 +16,7 @@ export default class MainScreen extends React.Component {
         }
     }
     componentDidMount() {
-        // Get All Locations Here!
-        // return fetch("http://localhost:8000/getAllMerchantOauth")
-        // .then(response => response.json())
-        // .then( (responseJson) => {
-        //     this.setState({
-        //         isLoading: false,
-        //         dataSource: responseJson.merchants,
-        //     })
-        // })
-        // .catch((error) => {
-        //     console.log(error);
-        // });
+      
     }
     
     render() {
@@ -41,16 +30,11 @@ export default class MainScreen extends React.Component {
             );
         } 
         else {
-                // Will return null until datasource is properly saved to state
-                // let merchants = this.state.dataSource.map((val,key) => {
-                //     return 
-                //         <View key = {key}> 
-                //             <Text>{val.merchant_id}</Text>
-                //             <Text>{val.access_token}</Text>
-                //         </View>
-                // });
             return (
+            <View>
                 <MapScreen />
+            </View>
+                
             );  
         }
         
@@ -64,9 +48,6 @@ const styles = StyleSheet.create({
     welcometxt: {
         marginTop: 50,
     },
-    mapStyle: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
-      },
+   
 
 });
