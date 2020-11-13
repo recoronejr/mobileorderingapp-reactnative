@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
-import { View, Text, FlatList, StyleSheet, Button} from 'react-native';
+import { View, Text, FlatList, StyleSheet, Button,  Modal, Alert, TouchableHighlight} from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-navigation';
 import Map from '../components/Map'
+import OrderMenu from '../screens/OrderMenu'
 
 export default class MapScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             locations: null,
+            menu: null
         }
     }
     componentDidMount() {
@@ -18,39 +21,46 @@ export default class MapScreen extends React.Component {
         let resp = await fetch("https://us-central1-squareoauth-99eb5.cloudfunctions.net/app/getMerchantsLocations")
         let respJson = await resp.json()
         this.setState({locations: respJson});
-        console.warn(this.state.locations)
+    }
+    renderItem = ({ item }) => {
+        let merchant = {
+            id: item.merchant_id,
+            name: item.name,
+        }
+        return (
+            <TouchableOpacity
+                onPress={() => {
+                    this.props.navigation.navigate("OrderMenu", {merchant})
+                }}>
+                <Location title={item.name} address={item.address.address_line_1} merchantId={item.id}/>  
+            </TouchableOpacity>
+                
+        ) 
     }
     render() {
+        const { navigate } = this.props.navigation;
         return (
             //Will return null until datasource is properly saved to state
             <SafeAreaView forceInset={{top:'always'}}>
                 <Map />
                 <Text style={{fontSize:40}}>Locations</Text>
                 <FlatList data={this.state.locations}
-                renderItem={renderItem}
+                renderItem={this.renderItem}
                 />
                 
             </SafeAreaView>
         ) 
-    } 
-    
-    
+    }   
 }
-const Item = ({ title, address }) => (
-    <View style={styles.item}>
-        <Text style={styles.title}>{title}</Text>
-<Text>From {address}</Text>
-        <Button title="Place Order"
-        onPress={
-            
-        }>
-
-        </Button>
-    </View>
-);
-const renderItem = ({ item }) => (
-    <Item title={item.name} address={item.address.address_line_1}/>
-);
+    const Location = ({title, address}) => {
+        const [modalVisible, setModalVisible] = useState(false);
+        return (
+            <View style={styles.item}>
+                <Text style={styles.title}>{title}</Text>
+                <Text> From {address} </Text>
+            </View> 
+        )
+    }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
