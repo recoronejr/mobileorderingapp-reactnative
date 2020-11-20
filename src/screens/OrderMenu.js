@@ -14,18 +14,16 @@ export default class OrderMenu extends React.Component {
     componentDidMount() {
         this.getMenus()
     }
-    sortData(){
+    // sortData(){
         
-        for (var i = 0, i) {
-
-        }
-        if (menu[i].items.type === "ITEMS") {
-            this.state.menu.
-        }
-        else if (menu[i].items.type === "IMAGE") {
-            this.setState({ myArray: [...this.state.myArray, menu[i]] })
-        }
-    }
+        
+    //     if (menu[i].items.type === "ITEMS") {
+    //         this.state.menu.
+    //     }
+    //     else if (menu[i].items.type === "IMAGE") {
+    //         this.setState({ myArray: [...this.state.myArray, menu[i]] })
+    //     }
+    // }
     async getMenus() {
         while(this.state.locations == [] || this.state.locations == null) {
             let resp = await fetch("https://us-central1-squareoauth-99eb5.cloudfunctions.net/app/getMerchantsMenus")
