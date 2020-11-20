@@ -11,16 +11,18 @@ export default class MapScreen extends React.Component {
         super(props)
         this.state = {
             locations: null,
-            menu: null
         }
     }
     componentDidMount() {
         this.getLocations();
     }
     async getLocations() {
-        let resp = await fetch("https://us-central1-squareoauth-99eb5.cloudfunctions.net/app/getMerchantsLocations")
-        let respJson = await resp.json()
-        this.setState({locations: respJson});
+        while(this.state.locations == [] || this.state.locations == null) {
+            let resp = await fetch("https://us-central1-squareoauth-99eb5.cloudfunctions.net/app/getMerchantsLocations")
+            let respJson = await resp.json()
+            this.setState({locations: respJson});
+            this.sortMenuData();  
+        }
     }
     renderItem = ({ item }) => {
         let merchant = {
