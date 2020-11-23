@@ -11,6 +11,7 @@ export default class MapScreen extends React.Component {
         super(props)
         this.state = {
             locations: null,
+            menu: null,
         }
     }
     componentDidMount() {
@@ -21,22 +22,30 @@ export default class MapScreen extends React.Component {
             let resp = await fetch("https://us-central1-squareoauth-99eb5.cloudfunctions.net/app/getMerchantsLocations")
             let respJson = await resp.json()
             this.setState({locations: respJson});
-            this.sortMenuData();  
+        }
+        while(this.state.menu == [] || this.state.menu == null) {
+            let resp = await fetch("https://us-central1-squareoauth-99eb5.cloudfunctions.net/app/getMerchantsMenus")
+            let respJson = await resp.json()
+            this.setState({menu: respJson});
         }
     }
     renderItem = ({ item }) => {
         let merchant = {
             id: item.merchant_id,
             name: item.name,
+            
         }
+        
         return (
             <TouchableOpacity
                 onPress={() => {
-                    this.props.navigation.navigate("OrderMenu", {merchant})
+                    this.props.navigation.navigate("OrderMenu", {
+                        merchant:merchant,
+                        menu: this.state.menu[merchant.id].items
+                    })
                 }}>
                 <Location title={item.name} address={item.address.address_line_1} merchantId={item.id}/>  
-            </TouchableOpacity>
-                
+            </TouchableOpacity>     
         ) 
     }
     render() {

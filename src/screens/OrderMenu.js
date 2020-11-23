@@ -1,35 +1,47 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
-import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity} from 'react-native';
+import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView} from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { color } from 'react-native-reanimated';
+
+const {height} = Dimensions.get('window')
 
 export default class OrderMenu extends React.Component {
+    onContentSizeChange = (contentWidth, contentHeight) => {
+        // Save the content height in state
+        this.setState({ screenHeight: contentHeight });
+    };
     constructor(props) {
         super(props)
         this.state = {
-            menu: null,
+            menu: [],
             menuItems: [],
-            menuImages: []
+            menuImages: [],
+        }
+    }
+    componentWillMount() {
+        this.setState({menu:this.props.route.params.menu})
+    }
+    getImageById(id){
+        for (var i = 0; i < this.state.menuImages.length; i++) {
+            if (id == this.state.menuImages[i].id) {
+                return this.state.menuImages[i].image_data.url
+            }
         }
     }
     componentDidMount() {
-        this.getMenus()
-    }
-    // sortData(){
-        
-        
-    //     if (menu[i].items.type === "ITEMS") {
-    //         this.state.menu.
-    //     }
-    //     else if (menu[i].items.type === "IMAGE") {
-    //         this.setState({ myArray: [...this.state.myArray, menu[i]] })
-    //     }
-    // }
-    async getMenus() {
-        while(this.state.locations == [] || this.state.locations == null) {
-            let resp = await fetch("https://us-central1-squareoauth-99eb5.cloudfunctions.net/app/getMerchantsMenus")
-            let respJson = await resp.json()
-            let id = this.props.route.params.merchant.id
-            this.setState({menu: respJson[id].items});
+        let items = [];
+        let images = [];
+
+        for (var i = 0; i < this.state.menu.length; i++) {
+            if (this.state.menu[i].type == "ITEM") {
+                items.push(this.state.menu[i])
+            }
+            else if (this.state.menu[i].type == "IMAGE") {
+                images.push(this.state.menu[i])
+            }
+            this.setState({menuItems: items});
+            this.setState({menuImages: images});
         }
     }
     renderItem = ({ item }) => {
@@ -42,27 +54,72 @@ export default class OrderMenu extends React.Component {
                 onPress={() => {
                     this.props.navigation.navigate("OrderMenu", {merchant})
                 }}>
-                {/* <Location title={item.name} address={item.address.address_line_1} merchantId={item.id}/>   */}
             </TouchableOpacity>
                 
         ) 
     }
     render() {
         const { navigation: { navigate } } = this.props;
+        const scrollEnabled = true;
+        let menuItems = this.state.menuItems.map((val,key) => {
+            let image = this.getImageById(val.image_id)
+            return (
+                <TouchableOpacity>
+                    <View key={key} style={styles.card}>
+                            <Text style={{fontSize:28}}>{val.item_data.name}</Text>
+                            <Image style={styles.img} source={{uri:image}}/>
+                            <Text>{val.item_data.description}</Text>
+                    </View> 
+                </TouchableOpacity>
+            ) 
+        });
         return (
-            <View>
+            <SafeAreaView style={styles.container}>
                 <Text style={{fontSize:40}}>{this.props.route.params.merchant.name}</Text>
-                <FlatList data={this.state.menu}
-                renderItem={this.renderItem}
-                />
-            </View>
+                <Text style={{fontSize:32}}>What would you like? </Text>
+                <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollview} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
+                    
+                    {menuItems}    
+                </ScrollView> 
+                <TouchableOpacity style={styles.orderBtn}><Text style={{alignSelf: 'center',fontSize:24,textAlignVertical:'center'}}>Place Order Total: $0.00</Text></TouchableOpacity>
+            </SafeAreaView>
         )
     }
 }
 const MenuItem = () => (
-    <View style={styles.item}>
-        <Text style={styles.title}></Text>
-        <Button title="Place Order"/>
-        
-    </View>
+        <View style={styles.item}>
+            <Text style={styles.title}></Text>
+            <Button title="Place Order"/>
+            
+        </View> 
 );
+
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+    },
+    card: {
+        backgroundColor: '#ffffff',
+        width: '80%',
+        height: 240,
+        alignSelf:"center",
+        flexGrow: 1,
+        marginBottom: 10,
+        padding: 10,
+    },
+    scrollview: {
+        flexGrow:1,
+    },
+    scroll: {
+        flex:1,
+    },
+    img: {
+        alignSelf: 'center',
+        width: '100%',
+        height: 100
+    },
+    orderBtn: {
+        height:50,
+        backgroundColor: 'lightgray',
+    }
+})
