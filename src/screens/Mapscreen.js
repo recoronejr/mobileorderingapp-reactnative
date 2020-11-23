@@ -52,7 +52,7 @@ export default class MapScreen extends React.Component {
         const { navigate } = this.props.navigation;
         return (
             //Will return null until datasource is properly saved to state
-            <SafeAreaView forceInset={{top:'always'}}>
+            <SafeAreaView>
                 <Map />
                 <Text style={{fontSize:40}}>Locations</Text>
                 <FlatList data={this.state.locations}

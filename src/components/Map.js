@@ -9,10 +9,10 @@ const Map = ({navigation}) => {
             style={styles.map}
             loadingEnabled={true}
             region={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.015,
-                longitudeDelta: 0.0121
+                latitude: 39.134119,
+                longitude: -84.513016,
+                latitudeDelta: 0.0200,
+                longitudeDelta: 0.0200
             }}
         >
 
@@ -22,7 +22,7 @@ const Map = ({navigation}) => {
 
 const styles = StyleSheet.create({
     map:{
-        height: "60%"
+        height: "65%"
     }
 })
 
