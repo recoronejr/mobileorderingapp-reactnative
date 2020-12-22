@@ -64,11 +64,11 @@ export default class OrderMenu extends React.Component {
         let menuItems = this.state.menuItems.map((val,key) => {
             let image = this.getImageById(val.image_id)
             return (
-                <TouchableOpacity>
+                <TouchableOpacity style={styles.item}>
                     <View key={key} style={styles.card}>
                             <Text style={{fontSize:28}}>{val.item_data.name}</Text>
                             <Image style={styles.img} source={{uri:image}}/>
-                            <Text>{val.item_data.description}</Text>
+                            <Text style={styles.desc}>{val.item_data.description}</Text>
                     </View> 
                 </TouchableOpacity>
             ) 
@@ -102,10 +102,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         width: '80%',
         height: 240,
-        alignSelf:"center",
+        alignSelf: "center",
         flexGrow: 1,
         marginBottom: 10,
         padding: 10,
+    },
+    item:{
+        alignSelf:'stretch'
+    },
+    desc: {
+        marginTop: 10,
     },
     scrollview: {
         flexGrow:1,

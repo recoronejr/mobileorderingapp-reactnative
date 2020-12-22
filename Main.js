@@ -33,7 +33,7 @@ export default class MainScreen extends React.Component {
         } 
         else {
             return (
-                <Stack.Navigator initialRouteName = "MapScreen">
+                <Stack.Navigator initialRouteName = "MapScreen" style={styles.navigator}>
                     <Stack.Screen
                     name="MapScreen"
                     component={MapScreen}
@@ -49,6 +49,9 @@ export default class MainScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    navigator:{
+        backgroundColor: '#000000',
+    },
     container: {
         flex: 1,
     },

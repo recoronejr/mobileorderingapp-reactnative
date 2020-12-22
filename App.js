@@ -32,12 +32,12 @@ const App = ({navigation}) => {
   return ( isSignedIn ? 
   
     <NavigationContainer>
-      <Tab.Navigator headerMode="none" 
+      <Tab.Navigator style={styles.navigator} headerMode="none" 
       initialRouteName="Main"
       screenOptions={{
         tabBarOptions: {
             style: {
-                backgroundColor: '#f9f9f9',
+                
             },
         },
     }}>
@@ -66,6 +66,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  navigator:{
+    backgroundColor: '#000000'
   },
   signOutButton: {
     

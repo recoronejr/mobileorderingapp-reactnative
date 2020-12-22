@@ -25,27 +25,27 @@ const SignUpScreen = ({ navigation }) => {
                 <Text style ={styles.signintxt} title = "Sign Up">
                     Sign Up
                 </Text>
-                <View  rounded style={styles.usernamecontainer}>
+                <View  rounded style={styles.txtInput}>
                     <TextInput placeholder='First Name' defaultValue = {firstName} onChangeText={firstName => setFirstName(firstName)} />
                 </View>
-                <View  rounded style={styles.usernamecontainer}>
+                <View  rounded style={styles.txtInput}>
                     <TextInput placeholder='Last Name' defaultValue = {lastName} onChangeText={lastName => setlastName(lastName)}  />
                 </View>
-                <View  rounded style={styles.usernamecontainer}>
+                <View  rounded style={styles.txtInput}>
                     <TextInput placeholder='Username' defaultValue = {username} onChangeText={username => setUsername(username)} />
                 </View>
-                <View  rounded style={styles.usernamecontainer}>
+                <View  rounded style={styles.txtInput}>
                     <TextInput placeholder='Phone Number' defaultValue = {phoneNumber} onChangeText={phoneNumber => setPhoneNumber(phoneNumber)} style={styles.emailInput} />
                 </View>
-                <View  rounded style={styles.usernamecontainer}>
+                <View  rounded style={styles.txtInput}>
                     <TextInput placeholder='Email' defaultValue = {email} onChangeText={email => setEmail(email)} style={styles.emailInput} />
                 </View>
 
-                <View rounded style={styles.passwordcontainer}>
+                <View rounded style={styles.txtInput}>
                     <TextInput placeholder='Password' defaultValue = {password} onChangeText={password => setPassword(password)}  style={styles.passwordinput}  secureTextEntry= {true} />
                 </View>
 
-                <View rounded >
+                <View rounded style={styles.txtInput}>
                     <TextInput placeholder='Verify Password' defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)}  secureTextEntry= {true} />
                 </View>
 
@@ -88,13 +88,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        backgroundColor: 'rgb(153, 178, 221)'
+        backgroundColor: 'rgb(112,112,112)'
     },
     card: {
-        marginTop: 75,
+        marginTop: 150,
         alignSelf: 'center',
         backgroundColor: '#ffffff',
-        width: '40%',
+        width: '80%',
         height: '40%',
         justifyContent: "center",
         alignItems: "center",
@@ -127,33 +127,20 @@ const styles = StyleSheet.create({
         fontSize: 18,
         alignSelf: 'center'
     },
-    emailInput: {
-
-
-    },
-    passwordinput: {
-
-        
-    },
     passwordcontainer: {
         alignSelf: "center",
         backgroundColor: '#ffffff',
         width: 300,
         justifyContent:"space-between",
         marginTop: 20,
-        
-        
     },
-    usernamecontainer: {
+    txtInput: {
         alignSelf: "center",
         backgroundColor: '#ffffff',
         width: 300,
         justifyContent:"space-between",
         flexDirection: "column",
         marginTop: 20,
-        
-       
-        
     },
     bgImage: {
         flex: 1,
