@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image, ImageBackground, ColorPropType } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import FirebaseController from './Firebase_Helper'
-import { color } from 'react-native-reanimated';
-import * as firebase from 'firebase';
+
+import FirebaseAPI from '../api/firebase'
 import App from '../../App';
-import SingnUp from './SignUp';
-import SignUp from './SignUp';
-import SignUpScreen from './SignUp';
+import SignUpScreen from './SignUpScreen';
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const firebaseController = new FirebaseController()
+    
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../assets/burgerNfries.jpg')}  style={{width: '100%', height: '100%'}}>
+            <ImageBackground source={require('../../src/assets/burgerNfries.jpg')}  style={{width: '100%', height: '100%'}}>
                 <Text style ={styles.title}> </Text>
                 <View style ={styles.card}>
                                 <Text style ={styles.signintxt} title = "Sign In">
@@ -41,14 +38,12 @@ const LoginScreen = ({ navigation }) => {
                                     else {
                                         console.log('true')
                                     }
-                                    
                                 }}/>
                                 <Button title = 'Sign Up' hasText transparent style={styles.signupbtn}  onPress={() => {
                                     // Go to Sign Up Screen
                                     return (
                                     navigation.navigate("SignUp")
-                                    )
-                                    
+                                    )  
                                 }}/>
                                 <Text style ={styles.signintxt}>
                                     

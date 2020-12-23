@@ -3,33 +3,24 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import LoginScreen from './controller/user-management/Login';
-import SignUpScreen from './controller/user-management/SignUp';
-import MainScreen from './Main';
-import AccountScreen from './Account';
-import OrderScreen from './Order';
-import * as firebase from 'firebase';
 import { createStackNavigator } from '@react-navigation/stack';
-import { render } from 'react-dom';
+
+import LoginScreen from './src/screens/LoginScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
+import MainScreen from './src/screens/MainScreen';
+import AccountScreen from './src/screens/AccountScreen';
+import OrderScreen from './src/screens/OrderScreen';
+
+import * as firebase from 'firebase';
+import { FirebaseAPI } from './src/api/firebase';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const firebaseApp = new FirebaseAPI();
 
 const App = ({navigation}) => {
-  // var user = firebase.auth().currentUser;
-  const [isSignedIn, setSignedIn] = useState();
 
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      setSignedIn(true);
-    } else {
-      // No user is signed in.
-      setSignedIn(false);
-    }
-  });
-  
-  return ( isSignedIn ? 
+  return ( firebaseApp.getUser() ? 
   
     <NavigationContainer>
       <Tab.Navigator style={styles.navigator} headerMode="none" 
@@ -59,18 +50,11 @@ const App = ({navigation}) => {
 export default App;
 
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  navigator:{
-    backgroundColor: '#000000'
-  },
-  signOutButton: {
-    
   },
 });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import App from './App';
+import App from '../../App';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 import * as firebase from 'firebase';
 export default class AccountScreen extends React.Component {

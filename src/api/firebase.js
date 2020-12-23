@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
 import * as firebase from 'firebase';
 import firestore from 'firestore';
+import {firebaseConfig} from './config';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyC-68UPtqGgmasYZf1rgl0fcm_fOnnxsnE",
-    authDomain: "mobileorderingapp-cfe7f.firebaseapp.com",
-    projectId: 'mobileorderingapp-cfe7f',
-    databaseURL: "https://mobileorderingapp-cfe7f.firebaseio.com",
-    storageBucket: "mobileorderingapp-cfe7f.appspot.com",
-  };
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+export class FirebaseAPI {
 
-export default class FirebaseController {
   constructor() {
-  
+    firebase.initializeApp(firebaseConfig);
+  }
+  getUser() {
+    return firebase.auth().currentUser;
   }
   signUp(firstName,lastName,phoneNumber,email,password){
     var uid;
@@ -52,8 +47,8 @@ export default class FirebaseController {
       console.error(error);
     });
   }
+
   signIn(email,password){
-    
     firebase.auth().signInWithEmailAndPassword(email, password).then(cred => {
       return firestore()
       .collection('Users')
@@ -66,31 +61,18 @@ export default class FirebaseController {
   
     })           
   }
-  setFirstName (firstName) {
-      userDocument = firestore().collection('Users').doc(uid).set({
-        firstName: firstName
-      })
+
+  updateUserDocumentAndStore() {
+    const user = firebase.auth().currentUser;
+    const userDocument = firebaseController.firestore()
+        .collection('Users').doc(user.uid)
+        .onSnapshot(doc => {
+            this.firstName = doc.data().firstName;
+            this.lastName = doc.data().lastName;
+            this.phoneNumber = doc.data().phoneNumber;
+            this.email = doc.data().email;
+        })
     }
-  setLastName (lastName) {
-      userDocument = firestore.collection('Users').doc(uid).set({
-        lastName: lastName
-      })
-    }
-    setPhoneNumber (phoneNumber) {
-      userDocument = firestore.collection('Users').doc(uid).set({
-        phoneNumber: phoneNumber
-      })
-    }
-    setEmail (email) {
-      userDocument = firestore.collection('Users').doc(uid).set({
-        email: email
-      })
-    }
-    setPassword(password) {
-      userDocument = firestore.collection('Users').doc(uid).set({
-        password: password
-      })
-    }
-    
 
 }
+    

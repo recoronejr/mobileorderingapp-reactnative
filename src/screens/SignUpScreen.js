@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
+import { View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import FirebaseController from './Firebase_Helper'
-import { color } from 'react-native-reanimated';
-import * as firebase from 'firebase';
+import FirebaseAPI from '../api/firebase'
 import App from '../../App';
 
 
@@ -17,7 +15,7 @@ const SignUpScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [verifyPassword, setVerifyPassword] = useState('');
-    const firebaseController = new FirebaseController()
+    // const firebaseController = new FirebaseController()
 
     return (
         <View style={styles.container}>
