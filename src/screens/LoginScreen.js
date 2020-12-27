@@ -2,13 +2,9 @@ import React, { useState } from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image, ImageBackground, ColorPropType, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import {firebaseApp} from '../api/firebase';
 import {auth} from 'firebase';
 
-import SignUpScreen from './SignUpScreen';
-import MainScreen from './MainScreen';
-import App from '../../App';
-
+import MainNavigation from '../navigation/MainNavigation';
 
 const LoginScreen = ({ navigation }) => {
 
@@ -36,6 +32,7 @@ const LoginScreen = ({ navigation }) => {
                             .signInWithEmailAndPassword(email,password)
                             .then(() => {
                                 // Go to MainScreen
+                                <MainNavigation/>
                                 
                             })
                             .catch(error => {

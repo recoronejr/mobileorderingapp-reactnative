@@ -5,6 +5,9 @@ import { NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import AuthenticationNavigation from './src/navigation/AuthenticationNavigation'
+import MainNavigation from './src/navigation/MainNavigation';
+
 import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import MainScreen from './src/screens/MainScreen';
@@ -12,9 +15,6 @@ import AccountScreen from './src/screens/AccountScreen';
 import OrderScreen from './src/screens/OrderScreen';
 
 import {auth} from 'firebase';
-
-const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 
 const App = ({navigation}) => {
@@ -37,26 +37,12 @@ const App = ({navigation}) => {
 
   if (!user) {
     return (
-       <NavigationContainer>
-        <Stack.Navigator headerMode="none">
-          <Stack.Screen name="Login" component={LoginScreen}/>
-          <Stack.Screen name="SignUp" component={SignUpScreen}/>
-        </Stack.Navigator>
-    </NavigationContainer>
+       <AuthenticationNavigation/>
     );
   }
 
   return (
-     <NavigationContainer>
-      <Tab.Navigator style={styles.navigator} headerMode="none" 
-      initialRouteName="Main"
-      screenOptions={{
-      }}>
-        <Tab.Screen name="Main" component={MainScreen} />
-        <Tab.Screen name="Orders" component={OrderScreen} />
-        <Tab.Screen name="Account" component={AccountScreen} />
-      </Tab.Navigator>
-    </NavigationContainer> 
+      <MainNavigation/> 
   ); 
 }
 

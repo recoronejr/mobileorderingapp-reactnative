@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 
-import App from '../../App';
-
-import { firebaseApp } from '../api/firebase';
+import {auth} from 'firebase';
+import AuthenticationNavigation from '../navigation/AuthenticationNavigation';
 
 export default class AccountScreen extends React.Component {
     
@@ -28,7 +27,13 @@ export default class AccountScreen extends React.Component {
                     <Button
                     title='Sign Out'
                     onPress={() => {
-                        firebaseApp.signOut();
+                        auth()
+                        .signOut()
+                        .then(() => {
+                            return (
+                                <AuthenticationNavigation/>
+                            )
+                        })
                     }}
                     />
                 </View>
