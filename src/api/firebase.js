@@ -2,13 +2,28 @@ import * as firebase from 'firebase';
 import firestore from 'firestore';
 import {firebaseConfig} from './config';
 
-export class FirebaseAPI {
+class FirebaseAPI {
+
 
   constructor() {
     firebase.initializeApp(firebaseConfig);
+    // this.user = firebase.auth().currentUser;
+    firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      isSignedIn = true;
+    } else {
+      // No user is signed in.
+      isSignedIn = false;
+    }
+  });
   }
+  
   getUser() {
     return firebase.auth().currentUser;
+  }
+  signOut(){
+    firebase.auth().signOut();
   }
   signUp(firstName,lastName,phoneNumber,email,password){
     var uid;
@@ -43,27 +58,20 @@ export class FirebaseAPI {
       if (error.code === 'auth/invalid-email') {
         console.log('That email address is invalid!');
       }
-  
-      console.error(error);
     });
   }
 
   signIn(email,password){
     firebase.auth().signInWithEmailAndPassword(email, password).then(cred => {
-      return firestore()
-      .collection('Users')
-      .doc(cred.user.uid)
+      return true;
     })
     .catch(function(error) {
-      // Handle Errors here
-      console.log(error);
-      return false
-  
+      return false;
     })           
   }
 
   updateUserDocumentAndStore() {
-    const user = firebase.auth().currentUser;
+  
     const userDocument = firebaseController.firestore()
         .collection('Users').doc(user.uid)
         .onSnapshot(doc => {
@@ -75,4 +83,7 @@ export class FirebaseAPI {
     }
 
 }
-    
+  
+const firebaseApp = new FirebaseAPI();
+
+export {firebaseApp};

@@ -1,67 +1,63 @@
 import React, { useState } from 'react';
-import { Navigator, View, Button, Text, StyleSheet, TextInput, Image, ImageBackground, ColorPropType } from 'react-native';
+import { Navigator, View, Button, Text, StyleSheet, TextInput, Image, ImageBackground, ColorPropType, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import FirebaseAPI from '../api/firebase'
-import App from '../../App';
+import {firebaseApp} from '../api/firebase';
+import {auth} from 'firebase';
+
 import SignUpScreen from './SignUpScreen';
+import MainScreen from './MainScreen';
+import App from '../../App';
+
 
 const LoginScreen = ({ navigation }) => {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
+
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../src/assets/burgerNfries.jpg')}  style={{width: '100%', height: '100%'}}>
                 <Text style ={styles.title}> </Text>
                 <View style ={styles.card}>
-                                <Text style ={styles.signintxt} title = "Sign In">
-                                    Sign In
-                                </Text>
-                                <View  rounded style={styles.usernamecontainer}>
-                                    <TextInput placeholder='Email' defaultValue = {email} onChangeText={email => setEmail(email)} style={styles.emailInput} />
-                                </View>
-
-                                <View rounded style={styles.passwordcontainer}>
-                                    <TextInput placeholder='Password' defaultValue = {password} onChangeText={password => setPassword(password)}  style={styles.passwordinput}  secureTextEntry= {true} />
-                                </View>
-
-                                {/* <Button title = 'Forgot Password' hasText transparent /> */}
-
-                                <Button title = 'Login' rounded style={styles.loginbtn}  
-                                onPress={() => {
-                                    firebaseController.signIn(email,password)
-                                    var user = firebase.auth().currentUser;
-                                    if (!user) {
-                                        <App />
-                                    }
-                                    else {
-                                        console.log('true')
-                                    }
-                                }}/>
-                                <Button title = 'Sign Up' hasText transparent style={styles.signupbtn}  onPress={() => {
-                                    // Go to Sign Up Screen
-                                    return (
-                                    navigation.navigate("SignUp")
-                                    )  
-                                }}/>
-                                <Text style ={styles.signintxt}>
-                                    
-                                </Text>
-                            </View>
+                    <Text style ={styles.signintxt} title = "Sign In">
+                        Sign In
+                    </Text>
+                    <View  rounded style={styles.usernamecontainer}>
+                        <TextInput placeholder='Email' defaultValue = {email} onChangeText={email => setEmail(email)} style={styles.emailInput} />
+                    </View>
+                    <View rounded style={styles.passwordcontainer}>
+                        <TextInput placeholder='Password' defaultValue = {password} onChangeText={password => setPassword(password)}  style={styles.passwordinput}  secureTextEntry= {true} />
+                    </View>
+                    <Button title = 'Login' rounded style={styles.loginbtn}  
+                        onPress={() => {
+                        
+                        auth()
+                            .signInWithEmailAndPassword(email,password)
+                            .then(() => {
+                                // Go to MainScreen
+                                
+                            })
+                            .catch(error => {
+                                // Sign in does not work 
+                            })
+                    }}/>
+                    <Button title = 'Dont have an Account?' hasText transparent style={styles.signupbtn}  onPress={() => {
+                        return (
+                            navigation.navigate("SignUp")
+                            )  
+                    }}/>
+                    <Text style ={styles.signintxt}></Text>
+                </View>
             </ImageBackground>
-            
-        </View>
-       
+        </View>   
     );
-
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        backgroundColor: 'rgb(112,112,112)'
     },
     title:{
         fontWeight: 'bold',
