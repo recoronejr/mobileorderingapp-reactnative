@@ -1,16 +1,20 @@
 import * as React from 'react';
-import App from './App';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
-import * as firebase from 'firebase';
+
+import App from '../../App';
+
+import { firebaseApp } from '../api/firebase';
+
 export default class AccountScreen extends React.Component {
     
     constructor(props) {
-        super(props)
-        this.state = {
-           
-        }; 
+        super(props);   
     }
-
+    goToLogin() {
+        return (
+            <App/>
+        )
+    }
     render() {
         
         const { navigation: { navigate } } = this.props;
@@ -22,16 +26,10 @@ export default class AccountScreen extends React.Component {
                 </View>
                 <View>
                     <Button
-
                     title='Sign Out'
-                    onPress={() =>  
-                        firebase.auth().signOut().then(function() {
-                            // Sign-out successful Send To App.js.
-                        }).catch(function(error) {
-                            // An error happened.
-                        })
-                       
-                    }
+                    onPress={() => {
+                        firebaseApp.signOut();
+                    }}
                     />
                 </View>
             </View>

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
+import { View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import FirebaseController from './Firebase_Helper'
-import { color } from 'react-native-reanimated';
-import * as firebase from 'firebase';
-import App from '../../App';
+import { firebaseApp } from '../api/firebase'
+import MainScreen from './MainScreen';
+
 
 
 
@@ -17,7 +16,7 @@ const SignUpScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [verifyPassword, setVerifyPassword] = useState('');
-    const firebaseController = new FirebaseController()
+
 
     return (
         <View style={styles.container}>
@@ -55,14 +54,13 @@ const SignUpScreen = ({ navigation }) => {
                 onPress={() => {
                     // Sign Up
                     if (password == verifyPassword) {
-                      console.log({email})
-                      firebaseController.signUp(firstName,lastName,phoneNumber,email,password)
+                      firebaseApp.signUp(firstName,lastName,phoneNumber,email,password)
                       return (
-                        <App />
+                        <MainScreen/>
                       )
                     }
                     else {
-                      console.log("Password Do Not Match")
+                      console.log("Password Do Not Match");
                     }
                     
                     

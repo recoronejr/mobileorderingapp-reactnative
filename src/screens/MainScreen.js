@@ -3,11 +3,14 @@ import { SafeAreaView } from 'react-navigation'
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image, Dimensions, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import FirebaseController from './controller/user-management/Firebase_Helper'
-import MapScreen from './src/screens/Mapscreen';
-import OrderMenu from './src/screens/OrderMenu';
-import Location from "./src/screens/Mapscreen"
+
+import FirebaseAPI from '../api/firebase';
+
+import OrderMenu from './MenuScreen';
+import MapScreen from "./Mapscreen"
+import OrderScreen from './OrderScreen';
 const Stack = createStackNavigator();
+
 export default class MainScreen extends React.Component {
     
     constructor(props) {
@@ -38,8 +41,8 @@ export default class MainScreen extends React.Component {
                     name="MapScreen"
                     component={MapScreen}
                     />
-                    <Stack.Screen name="Locations" component={Location} />
-                    <Stack.Screen name="OrderMenu" component={OrderMenu} />
+                    <Stack.Screen name="Locations" component={MapScreen} />
+                    <Stack.Screen name="OrderMenu" component={OrderScreen} />
                 </Stack.Navigator>
                 
             );  
