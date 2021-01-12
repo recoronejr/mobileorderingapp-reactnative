@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import FirebaseAPI from '../api/firebase';
 
+import MenuScreen from './MenuScreen';
 import OrderMenu from './MenuScreen';
 import MapScreen from "./Mapscreen"
 import OrderScreen from './OrderScreen';
@@ -42,12 +43,11 @@ export default class MainScreen extends React.Component {
                     component={MapScreen}
                     />
                     <Stack.Screen name="Locations" component={MapScreen} />
-                    <Stack.Screen name="OrderMenu" component={OrderScreen} />
+                    <Stack.Screen name="OrderMenu" component={MenuScreen} />
                 </Stack.Navigator>
                 
             );  
-        }
-        
+        }    
     }
 }
 
