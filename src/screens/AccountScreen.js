@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 
+import {firebaseApp} from '../api/firebase';
 import {auth} from 'firebase';
 import AuthenticationNavigation from '../navigation/AuthenticationNavigation';
 
@@ -9,15 +10,9 @@ export default class AccountScreen extends React.Component {
     constructor(props) {
         super(props);   
     }
-    goToLogin() {
-        return (
-            <App/>
-        )
-    }
     render() {
         
         const { navigation: { navigate } } = this.props;
-
         return (
             <View style = {styles.container}>
                 <View style = {styles.mainLbl}>
