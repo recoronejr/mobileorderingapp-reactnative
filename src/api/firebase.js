@@ -2,8 +2,9 @@ import * as firebase from 'firebase';
 import firestore from 'firestore';
 import {firebaseConfig} from './config';
 
-class FirebaseAPI {
 
+
+class FirebaseAPI {
 
   constructor() {
     firebase.initializeApp(firebaseConfig);
@@ -20,7 +21,14 @@ class FirebaseAPI {
   }
   
   getUser() {
-    return firebase.auth().currentUser;
+    const user = firebase.auth().currentUser;
+    return user;
+  }
+  async getUserDocument(uid) {
+    const userDocument = await firestore()
+    .collection('Users')
+    .doc(uid)
+    .get();
   }
   signOut(){
     firebase.auth().signOut();
@@ -69,18 +77,42 @@ class FirebaseAPI {
       return false;
     })           
   }
-
-  updateUserDocumentAndStore() {
-  
+  // Function that First Name, Last Name and Phone Numnber 
+  updateFirstName(firstName) {
+    let user = this.getUser();
     const userDocument = firebaseController.firestore()
-        .collection('Users').doc(user.uid)
-        .onSnapshot(doc => {
-            this.firstName = doc.data().firstName;
-            this.lastName = doc.data().lastName;
-            this.phoneNumber = doc.data().phoneNumber;
-            this.email = doc.data().email;
-        })
-    }
+      .collection('Users').doc(user.uid)
+      .onSnapshot(doc => {
+        this.firstName = doc.data().firstName;
+    })
+  }
+  updateLastName(lastName) {
+    let user = this.getUser();
+    const userDocument = firebaseController.firestore()
+      .collection('Users').doc(user.uid)
+      .onSnapshot(doc => {
+        this.lastName = doc.data().lastName;
+    })
+  }
+  updatePhoneNumber(phoneNumber) {
+    let user = this.getUser();
+    const userDocument = firebaseController.firestore()
+      .collection('Users').doc(user.uid)
+      .onSnapshot(doc => {
+        this.phoneNumber = doc.data().phoneNumber;
+    })
+  }
+  createUserDocumentAndStore() {
+    let user = this.getUser();
+    const userDocument = firebaseController.firestore()
+      .collection('Users').doc(user.uid)
+      .onSnapshot(doc => {
+        this.firstName = doc.data().firstName;
+        this.lastName = doc.data().lastName;
+        this.phoneNumber = doc.data().phoneNumber;
+        this.email = doc.data().email;
+    })
+  }
 
 }
   
