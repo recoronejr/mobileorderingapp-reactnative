@@ -2,9 +2,10 @@ import React from 'react'
 import { View, StyleSheet, Button, Navigator } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import HandleLogin from '../components/HeaderComp'
+import HandleLogin from './HandleLogin'
 
-const LoginCard = () =>{
+
+const LoginCard = ({ navigation }) =>{
     return(
         <View style={styles.card}>
             <HandleLogin />

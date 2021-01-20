@@ -9,7 +9,7 @@ import PasswordComp from '../components/PasswordComp'
 import LoginButton, { SignUpButton } from '../components/ButtonComp'
 import MainNavigation from '../navigation/MainNavigation'
 
-const HandleLogin = () =>{
+export const HandleLogin = () =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
         return(
@@ -33,5 +33,3 @@ const HandleLogin = () =>{
         </View>   
     )
 }
-
-export default HandleLogin

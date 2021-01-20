@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
-import { Text } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 
 const TitleComp = () =>{
     return(<Text style ={styles.title}>Title</Text>)

@@ -8,7 +8,7 @@ import OrderScreen from '../screens/OrderScreen';
 
 const Tab = createBottomTabNavigator();
 
-export const MainNavigation = ({navigation}) => {
+const MainNavigation = ({navigation}) => {
 
     return (
         <NavigationContainer>
@@ -23,3 +23,5 @@ export const MainNavigation = ({navigation}) => {
         </NavigationContainer> 
     );
 }
+
+export default MainNavigation;

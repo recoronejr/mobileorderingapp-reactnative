@@ -1,7 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 
-import {firebaseApp} from '../api/firebase';
 import {auth} from 'firebase';
 import AuthenticationNavigation from '../navigation/AuthenticationNavigation';
 

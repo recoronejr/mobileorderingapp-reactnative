@@ -31,5 +31,3 @@ const styles = StyleSheet.create({
         marginTop: 20,
     }
 });
-
-export default PasswordComp;

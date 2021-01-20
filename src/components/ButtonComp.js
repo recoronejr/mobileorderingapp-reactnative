@@ -2,10 +2,6 @@ import * as React from 'react'
 import { StyleSheet, Button, TouchableOpacity, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 
-import { auth } from 'firebase'
-
-import MainNavigation from '../navigation/MainNavigation';
-
 export default class LoginButton extends React.Component{
     constructor(props){
         super(props);
