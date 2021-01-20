@@ -5,7 +5,7 @@ const EmailComp = () =>{
     const [email, setEmail] = useState('');
     return(
         <View  rounded style={styles.usernamecontainer}>
-            <TextInput placeholder='Email' defaultValue = {email} onChangeText={email => setEmail(setEmail(email))} style={styles.emailInput} />
+            <TextInput placeholder='Email' defaultValue = {email} onChangeText={email => setEmail(email)} style={styles.emailInput} />
         </View>
     )
 }
