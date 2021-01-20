@@ -2,20 +2,12 @@ import React from 'react'
 import { View, StyleSheet, Button, Navigator } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import HeaderComp from './HeaderComp'
-import EmailComp from './EmailComp'
-import PasswordComp from './PasswordComp'
-import { LoginButton, SignUpButton } from './Button'
+import HandleLogin from '../components/HeaderComp'
 
-
-const LoginCard = ({ navigation }) =>{
+const LoginCard = () =>{
     return(
         <View style={styles.card}>
-            <HeaderComp />
-            <EmailComp />
-            <PasswordComp />
-            <LoginButton />
-            <SignUpButton />
+            <HandleLogin />
         </View>
     )
 }

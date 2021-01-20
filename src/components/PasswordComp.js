@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, TextInput } from 'react-native'
 
-const PasswordComp = () =>{
-    const [password, setPassword] = useState('');
-    return(
+export default class PasswordComp extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(
         <View rounded style={styles.passwordcontainer}>
-            <TextInput placeholder='Password' defaultValue = {password} onChangeText={password => setPassword(password)}  style={styles.passwordinput}  secureTextEntry= {true} />
+            <TextInput placeholder='Password' onChangeText={this.props.onChangeText}  style={styles.passwordinput}  secureTextEntry= {true} />
         </View>
-    )
+        )   
+    }
 }
 
 const styles = StyleSheet.create({
