@@ -1,25 +1,22 @@
 import * as React from 'react'
-import { StyleSheet, Button, TouchableOpacity } from 'react-native'
+import { StyleSheet, Button, TouchableOpacity, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 
 import { auth } from 'firebase'
 
 import MainNavigation from '../navigation/MainNavigation';
 
-export const LoginButton = () =>{
-    return(
-        <TouchableOpacity style={styles.loginbtn}>
-            <Button title = 'Login' rounded onPress={() => {    
-                auth().signInWithEmailAndPassword(email,password).then(() => {
-                // Go to MainScreen
-                    <MainNavigation/>      
-                })
-                .catch(error => {
-                // Sign in does not work 
-                })
-            }}/>
-        </TouchableOpacity>
-    )
+export default class LoginButton extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(
+            <TouchableOpacity style={styles.loginbtn} onPress={this.props.onPress}>
+                <Text>Login</Text>
+            </TouchableOpacity>
+        )
+    }
 }
 
 export const SignUpButton = () =>{
