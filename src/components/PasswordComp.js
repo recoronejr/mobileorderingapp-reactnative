@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, TextInput } from 'react-native'
+import { StyleSheet, View, TextInput, Text } from 'react-native'
+
 
 export default class PasswordComp extends React.Component{
     constructor(props){

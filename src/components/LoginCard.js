@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Button, Navigator } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import HandleLogin from './HandleLogin'
+import {HandleLogin} from './HandleLogin'
 
 
 const LoginCard = ({ navigation }) =>{

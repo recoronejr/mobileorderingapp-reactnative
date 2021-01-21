@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, TextInput } from 'react-native'
+import { StyleSheet, View, TextInput, Text } from 'react-native'
 
 export default class EmailComp extends React.Component{
     constructor(props){

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -9,7 +9,6 @@ import SignUpScreen from '../screens/SignUpScreen';
 const Stack = createStackNavigator();
 
 const AuthenticationNavigation = ({navigation}) => {
-    
     return (
         <NavigationContainer>
             <Stack.Navigator headerMode="none">

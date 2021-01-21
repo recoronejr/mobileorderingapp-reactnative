@@ -1,25 +1,32 @@
+import React from 'react'
 import * as firebase from 'firebase';
 import firestore from 'firestore';
+
+import { View, ListItem, Text } from 'react-native'
+
 import {firebaseConfig} from './config';
-
-
 
 class FirebaseAPI {
 
   constructor() {
-    firebase.initializeApp(firebaseConfig);
-    // this.user = firebase.auth().currentUser;
-    firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      isSignedIn = true;
-    } else {
-      // No user is signed in.
-      isSignedIn = false;
+    if(!firebase.apps.length){
+      firebase.initializeApp(firebaseConfig);
+      // this.user = firebase.auth().currentUser;
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          isSignedIn = true;
+        } else {
+          // No user is signed in.
+          isSignedIn = false;
+        }
+      });
     }
-  });
+    else{
+      firebase.app();
+    }
   }
-  
+
   getUser() {
     const user = firebase.auth().currentUser;
     return user;
@@ -77,7 +84,7 @@ class FirebaseAPI {
       return false;
     })           
   }
-  // Function that First Name, Last Name and Phone Numnber 
+  // Function that updates First Name, Last Name and Phone Numnber 
   updateFirstName(firstName) {
     let user = this.getUser();
     const userDocument = firebaseController.firestore()
@@ -104,7 +111,7 @@ class FirebaseAPI {
   }
   createUserDocumentAndStore() {
     let user = this.getUser();
-    const userDocument = firebaseController.firestore()
+    const userDocument = firebase.firestore()
       .collection('Users').doc(user.uid)
       .onSnapshot(doc => {
         this.firstName = doc.data().firstName;
@@ -112,8 +119,14 @@ class FirebaseAPI {
         this.phoneNumber = doc.data().phoneNumber;
         this.email = doc.data().email;
     })
-  }
-
+    return(
+      <View>
+        <Text>Name: {this.firstName}{' '}{this.lastName}</Text>
+        <Text>Phone: {this.phoneNumber}</Text>
+        <Text>Email: {this.email}</Text>
+     </View>
+    )
+  } 
 }
   
 const firebaseApp = new FirebaseAPI();
