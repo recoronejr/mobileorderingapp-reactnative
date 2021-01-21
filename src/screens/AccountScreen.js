@@ -2,10 +2,9 @@ import React from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 import { NavigationEvents } from 'react-navigation'
 
-
-import {auth} from 'firebase';
 import AuthenticationNavigation from '../navigation/AuthenticationNavigation';
 import GetUserInfo from '../components/UserInfo'
+import { SignOutButton } from '../components/ButtonComp';
 
 export default class AccountScreen extends React.Component {
     constructor(props) {
@@ -21,18 +20,7 @@ export default class AccountScreen extends React.Component {
                 <GetUserInfo />
                 </View>
                 <View>
-                    <Button
-                    title='Sign Out'
-                    onPress={() => {
-                        auth()
-                        .signOut()
-                        .then(() => {
-                            return (
-                                <AuthenticationNavigation/>
-                            )
-                        })
-                    }}
-                    />
+                    <SignOutButton />
                 </View>
             </View>
         );

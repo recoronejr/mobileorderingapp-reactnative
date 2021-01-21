@@ -1,6 +1,10 @@
 import * as React from 'react'
 import { StyleSheet, Button, TouchableOpacity, Text } from 'react-native'
+
+import AuthenticationNavigation from '../navigation/AuthenticationNavigation'
 import { useNavigation } from '@react-navigation/native';
+
+import {auth} from 'firebase';
 
 export default class LoginButton extends React.Component{
     constructor(props){
@@ -25,6 +29,22 @@ export const SignUpButton = () =>{
         </TouchableOpacity>
     )
 }
+
+export const SignOutButton = () =>{
+    
+    return <Button
+                title='Sign Out'
+                onPress={() => {
+                auth()
+                .signOut()
+                .then(() => {
+                    return (
+                        <AuthenticationNavigation/>
+                        )
+                    })
+                }}
+            />
+} 
 
 const styles = StyleSheet.create({
     loginbtn: {
