@@ -1,6 +1,8 @@
 import React, {useState, setState} from 'react'
 import { View } from 'react-native'
 
+import { firebaseApp } from '../api/firebase'
+
 import { auth } from 'firebase'
 
 import HeaderComp from '../components/HeaderComp'
@@ -15,8 +17,8 @@ export const HandleLogin = () =>{
         return(
             <View>
             <HeaderComp />
-            <EmailComp onChangeText={(email) => setEmail(email)} />
-            <PasswordComp defaultValue={password} onChangeText={(password) => setPassword(password)} />
+            <EmailComp placeholder="Email" onChangeText={(email) => setEmail(email)} />
+            <PasswordComp placeholder="Password" defaultValue={password} onChangeText={(password) => setPassword(password)} />
             <LoginButton onPress={() => {    
                 auth()
                 .signInWithEmailAndPassword(email,password)

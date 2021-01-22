@@ -1,8 +1,6 @@
 import React from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
-import { NavigationEvents } from 'react-navigation'
 
-import AuthenticationNavigation from '../navigation/AuthenticationNavigation';
 import GetUserInfo from '../components/UserInfo'
 import { SignOutButton, EditButton } from '../components/ButtonComp';
 

@@ -7,8 +7,8 @@ export default class EmailComp extends React.Component{
     }
     render(){
         return(
-            <View rounded style={styles.usernamecontainer}>
-                <TextInput placeholder='Email' onChangeText={this.props.onChangeText}  style={styles.emailInput} />
+            <View>
+                <TextInput placeholder={this.props.placeholder} onChangeText={this.props.onChangeText}  style={styles.emailInput} />
             </View>
         )
     }
