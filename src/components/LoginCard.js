@@ -1,18 +1,40 @@
-import React from 'react'
-import { View, StyleSheet, Button, Navigator } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import React, { useState } from 'react'
+import { View, StyleSheet } from 'react-native'
 
-import {HandleLogin} from './HandleLogin'
+import { auth } from 'firebase'
 
+import HeaderComp from '../components/HeaderComp'
+import EmailComp from '../components/EmailComp'
+import PasswordComp from '../components/PasswordComp'
+import LoginButton, { SignUpButton } from '../components/ButtonComp'
+
+import MainNavigation from '../navigation/MainNavigation'
 
 const LoginCard = ({ navigation }) =>{
-    return(
-        <View style={styles.card}>
-            <HandleLogin />
-        </View>
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+        return(
+            <View style={styles.card}>
+            <HeaderComp />
+            <View style={styles.usernamecontainer}>
+                <EmailComp placeholder="Email" onChangeText={(email) => setEmail(email)} style={styles.emailInput} />
+            </View>
+            <PasswordComp placeholder="Password" onChangeText={(password) => setPassword(password)} />
+            <LoginButton onPress={() => {    
+                auth()
+                .signInWithEmailAndPassword(email,password)
+                .then(() => {
+                    // Go to MainScreen
+                    <MainNavigation />    
+                })
+                .catch(error => {
+                    alert(error)
+                })
+            }}/>
+            <SignUpButton />
+        </View>   
     )
 }
-
 
 const styles = StyleSheet.create({
     card: {
@@ -34,6 +56,22 @@ const styles = StyleSheet.create({
         borderRadius:10,
         borderWidth: 1,
         borderColor: '#fff'
+    }, 
+    usernamecontainer: {
+        alignSelf: "center",
+        backgroundColor: '#ffffff',
+        width: 300,
+        justifyContent:"space-between",
+        flexDirection: "column",
+        marginTop: 20
+    }, 
+    emailInput: {
+        height: 30,
+        width: '80%',
+        borderColor: 'gray', 
+        borderWidth: 2,
+        paddingLeft: 10,
+        alignSelf: 'center'
     }
 });
 

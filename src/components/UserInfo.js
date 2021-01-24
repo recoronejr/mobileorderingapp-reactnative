@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react'
+import React, {Component, useEffect} from 'react'
 import {View, Text} from 'react-native'
 import { firebaseApp } from '../api/firebase'
 
-firebaseApp.createUserDocumentAndStore();
 export default class GetUserInfo extends React.Component{
     render(){
+        firebaseApp.createUserDocumentAndStore();
         return(
             <View>
                 <UserName />
@@ -31,4 +31,3 @@ export const UserEmail = () =>{
 export const UserPhone = () =>{
     return <Text>Phone: {firebaseApp.phoneNumber}</Text>
 }
-

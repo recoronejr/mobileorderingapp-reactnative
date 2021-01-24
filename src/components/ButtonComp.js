@@ -49,6 +49,19 @@ export const EditButton = () =>{
     )
 }
 
+export const UpdateInfo = () =>{
+    const navigation = useNavigation();
+    return(
+        <TouchableOpacity>
+            <Button title="Update Info" onPress={()=> this.props.onPress}/>
+        </TouchableOpacity>
+    )
+}
+
+export const CancelButton = () =>{
+
+}
+
 const styles = StyleSheet.create({
     loginbtn: {
         alignSelf: 'center',
