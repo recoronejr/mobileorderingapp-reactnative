@@ -9,6 +9,8 @@ import FirebaseAPI from '../api/firebase';
 import OrderMenu from './MenuScreen';
 import MapScreen from "./Mapscreen"
 import OrderScreen from './OrderScreen';
+import EditAccountScreen from './EditAccountScreen';
+
 const Stack = createStackNavigator();
 
 export default class MainScreen extends React.Component {
@@ -37,12 +39,10 @@ export default class MainScreen extends React.Component {
         else {
             return (
                 <Stack.Navigator initialRouteName = "MapScreen" style={styles.navigator}>
-                    <Stack.Screen
-                    name="MapScreen"
-                    component={MapScreen}
-                    />
+                    <Stack.Screen name="MapScreen" component={MapScreen} />
                     <Stack.Screen name="Locations" component={MapScreen} />
                     <Stack.Screen name="OrderMenu" component={OrderScreen} />
+                    <Stack.Screen name="EditAccount" component={EditAccountScreen} />
                 </Stack.Navigator>
                 
             );  

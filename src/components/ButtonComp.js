@@ -1,6 +1,10 @@
-import * as React from 'react'
-import { StyleSheet, Button, TouchableOpacity, Text } from 'react-native'
+import React from 'react';
+import { StyleSheet, Button, TouchableOpacity, Text } from 'react-native';
+
+import AuthenticationNavigation from '../navigation/AuthenticationNavigation';
 import { useNavigation } from '@react-navigation/native';
+
+import {auth} from 'firebase';
 
 export default class LoginButton extends React.Component{
     constructor(props){
@@ -17,13 +21,45 @@ export default class LoginButton extends React.Component{
 
 export const SignUpButton = () =>{
     const navigation = useNavigation();
-    return(
-        <TouchableOpacity style={styles.signUpBtn}>
-            <Button title="Don't have an account" hasTest transparent onPress={()=>
+        return <TouchableOpacity style={styles.signUpBtn}>
+            <Button title="Don't have an account" hasText transparent onPress={()=>
                 navigation.navigate("SignUp")
             }/>
         </TouchableOpacity>
+}
+
+export const SignOutButton = () =>{
+    return <Button title='Sign Out' onPress={() => {
+        auth()
+        .signOut()
+        .then(() => {
+            return (<AuthenticationNavigation/>)
+    })}}/>
+} 
+
+export const EditButton = () =>{
+    const navigation = useNavigation();
+    return(
+    <TouchableOpacity>
+    <Button title="Edit Account" hasText transparent onPress={()=>
+            navigation.navigate("EditAccount")
+        } 
+    />
+    </TouchableOpacity>
     )
+}
+
+export const UpdateInfo = () =>{
+    const navigation = useNavigation();
+    return(
+        <TouchableOpacity>
+            <Button title="Update Info" onPress={()=> this.props.onPress}/>
+        </TouchableOpacity>
+    )
+}
+
+export const CancelButton = () =>{
+
 }
 
 const styles = StyleSheet.create({

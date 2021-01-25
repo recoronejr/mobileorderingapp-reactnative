@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import * as firebase from 'firebase';
 import firestore from 'firestore';
 
@@ -119,14 +119,7 @@ class FirebaseAPI {
         this.phoneNumber = doc.data().phoneNumber;
         this.email = doc.data().email;
     })
-    return(
-      <View>
-        <Text>Name: {this.firstName}{' '}{this.lastName}</Text>
-        <Text>Phone: {this.phoneNumber}</Text>
-        <Text>Email: {this.email}</Text>
-     </View>
-    )
-  } 
+  }
 }
   
 const firebaseApp = new FirebaseAPI();

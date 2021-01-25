@@ -8,8 +8,8 @@ export default class PasswordComp extends React.Component{
     }
     render(){
         return(
-        <View rounded style={styles.passwordcontainer}>
-            <TextInput placeholder='Password' onChangeText={this.props.onChangeText}  style={styles.passwordinput}  secureTextEntry= {true} />
+        <View style={styles.passwordcontainer}>
+            <TextInput placeholder={this.props.placeholder} onChangeText={this.props.onChangeText}  style={styles.passwordinput}  secureTextEntry= {true} />
         </View>
         )   
     }
