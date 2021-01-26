@@ -6,7 +6,7 @@ import { color } from 'react-native-reanimated';
 
 const {height} = Dimensions.get('window')
 
-export default class OrderMenu extends React.Component {
+export default class MenuScreen extends React.Component {
     onContentSizeChange = (contentWidth, contentHeight) => {
         // Save the content height in state
         this.setState({ screenHeight: contentHeight });
@@ -52,7 +52,7 @@ export default class OrderMenu extends React.Component {
         return (
             <TouchableOpacity
                 onPress={() => {
-                    this.props.navigation.navigate("OrderMenu", {merchant})
+                    this.props.navigation.navigate("MenuScreen", {merchant})
                 }}>
             </TouchableOpacity>
                 

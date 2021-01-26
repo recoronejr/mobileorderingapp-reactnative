@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import FirebaseAPI from '../api/firebase';
 
-import OrderMenu from './MenuScreen';
+import MenuScreen from './MenuScreen';
 import MapScreen from "./Mapscreen"
 import OrderScreen from './OrderScreen';
 import EditAccountScreen from './EditAccountScreen';
@@ -41,7 +41,7 @@ export default class MainScreen extends React.Component {
                 <Stack.Navigator initialRouteName = "MapScreen" style={styles.navigator}>
                     <Stack.Screen name="MapScreen" component={MapScreen} />
                     <Stack.Screen name="Locations" component={MapScreen} />
-                    <Stack.Screen name="OrderMenu" component={OrderScreen} />
+                    <Stack.Screen name="MenuScreen" component={MenuScreen} />
                     <Stack.Screen name="EditAccount" component={EditAccountScreen} />
                 </Stack.Navigator>
                 
