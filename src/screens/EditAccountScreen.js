@@ -5,31 +5,25 @@ import { firebaseApp } from '../api/firebase'
 
 import {EditButton, UpdateInfo} from '../components/ButtonComp'
 import EmailComp from '../components/EmailComp'
-import PasswordComp from '../components/PasswordComp'
-import {UserFName, UserLName, UserEmail, UserPhone } from '../components/UserInfo'
-
+import UserInputs from '../components/UserInputs'
 
 const EditAccountScreen = () =>{
     return (
         <View>
             <View>
-                <Text>First Name:</Text>
-                <TextInput style={styles.input} placeholder={firebaseApp.firstName}/>
+                <Text>First Name</Text>
+                <UserInputs style={styles.input} placeholder={firebaseApp.firstName} />
             </View>
             <View>
-                <Text>Last Name:</Text>
-                <TextInput style={styles.input} placeholder={firebaseApp.lastName}/>
-            </View> 
+                <Text>Last Name</Text>
+                <UserInputs style={styles.input} placeholder={firebaseApp.lastName} />
+            </View>
             <View>
-                <Text>Email:</Text>
-                <EmailComp style={styles.input} placeholder={firebaseApp.email}/>
-            </View> 
-            <View>
-                <Text>Phone Number:</Text>
-                <TextInput style={styles.input} placeholder={firebaseApp.phoneNumber}/>
-            </View>     
-            <UpdateInfo />
-            <EditButton />
+                <Text>Email</Text>
+                <UserInputs style={styles.input} placeholder={firebaseApp.email} />
+            </View>
+                <Text>Phone</Text>
+                <UserInputs style={styles.input} placeholder={firebaseApp.phoneNumber} />
         </View>
     )
 }

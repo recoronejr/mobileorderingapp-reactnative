@@ -1,5 +1,5 @@
 import React, {Component, useEffect} from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, TextInput} from 'react-native'
 import { firebaseApp } from '../api/firebase'
 
 export default class GetUserInfo extends React.Component{
@@ -31,3 +31,5 @@ export const UserEmail = () =>{
 export const UserPhone = () =>{
     return <Text>Phone: {firebaseApp.phoneNumber}</Text>
 }
+
+//Return inputs for each field

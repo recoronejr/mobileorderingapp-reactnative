@@ -19,7 +19,9 @@ const LoginCard = ({ navigation }) =>{
             <View style={styles.usernamecontainer}>
                 <EmailComp placeholder="Email" onChangeText={(email) => setEmail(email)} style={styles.emailInput} />
             </View>
-            <PasswordComp placeholder="Password" onChangeText={(password) => setPassword(password)} />
+            <View style={styles.passwordcontainer}>
+                <PasswordComp placeholder="Password" onChangeText={(password) => setPassword(password)} style={styles.passwordinput} />
+            </View>
             <LoginButton onPress={() => {    
                 auth()
                 .signInWithEmailAndPassword(email,password)
@@ -72,6 +74,21 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         paddingLeft: 10,
         alignSelf: 'center'
+    },
+    passwordinput: {
+        height: 30,
+        width: '80%',
+        borderColor: 'gray', 
+        borderWidth: 2,
+        paddingLeft: 10,
+        alignSelf: 'center'
+    },
+    passwordcontainer: {
+        alignSelf: "center",
+        backgroundColor: '#ffffff',
+        width: 300,
+        justifyContent:"space-between",
+        marginTop: 20,
     }
 });
 

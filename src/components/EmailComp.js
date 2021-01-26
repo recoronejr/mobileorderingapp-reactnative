@@ -5,10 +5,9 @@ export default class EmailComp extends React.Component{
     constructor(props){
         super(props); 
     }
-    
     render(){
         return(
-            <TextInput placeholder={this.props.placeholder} onChangeText={this.props.onChangeText} style={this.props.style}/>
+            <TextInput value={this.props.value} placeholder={this.props.placeholder} onChangeText={this.props.onChangeText} style={this.props.style}/>
         )
     }
 }
