@@ -10,6 +10,7 @@ export default class OrderScreen extends React.Component {
         }; 
     }
     componentDidMount() {
+    
     }
     
     render() {
@@ -34,5 +35,4 @@ const styles = StyleSheet.create({
     mainLbl: {
         marginTop: 50,
     }
-
 });

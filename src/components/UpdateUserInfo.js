@@ -1,4 +1,8 @@
 import React from 'react'
+import { Button } from 'react-native'
+
+import { firebaseApp } from 'firebase'
+import EditAccountScreen from '../screens/EditAccountScreen';
 
 export default class UpdateUserInfo extends React.Component{
     constructor(props){
@@ -6,10 +10,7 @@ export default class UpdateUserInfo extends React.Component{
     }
     render(){
         return(
-            <View>
-                <Text style={styles.textBox} />
-                <TextInput style={styles.input} placeholder={this.props.placeholder}/>
-            </View> 
+            <Text></Text>
         )
     }
 }

@@ -7,7 +7,6 @@ import { View, ListItem, Text } from 'react-native'
 import {firebaseConfig} from './config';
 
 class FirebaseAPI {
-
   constructor() {
     if(!firebase.apps.length){
       firebase.initializeApp(firebaseConfig);
@@ -26,7 +25,6 @@ class FirebaseAPI {
       firebase.app();
     }
   }
-
   getUser() {
     const user = firebase.auth().currentUser;
     return user;
@@ -87,27 +85,21 @@ class FirebaseAPI {
   // Function that updates First Name, Last Name and Phone Numnber 
   updateFirstName(firstName) {
     let user = this.getUser();
-    const userDocument = firebaseController.firestore()
+    const userDocument = firebase.firestore()
       .collection('Users').doc(user.uid)
-      .onSnapshot(doc => {
-        this.firstName = doc.data().firstName;
-    })
+      .update({firstName: firstName});
   }
   updateLastName(lastName) {
     let user = this.getUser();
-    const userDocument = firebaseController.firestore()
+    const userDocument = firestore()
       .collection('Users').doc(user.uid)
-      .onSnapshot(doc => {
-        this.lastName = doc.data().lastName;
-    })
+      .update({lastName: lastName});
   }
   updatePhoneNumber(phoneNumber) {
     let user = this.getUser();
-    const userDocument = firebaseController.firestore()
+    const userDocument = firestore()
       .collection('Users').doc(user.uid)
-      .onSnapshot(doc => {
-        this.phoneNumber = doc.data().phoneNumber;
-    })
+      .update({phoneNumber: phoneNumber})
   }
   createUserDocumentAndStore() {
     let user = this.getUser();

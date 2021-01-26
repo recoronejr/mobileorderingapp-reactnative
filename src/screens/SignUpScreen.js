@@ -48,8 +48,6 @@ const SignUpScreen = ({ navigation }) => {
                     <TextInput placeholder='Verify Password' defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)}  secureTextEntry= {true} />
                 </View>
 
-                
-
                 <Button title = 'Login' rounded style={styles.loginbtn}  
                 onPress={() => {
                     // Sign Up
@@ -62,8 +60,6 @@ const SignUpScreen = ({ navigation }) => {
                     else {
                       console.log("Password Do Not Match");
                     }
-                    
-                    
                 }}/>
                 <Button title = 'Already have an account?' hasText transparent onPress={() => {
                     // Go to Sign Up Screen
