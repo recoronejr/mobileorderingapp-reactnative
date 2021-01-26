@@ -1,9 +1,9 @@
 export default class LineItem {
     
-    let catalog: string;
-    
+    let catalogID: string;
 
     constructor() {
         
     }
+    
   }
