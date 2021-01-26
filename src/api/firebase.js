@@ -1,6 +1,6 @@
 import * as firebase from 'firebase';
 import firestore from 'firestore';
-import {firebaseConfig} from './config';
+import {firebaseConfig} from './config.js';
 
 
 
