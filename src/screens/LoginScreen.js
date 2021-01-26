@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     loginbtn: {
         alignSelf: 'center',
         width: 50,
-        marginTop: 20,
+        marginTop: 30,
         
     },
     signupbtn: {
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     passwordcontainer: {
         alignSelf: "center",
         backgroundColor: '#ffffff',
-        width: 300,
+        width: 250,
         justifyContent:"space-between",
         marginTop: 20,
         
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     usernamecontainer: {
         alignSelf: "center",
         backgroundColor: '#ffffff',
-        width: 300,
+        width: 250,
         justifyContent:"space-between",
         flexDirection: "column",
         marginTop: 20,
