@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MainScreen from '../screens/MainScreen';
 import AccountScreen from '../screens/AccountScreen';
 import OrderScreen from '../screens/OrderScreen';
+import MenuScreen from '../screens/Mapscreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,8 +18,9 @@ const MainNavigation = ({navigation}) => {
             screenOptions={{
             }}>
                 <Tab.Screen name="Main" component={MainScreen} />
-                <Tab.Screen name="Orders" component={OrderScreen} />
+                <Tab.Screen name="OrderMenu" component={OrderScreen} />
                 <Tab.Screen name="Account" component={AccountScreen} />
+                <Tab.Screen name="MenuScreen" component={MenuScreen} />
             </Tab.Navigator>
         </NavigationContainer> 
     );

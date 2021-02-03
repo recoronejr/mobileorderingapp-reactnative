@@ -39,7 +39,7 @@ export default class MapScreen extends React.Component {
         return (
             <TouchableOpacity
                 onPress={() => {
-                    this.props.navigation.navigate("OrderMenu", {
+                    this.props.navigation.navigate("MenuScreen", {
                         merchant:merchant,
                         menu: this.state.menu[merchant.id].items
                     })
