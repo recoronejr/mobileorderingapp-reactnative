@@ -3,12 +3,12 @@ import { View, StyleSheet } from 'react-native'
 
 import { auth } from 'firebase'
 
-import HeaderComp from '../components/HeaderComp'
-import EmailComp from '../components/EmailComp'
-import PasswordComp from '../components/PasswordComp'
-import LoginButton, { SignUpButton } from '../components/ButtonComp'
+import HeaderComp from '../UniversalComps/HeaderComp'
+import EmailComp from '../UserInfoComps/EmailComp'
+import PasswordComp from '../UserInfoComps/PasswordComp'
+import LoginButton, { SignUpButton } from '../UniversalComps/ButtonComp'
 
-import MainNavigation from '../navigation/MainNavigation'
+import MainNavigation from '../../navigation/MainNavigation'
 
 const LoginCard = ({ navigation }) =>{
     const [email, setEmail] = useState('');

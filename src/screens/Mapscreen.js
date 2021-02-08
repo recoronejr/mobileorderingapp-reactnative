@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { View, Text, FlatList, StyleSheet, Button,  Modal, Alert, TouchableHighlight} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-navigation';
-import Map from '../components/Map'
+import Map from '../components/MapScreenComps/Map'
 import OrderMenu from './MenuScreen'
 
 export default class MapScreen extends React.Component {

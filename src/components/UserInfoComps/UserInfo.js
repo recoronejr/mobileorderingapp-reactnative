@@ -1,6 +1,6 @@
 import React, {Component, useEffect} from 'react'
 import {View, Text, TextInput} from 'react-native'
-import { firebaseApp } from '../api/firebase'
+import { firebaseApp } from '../../api/firebase'
 
 export default class GetUserInfo extends React.Component{
     render(){

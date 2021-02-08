@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, Button } from 'react-native'
 
 import { firebaseApp } from '../api/firebase'
 
-import EmailComp from '../components/EmailComp'
-import UpdateUserInfo from '../components/UpdateUserInfo'
-import UserInputs from '../components/UserInputs'
+import EmailComp from '../components/UserInfoComps/EmailComp'
+import UpdateUserInfo from '../components/UserInfoComps/UpdateUserInfo'
+import UserInputs from '../components/UserInfoComps/UserInputs'
 
 class EditAccount extends React.Component{
     render(){

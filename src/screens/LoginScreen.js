@@ -1,7 +1,7 @@
 import React from 'react';
 import  { View, ImageBackground, StyleSheet, Button } from 'react-native';
 
-import LoginCard from '../components/LoginCard'
+import LoginCard from '../components/LoginScreenComps/LoginCard'
 
 const LoginScreen = () => {
     return (

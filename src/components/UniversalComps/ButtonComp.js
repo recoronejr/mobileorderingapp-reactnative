@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Button, TouchableOpacity, Text } from 'react-native';
 
-import AuthenticationNavigation from '../navigation/AuthenticationNavigation';
+import AuthenticationNavigation from '../../navigation/AuthenticationNavigation';
 import { useNavigation } from '@react-navigation/native';
 
 import {auth} from 'firebase';
