@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import * as firebase from 'firebase';
-import firestore from 'firestore';
+import '@firebase/firestore';
 
 import { View, ListItem, Text } from 'react-native'
 
@@ -82,7 +82,7 @@ class FirebaseAPI {
       return false;
     })           
   }
-  // Function that updates First Name, Last Name and Phone Numnber 
+  // Functions that update First Name, Last Name and Phone Numnber 
   updateFirstName(firstName) {
     let user = this.getUser();
     const userDocument = firebase.firestore()
