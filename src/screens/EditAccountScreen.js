@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button } from 'react-native'
 
 import { firebaseApp } from '../api/firebase'
 
-import UpdateInfoButton, {inputHasChanged} from '../components/UserInfoComps/UpdateUserInfo'
+import UpdateInfoButton, {inputHasChanged, validateEmailInput} from '../components/UserInfoComps/UpdateUserInfo'
 import UserInputs from '../components/UserInfoComps/UserInputs'
 
 class EditAccount extends React.Component{
@@ -40,11 +40,9 @@ const EditAccountScreen = () =>{
             </View>
             <View>
                 <Text>Email</Text>
-                <UserInputs style={styles.input} defaultValue={email} placeholder={firebaseApp.email} onChangeText={email => setEmail(email)}/>
+                <UserInputs type='email' style={styles.input} defaultValue={email} placeholder={firebaseApp.email} onChangeText={email => setEmail(email)}/>
                 <UpdateInfoButton title="Update Email" defaultValue={email} onPress={() => {
-                    if(inputHasChanged(email)){
-                        firebaseApp.updateEmail(email);
-                    }
+                    validateEmailInput(email)
                 }}/>
             </View>
             <View>

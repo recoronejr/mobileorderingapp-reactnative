@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button, TouchableOpacity, Text } from 'react-native'
 
-import { firebaseApp } from 'firebase'
-import EditAccountScreen from '../../screens/EditAccountScreen';
+import { firebaseApp } from '../../api/firebase'
+import EditAccountScreen from '../../screens/EditAccountScreen'; 
 
 export default class UpdateInfoButton extends React.Component{
     constructor(props){
@@ -21,4 +21,18 @@ export const inputHasChanged = (input) =>{
     }else{
         return true
     }
+}
+
+export const validateEmailInput = (input) =>{
+    //Credit to this fix goes to https://stackoverflow.com/questions/39356826/how-to-check-if-it-a-text-input-has-a-valid-email-format-in-reactjs/39357015
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(inputHasChanged(input)){
+            if(re.test(input)){
+                firebaseApp.updateEmail(input)
+            }else{
+                alert('Invalid Email')
+            }
+        }else{
+            alert('No Change')
+        }
 }
