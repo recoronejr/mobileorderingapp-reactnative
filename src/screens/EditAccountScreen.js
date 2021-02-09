@@ -3,8 +3,7 @@ import { View, Text, StyleSheet, Button } from 'react-native'
 
 import { firebaseApp } from '../api/firebase'
 
-import EmailComp from '../components/UserInfoComps/EmailComp'
-import UpdateUserInfo from '../components/UserInfoComps/UpdateUserInfo'
+import UpdateUserInfo, {UpdateUsersInfo} from '../components/UserInfoComps/UpdateUserInfo'
 import UserInputs from '../components/UserInfoComps/UserInputs'
 
 class EditAccount extends React.Component{
@@ -24,25 +23,22 @@ const EditAccountScreen = () =>{
             <View>
                 <Text>First Name</Text>
                 <UserInputs style={styles.input} value={firstName} placeholder={firebaseApp.firstName} onChangeText={firstName => setFirstName(firstName)} />
-                <UpdateUserInfo title="Update First Name" defaultValue={firstName} onPress={()=>{ 
-                    firebaseApp.updateFirstName(firstName);
-                    alert("FName updated to " + firstName)
-            }}/>
+                <UpdateUserInfo title="Update First Name" onPress={() => firebaseApp.updateFirstName(firstName)}/>
             </View>
             <View>
                 <Text>Last Name</Text>
                 <UserInputs style={styles.input} defaultValue={lastName} placeholder={firebaseApp.lastName} onChangeText={lastName => setLastName(lastName)}/>
-                <UpdateUserInfo title="Update Last Name" defaultValue={lastName}/>
+                <UpdateUserInfo title="Update Last Name" defaultValue={lastName} onPress={() => firebaseApp.updateLastName(lastName)}/>
             </View>
             <View>
                 <Text>Email</Text>
-                <EmailComp style={styles.input} defaultValue={email} placeholder={firebaseApp.email} onChangeText={email => setEmail(email)}/>
-                <UpdateUserInfo title="Update Email" defaultValue={email}/>
+                <UserInputs style={styles.input} defaultValue={email} placeholder={firebaseApp.email} onChangeText={email => setEmail(email)}/>
+                <UpdateUserInfo title="Update Email" defaultValue={email} onPress={() => firebaseApp.updateEmail(email)}/>
             </View>
             <View>
                 <Text>Phone Number</Text>
                 <UserInputs style={styles.input} defaultValue={phoneNum} placeholder={firebaseApp.phoneNumber} onChangeText={phoneNum => setPhoneNumber(phoneNum)}/>
-                <UpdateUserInfo title="Update Phone Number" value={phoneNum}/>
+                <UpdateUserInfo title="Update Phone Number" value={phoneNum} onPress={() => firebaseApp.updatePhoneNumber(phoneNum)}/>
             </View>
         </View>
     )

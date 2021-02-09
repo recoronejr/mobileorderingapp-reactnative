@@ -91,15 +91,21 @@ class FirebaseAPI {
   }
   updateLastName(lastName) {
     let user = this.getUser();
-    const userDocument = firestore()
+    const userDocument = firebase.firestore()
       .collection('Users').doc(user.uid)
       .update({lastName: lastName});
   }
   updatePhoneNumber(phoneNumber) {
     let user = this.getUser();
-    const userDocument = firestore()
+    const userDocument = firebase.firestore()
       .collection('Users').doc(user.uid)
       .update({phoneNumber: phoneNumber})
+  }
+  updateEmail(email) {
+    let user = this.getUser();
+    const userDocument = firebase.firestore()
+      .collection('Users').doc(user.uid)
+      .update({email: email})
   }
   createUserDocumentAndStore() {
     let user = this.getUser();

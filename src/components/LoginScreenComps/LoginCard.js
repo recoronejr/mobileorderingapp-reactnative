@@ -4,11 +4,11 @@ import { View, StyleSheet } from 'react-native'
 import { auth } from 'firebase'
 
 import HeaderComp from '../UniversalComps/HeaderComp'
-import EmailComp from '../UserInfoComps/EmailComp'
 import PasswordComp from '../UserInfoComps/PasswordComp'
 import LoginButton, { SignUpButton } from '../UniversalComps/ButtonComp'
 
 import MainNavigation from '../../navigation/MainNavigation'
+import UserInputs from '../UserInfoComps/UserInputs'
 
 const LoginCard = ({ navigation }) =>{
     const [email, setEmail] = useState('');
@@ -17,7 +17,7 @@ const LoginCard = ({ navigation }) =>{
             <View style={styles.card}>
             <HeaderComp />
             <View style={styles.usernamecontainer}>
-                <EmailComp placeholder="Email" onChangeText={(email) => setEmail(email)} style={styles.emailInput} />
+                <UserInputs placeholder="Email" onChangeText={email => setEmail(email)} style={styles.emailInput} />
             </View>
             <View style={styles.passwordcontainer}>
                 <PasswordComp placeholder="Password" onChangeText={(password) => setPassword(password)} style={styles.passwordinput} />
