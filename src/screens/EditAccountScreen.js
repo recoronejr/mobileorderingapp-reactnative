@@ -40,6 +40,11 @@ const EditAccountScreen = () =>{
                 <UserInputs style={styles.input} defaultValue={phoneNum} placeholder={firebaseApp.phoneNumber} onChangeText={phoneNum => setPhoneNumber(phoneNum)}/>
                 <UpdateUserInfo title="Update Phone Number" value={phoneNum} onPress={() => firebaseApp.updatePhoneNumber(phoneNum)}/>
             </View>
+            <View>
+                <Button title='Update All' onPress={()=>{
+                    alert('Test');
+                }}/>
+            </View>
         </View>
     )
 }
