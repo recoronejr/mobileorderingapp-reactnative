@@ -36,3 +36,40 @@ export const validateEmailInput = (input) =>{
             alert('No Change')
         }
 }
+
+export const validatePhoneNumber = (input) => {
+    let num = input.replace(".", '');
+    if(inputHasChanged(input)){
+        if(isNaN(num)){
+            alert('Invalid Phone Number. Please remove invalid characters.')
+        }else{
+            firebaseApp.updatePhoneNumber(num);
+        }    
+    }else{
+        alert('No Change')
+    }
+}
+
+export const validateFirstName = (input) => {
+    if(inputHasChanged(input)){
+        if(!input.match(/\d/) && !input.match(/[$-/:-?{-~!"^_`\[\]]/)){
+            firebaseApp.updateFirstName(input)
+        }else{
+            alert('First name contains invalid characters. Please remove them and try again.')
+        }
+    }else{
+        alert('No Change')
+    }
+}
+
+export const validateLastName = (input) => {
+    if(inputHasChanged(input)){
+        if(!input.match(/\d/) && !input.match(/[$-/:-?{-~!"^_`\[\]]/)){
+            firebaseApp.updateLastName(input)
+        }else{
+            alert('Last name contains invalid characters. Please remove them and try again.')
+        }
+    }else{
+        alert('No Change')
+    }
+}
