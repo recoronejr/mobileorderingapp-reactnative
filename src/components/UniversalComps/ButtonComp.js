@@ -14,7 +14,7 @@ export default class LoginButton extends React.Component{
     render(){
         return(
             <TouchableOpacity style={style.loginbtn} onPress={this.props.onPress}>
-                <Text>Login</Text>
+                <Text style={style.loginBtnTxt}>Login</Text>
             </TouchableOpacity>
         )
     }
@@ -23,25 +23,27 @@ export default class LoginButton extends React.Component{
 export const SignUpButton = () =>{
     const navigation = useNavigation();
         return <TouchableOpacity style={style.signUpBtn}>
-            <Button title="Don't have an account" hasText transparent onPress={()=>
+            <Text style={style.signUpBtnTxt} onPress={()=>
                 navigation.navigate("SignUp")
-            }/>
+            }>New User?</Text>
         </TouchableOpacity>
 }
 
 export const SignOutButton = () =>{
-    return <Button title='Sign Out' onPress={() => {
-        auth()
-        .signOut()
-        .then(() => {
-            return (<AuthenticationNavigation/>)
-    })}}/>
+    return <TouchableOpacity style={style.signOutBtn} > 
+        <Button title='Sign Out' onPress={() => {
+            auth()
+            .signOut()
+            .then(() => {
+                return (<AuthenticationNavigation/>)
+            })}}/>
+    </TouchableOpacity>
 } 
 
 export const EditButton = () =>{
     const navigation = useNavigation();
     return(
-    <TouchableOpacity>
+    <TouchableOpacity style={style.editBtn}>
     <Button title="Edit Account" hasText transparent onPress={()=>
             navigation.navigate("EditAccount")
         } 

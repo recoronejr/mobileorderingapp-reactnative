@@ -23,50 +23,86 @@ const style = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#fff'
     }, 
+    emailInput: {
+        height: 30,
+        width: 245,
+        paddingLeft: 10,
+        alignSelf: 'center',
+        fontFamily: 'Optima',
+        fontSize: 20,
+        paddingTop: 12
+    },
+    passwordinput: {
+        height: 30,
+        width: 245,
+        paddingLeft: 10,
+        alignSelf: 'center',
+        fontFamily: 'Optima',
+        fontSize: 20,
+        paddingTop: 12
+    },
     usernamecontainer: {
         alignSelf: "center",
         backgroundColor: '#ffffff',
-        width: 300,
+        borderRadius: 10,
+        borderWidth: 1,
+        width: 260,
+        height: 45,
         justifyContent:"space-between",
         flexDirection: "column",
         marginTop: 20
     }, 
-    emailInput: {
-        height: 30,
-        width: '80%',
-        borderColor: 'gray', 
-        borderWidth: 2,
-        paddingLeft: 10,
-        alignSelf: 'center'
-    },
-    passwordinput: {
-        height: 30,
-        width: '80%',
-        borderColor: 'gray', 
-        borderWidth: 2,
-        paddingLeft: 10,
-        alignSelf: 'center'
-    },
     passwordcontainer: {
         alignSelf: "center",
         backgroundColor: '#ffffff',
-        width: 300,
+        borderRadius: 10,
+        borderWidth: 1,
+        width: 260,
+        height: 45,
         justifyContent:"space-between",
-        marginTop: 20,
+        flexDirection: "column",
+        marginTop: 20
+    },
+    loginScreenBtns:{
+        flexDirection: 'row',
+        marginTop: 35
     },
     //Buttons
     signUpBtn: {
-        height: 100,
-        alignSelf: 'center',
-        marginTop: 10, 
-        marginBottom: 30
+        borderRadius: 10,
+        borderColor: 'blue',
+        borderWidth: 1,
+        width: 125,
+        height: 60,
+        marginLeft: 5
+    },
+    signUpBtnTxt:{
+        fontFamily: 'Optima',
+        fontSize: 18,
+        textAlign: 'center',
+        paddingTop: 18
+    },  
+    loginbtn: {
+        borderRadius: 10,
+        borderColor: 'blue',
+        borderWidth: 1,
+        width: 125,
+        height: 60,
+        marginRight: 5
+    },
+    loginBtnTxt:{
+        fontFamily: 'Optima',
+        fontSize: 18,
+        textAlign: 'center',
+        paddingTop: 18
     },
     //Header 
     signintxt: {
         paddingBottom: 50,
         fontWeight: 'bold',
         fontSize: 25,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        fontFamily: 'Optima-Bold'
     },
     //Title 
     title:{
@@ -82,10 +118,10 @@ const style = StyleSheet.create({
     },
     //Account Screen
     container: {
-        flex: 1,
+        flex: 1
     },
     mainLbl: {
-        marginTop: 50,
+        marginTop: 50
     },
     //Edit Account Screen
     input: {
@@ -97,7 +133,7 @@ const style = StyleSheet.create({
         alignSelf: 'center'
     },
     //Login Screen 
-    container: {
+    loginContainer: {
         flex: 1,
         alignItems: "center",
     },
@@ -109,7 +145,7 @@ const style = StyleSheet.create({
         marginTop: 50,
     },
     //Map Screen
-    container: {
+    mapContainer: {
         flex: 1,
         backgroundColor:'#ffffff',
     },
@@ -162,7 +198,24 @@ const style = StyleSheet.create({
     },
     //Order Screen
     mainLbl: {
-        marginTop: 50,
+        marginTop: 150,
+        alignSelf: 'center',
+        backgroundColor: '#ffffff',
+        width: '90%',
+        height: '50%',
+        justifyContent: "center",
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 0,
+	        height: 5,
+        },
+        shadowOpacity: 0.36,
+        shadowRadius: 8,
+        elevation: 11,
+        borderRadius:10,
+        borderWidth: 1,
+        borderColor: '#fff'
     },
     //Sign Up Screen
     signUpContainer: {
@@ -171,7 +224,7 @@ const style = StyleSheet.create({
         backgroundColor: 'rgb(112,112,112)'
     },
     signUpCard: {
-        marginTop: 150,
+        marginTop: 20,
         alignSelf: 'center',
         backgroundColor: '#ffffff',
         width: '80%',
@@ -190,12 +243,6 @@ const style = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#fff'
     },
-    loginbtn: {
-        alignSelf: 'center',
-        width: 50,
-        marginTop: 20,
-        
-    },
     signUpTxt: {
         paddingTop: 200,
         paddingBottom: 50,
@@ -209,12 +256,56 @@ const style = StyleSheet.create({
         width: 300,
         justifyContent:"space-between",
         flexDirection: "column",
-        marginTop: 20,
+        marginTop: 20
     },
     bgImage: {
         flex: 1,
         resizeMode: "cover",
         justifyContent: "center"
+    },
+    //Account Info
+    accountInfo:{
+        textAlign: 'center',
+        fontFamily: 'Optima',
+        fontSize: 20
+    },
+    accountInfoLabel:{
+        textAlign: 'left',
+        fontFamily: 'Optima-Bold',
+        fontSize: 20,
+    },
+    accountInfoContainer:{
+        marginTop: 15
+    },
+    accountInfoCard:{
+        marginTop: 50
+    },
+    editBtn:{
+        borderRadius: 10,
+        borderColor: 'blue',
+        borderWidth: 1,
+        width: 140,
+        height: 60,
+        padding: 10,
+        margin: 10
+    },
+    signOutBtn:{
+        borderRadius: 10,
+        borderColor: 'blue',
+        borderWidth: 1,
+        width: 140,
+        height: 60,
+        textAlign: 'center',
+        margin: 10,
+        padding: 10
+    }, 
+    accountScreenBtns:{
+        flexDirection: 'row',
+        marginTop: 15
+    }, 
+    accountHeader:{
+        fontFamily: 'Optima-Bold',
+        fontSize: 20
     }
 });
 

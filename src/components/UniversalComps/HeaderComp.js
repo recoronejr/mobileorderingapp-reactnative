@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { Children } from 'react'
 import { Text } from 'react-native'
 
 import style from '../../constants/Styles'
-const HeaderComp = () =>{
-    return(<Text style ={style.signintxt} title = "Sign In">Sign In</Text>)
-}
 
-export default HeaderComp
+export default class HeaderComp extends React.Component{
+    constructor(props){
+        super(props)
+    }
+    render(){
+        return<Text style ={style.signintxt} titl={this.props.title}>Sign In</Text>
+    }
+}

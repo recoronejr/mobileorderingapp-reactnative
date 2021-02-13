@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 
 import GetUserInfo from '../components/UserInfoComps/UserInfo'
+import HeaderComp from '../components/UniversalComps/HeaderComp'
 import { SignOutButton, EditButton } from '../components/UniversalComps/ButtonComp';
 
 import style from '../constants/Styles'
@@ -10,12 +11,12 @@ export default class AccountScreen extends React.Component {
         return (
             <View style = {style.container}>
                 <View style = {style.mainLbl}>
-                <Text>Account Settings</Text>
+                <Text style={style.accountHeader} text='account details'>Account Details</Text>
                     <GetUserInfo />
-                    <EditButton />
-                </View>
-                <View>
-                    <SignOutButton />
+                    <View style={style.accountScreenBtns}>
+                        <EditButton />
+                        <SignOutButton />
+                    </View>
                 </View>
             </View>
         );

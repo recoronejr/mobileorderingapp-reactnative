@@ -23,18 +23,20 @@ const LoginCard = ({ navigation }) =>{
             <View style={style.passwordcontainer}>
                 <PasswordComp placeholder="Password" onChangeText={(password) => setPassword(password)} style={style.passwordinput} />
             </View>
-            <LoginButton onPress={() => {    
-                auth()
-                .signInWithEmailAndPassword(email,password)
-                .then(() => {
-                    // Go to MainScreen
-                    <MainNavigation />    
-                })
-                .catch(error => {
-                    alert(error)
-                })
-            }}/>
-            <SignUpButton />
+            <View style={style.loginScreenBtns}>
+                <LoginButton onPress={() => {    
+                    auth()
+                    .signInWithEmailAndPassword(email,password)
+                    .then(() => {
+                        // Go to MainScreen
+                        <MainNavigation />    
+                    })
+                    .catch(error => {
+                        alert(error)
+                    })
+                }}/>
+                <SignUpButton />
+            </View>
         </View>   
     )
 }
