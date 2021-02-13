@@ -3,6 +3,7 @@ import  { View, ImageBackground, StyleSheet, Button } from 'react-native';
 
 import LoginCard from '../components/LoginScreenComps/LoginCard'
 
+import style from '../constants/Styles'
 const LoginScreen = () => {
     return (
         <View style={styles.container}>
@@ -12,12 +13,5 @@ const LoginScreen = () => {
         </View>   
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-    }
-});
 
 export default LoginScreen

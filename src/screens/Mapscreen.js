@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-navigation';
 import Map from '../components/MapScreenComps/Map'
 import OrderMenu from './MenuScreen'
 
+import style from '../constants/Styles'
 export default class MapScreen extends React.Component {
     constructor(props) {
         super(props)
@@ -66,35 +67,9 @@ export default class MapScreen extends React.Component {
     const Location = ({title, address}) => {
         const [modalVisible, setModalVisible] = useState(false);
         return (
-            <View style={styles.item}>
-                <Text style={styles.title}>{title}</Text>
+            <View style={style.item}>
+                <Text style={style.title}>{title}</Text>
                 <Text> From {address} </Text>
             </View> 
         )
     }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor:'#ffffff',
-    },
-    item: {
-        marginTop: 20,
-        backgroundColor:'#ffffff',
-        alignSelf:"center",
-        width:"75%",
-        shadowColor: "#000",
-        shadowOffset: {
-	        width: 0,
-	        height: 5,
-        },
-        shadowOpacity: 0.36,
-        shadowRadius: 8,
-        elevation: 11,
-        borderRadius:10,
-        borderWidth: 1,
-    },
-    title:{
-
-    }
-
-});

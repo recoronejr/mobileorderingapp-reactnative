@@ -2,11 +2,12 @@ import React from 'react'
 import { Dimensions, StyleSheet } from 'react-native'
 import MapView from 'react-native-maps'
 
+import style from '../../constants/Styles'
 
 const Map = ({navigation}) => {
     return (
         <MapView
-            style={styles.map}
+            style={style.map}
             loadingEnabled={true}
             region={{
                 latitude: 39.134119,
@@ -19,11 +20,5 @@ const Map = ({navigation}) => {
         </MapView>
     )
 }
-
-const styles = StyleSheet.create({
-    map:{
-        height: "65%"
-    }
-})
 
 export default Map

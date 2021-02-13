@@ -11,6 +11,8 @@ import MapScreen from "./Mapscreen"
 import OrderScreen from './OrderScreen';
 import EditAccountScreen from './EditAccountScreen';
 
+import style from '../constants/Styles'
+
 const Stack = createStackNavigator();
 
 export default class MainScreen extends React.Component {
@@ -30,7 +32,7 @@ export default class MainScreen extends React.Component {
         const { navigation: { navigate } } = this.props;
         if  (this.state.isLoading) {
             return (
-                <View style = {styles.container}>
+                <View style = {style.container}>
                   <ActivityIndicator />  
                 </View>
                 
@@ -38,7 +40,7 @@ export default class MainScreen extends React.Component {
         } 
         else {
             return (
-                <Stack.Navigator initialRouteName = "MapScreen" style={styles.navigator}>
+                <Stack.Navigator initialRouteName = "MapScreen" style={style.navigator}>
                     <Stack.Screen name="MapScreen" component={MapScreen} />
                     <Stack.Screen name="Locations" component={MapScreen} />
                     <Stack.Screen name="MenuScreen" component={MenuScreen} />
@@ -50,17 +52,3 @@ export default class MainScreen extends React.Component {
         
     }
 }
-
-const styles = StyleSheet.create({
-    navigator:{
-        backgroundColor: '#000000',
-    },
-    container: {
-        flex: 1,
-    },
-    welcometxt: {
-        marginTop: 50,
-    },
-   
-
-});

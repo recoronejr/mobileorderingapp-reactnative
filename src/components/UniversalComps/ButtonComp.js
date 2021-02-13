@@ -5,6 +5,7 @@ import AuthenticationNavigation from '../../navigation/AuthenticationNavigation'
 import { useNavigation } from '@react-navigation/native';
 
 import {auth} from 'firebase';
+import style from '../../constants/Styles'
 
 export default class LoginButton extends React.Component{
     constructor(props){
@@ -12,7 +13,7 @@ export default class LoginButton extends React.Component{
     }
     render(){
         return(
-            <TouchableOpacity style={styles.loginbtn} onPress={this.props.onPress}>
+            <TouchableOpacity style={style.loginbtn} onPress={this.props.onPress}>
                 <Text>Login</Text>
             </TouchableOpacity>
         )
@@ -21,7 +22,7 @@ export default class LoginButton extends React.Component{
 
 export const SignUpButton = () =>{
     const navigation = useNavigation();
-        return <TouchableOpacity style={styles.signUpBtn}>
+        return <TouchableOpacity style={style.signUpBtn}>
             <Button title="Don't have an account" hasText transparent onPress={()=>
                 navigation.navigate("SignUp")
             }/>
@@ -52,17 +53,3 @@ export const EditButton = () =>{
 export const CancelButton = () =>{
 
 }
-
-const styles = StyleSheet.create({
-    loginbtn: {
-        alignSelf: 'center',
-        width: 60,
-        marginTop: 30
-    },
-    signUpBtn: {
-        height: 100,
-        alignSelf: 'center',
-        marginTop: 10, 
-        marginBottom: 30
-    }
-});

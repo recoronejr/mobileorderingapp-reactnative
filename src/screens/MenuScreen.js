@@ -4,6 +4,8 @@ import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dime
 import { ScrollView } from 'react-native-gesture-handler';
 import { color } from 'react-native-reanimated';
 
+import style from '../constants/Styles'
+
 const {height} = Dimensions.get('window')
 
 export default class MenuScreen extends React.Component {
@@ -64,68 +66,32 @@ export default class MenuScreen extends React.Component {
         let menuItems = this.state.menuItems.map((val,key) => {
             let image = this.getImageById(val.image_id)
             return (
-                <TouchableOpacity style={styles.item}>
-                    <View key={key} style={styles.card}>
+                <TouchableOpacity style={style.menuItem}>
+                    <View key={key} style={style.menuCard}>
                             <Text style={{fontSize:28}}>{val.item_data.name}</Text>
-                            <Image style={styles.img} source={{uri:image}}/>
-                            <Text style={styles.desc}>{val.item_data.description}</Text>
+                            <Image style={style.img} source={{uri:image}}/>
+                            <Text style={style.desc}>{val.item_data.description}</Text>
                     </View> 
                 </TouchableOpacity>
             ) 
         });
         return (
-            <SafeAreaView style={styles.container}>
+            <SafeAreaView style={style.container}>
                 <Text style={{fontSize:40}}>{this.props.route.params.merchant.name}</Text>
                 <Text style={{fontSize:32}}>What would you like? </Text>
-                <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollview} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
+                <ScrollView style={style.scroll} contentContainerStyle={style.scrollview} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
                     
                     {menuItems}    
                 </ScrollView> 
-                <TouchableOpacity style={styles.orderBtn}><Text style={{alignSelf: 'center',fontSize:24,textAlignVertical:'center'}}>Place Order Total: $0.00</Text></TouchableOpacity>
+                <TouchableOpacity style={style.orderBtn}><Text style={{alignSelf: 'center',fontSize:24,textAlignVertical:'center'}}>Place Order Total: $0.00</Text></TouchableOpacity>
             </SafeAreaView>
         )
     }
 }
-const MenuItem = () => (
-        <View style={styles.item}>
-            <Text style={styles.title}></Text>
-            <Button title="Place Order"/>
-            
-        </View> 
-);
 
-const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-    },
-    card: {
-        backgroundColor: '#ffffff',
-        width: '80%',
-        height: 240,
-        alignSelf: "center",
-        flexGrow: 1,
-        marginBottom: 10,
-        padding: 10,
-    },
-    item:{
-        alignSelf:'stretch'
-    },
-    desc: {
-        marginTop: 10,
-    },
-    scrollview: {
-        flexGrow:1,
-    },
-    scroll: {
-        flex:1,
-    },
-    img: {
-        alignSelf: 'center',
-        width: '100%',
-        height: 100
-    },
-    orderBtn: {
-        height:50,
-        backgroundColor: 'lightgray',
-    }
-})
+const MenuItem = () => (
+    <View style={styles.item}>
+        <Text style={styles.title}></Text>
+        <Button title="Place Order"/>        
+    </View> 
+);

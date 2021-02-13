@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { firebaseApp } from '../api/firebase'
 import MainScreen from './MainScreen';
 
-
+import style from '../constants/Styles'
 
 
 const SignUpScreen = ({ navigation }) => {
@@ -19,36 +19,36 @@ const SignUpScreen = ({ navigation }) => {
 
 
     return (
-        <View style={styles.container}>
-            <View style ={styles.card}>
-                <Text style ={styles.signintxt} title = "Sign Up">
+        <View style={style.signUpContainer}>
+            <View style ={style.signUpCard}>
+                <Text style ={style.signUpTxt} title = "Sign Up">
                     Sign Up
                 </Text>
-                <View  rounded style={styles.txtInput}>
+                <View  rounded style={style.txtInput}>
                     <TextInput placeholder='First Name' defaultValue = {firstName} onChangeText={firstName => setFirstName(firstName)} />
                 </View>
-                <View  rounded style={styles.txtInput}>
+                <View  rounded style={style.txtInput}>
                     <TextInput placeholder='Last Name' defaultValue = {lastName} onChangeText={lastName => setlastName(lastName)}  />
                 </View>
-                <View  rounded style={styles.txtInput}>
+                <View  rounded style={style.txtInput}>
                     <TextInput placeholder='Username' defaultValue = {username} onChangeText={username => setUsername(username)} />
                 </View>
-                <View  rounded style={styles.txtInput}>
-                    <TextInput placeholder='Phone Number' defaultValue = {phoneNumber} onChangeText={phoneNumber => setPhoneNumber(phoneNumber)} style={styles.emailInput} />
+                <View  rounded style={style.txtInput}>
+                    <TextInput placeholder='Phone Number' defaultValue = {phoneNumber} onChangeText={phoneNumber => setPhoneNumber(phoneNumber)} style={style.emailInput} />
                 </View>
-                <View  rounded style={styles.txtInput}>
-                    <TextInput placeholder='Email' defaultValue = {email} onChangeText={email => setEmail(email)} style={styles.emailInput} />
-                </View>
-
-                <View rounded style={styles.txtInput}>
-                    <TextInput placeholder='Password' defaultValue = {password} onChangeText={password => setPassword(password)}  style={styles.passwordinput}  secureTextEntry= {true} />
+                <View  rounded style={style.txtInput}>
+                    <TextInput placeholder='Email' defaultValue = {email} onChangeText={email => setEmail(email)} style={style.emailInput} />
                 </View>
 
-                <View rounded style={styles.txtInput}>
+                <View rounded style={style.txtInput}>
+                    <TextInput placeholder='Password' defaultValue = {password} onChangeText={password => setPassword(password)}  style={style.passwordinput}  secureTextEntry= {true} />
+                </View>
+
+                <View rounded style={style.txtInput}>
                     <TextInput placeholder='Verify Password' defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)}  secureTextEntry= {true} />
                 </View>
 
-                <Button title = 'Login' rounded style={styles.loginbtn}  
+                <Button title = 'Login' rounded style={style.loginbtn}  
                 onPress={() => {
                     // Sign Up
                     if (password == verifyPassword) {
@@ -68,7 +68,7 @@ const SignUpScreen = ({ navigation }) => {
                     )
                     
                 }}/>
-                <Text style ={styles.signintxt}>
+                <Text style ={style.signintxt}>
                     
                 </Text>
             </View>
@@ -77,71 +77,5 @@ const SignUpScreen = ({ navigation }) => {
     );
 
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        backgroundColor: 'rgb(112,112,112)'
-    },
-    card: {
-        marginTop: 150,
-        alignSelf: 'center',
-        backgroundColor: '#ffffff',
-        width: '80%',
-        height: '40%',
-        justifyContent: "center",
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-	        width: 0,
-	        height: 5,
-        },
-        shadowOpacity: 0.36,
-        shadowRadius: 8,
-        elevation: 11,
-        borderRadius:10,
-        borderWidth: 1,
-        borderColor: '#fff'
-    },
-    loginbtn: {
-        alignSelf: 'center',
-        width: 50,
-        marginTop: 20,
-        
-    },
-    signupbtn: {
-        alignSelf: 'center',
-       
-    },
-    signintxt: {
-        paddingTop: 200,
-        paddingBottom: 50,
-        fontWeight: 'bold',
-        fontSize: 18,
-        alignSelf: 'center'
-    },
-    passwordcontainer: {
-        alignSelf: "center",
-        backgroundColor: '#ffffff',
-        width: 300,
-        justifyContent:"space-between",
-        marginTop: 20,
-    },
-    txtInput: {
-        alignSelf: "center",
-        backgroundColor: '#ffffff',
-        width: 300,
-        justifyContent:"space-between",
-        flexDirection: "column",
-        marginTop: 20,
-    },
-    bgImage: {
-        flex: 1,
-        resizeMode: "cover",
-        justifyContent: "center"
-    }
-
-    });
   
     export default SignUpScreen;

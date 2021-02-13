@@ -4,11 +4,12 @@ import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'rea
 import GetUserInfo from '../components/UserInfoComps/UserInfo'
 import { SignOutButton, EditButton } from '../components/UniversalComps/ButtonComp';
 
+import style from '../constants/Styles'
 export default class AccountScreen extends React.Component {
     render() {
         return (
-            <View style = {styles.container}>
-                <View style = {styles.mainLbl}>
+            <View style = {style.container}>
+                <View style = {style.mainLbl}>
                 <Text>Account Settings</Text>
                     <GetUserInfo />
                     <EditButton />
@@ -20,13 +21,3 @@ export default class AccountScreen extends React.Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    mainLbl: {
-        marginTop: 50,
-    }
-
-});
