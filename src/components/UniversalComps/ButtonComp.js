@@ -5,6 +5,7 @@ import AuthenticationNavigation from '../../navigation/AuthenticationNavigation'
 import { useNavigation } from '@react-navigation/native';
 
 import {auth} from 'firebase';
+import style from '../../constants/Styles'
 
 export default class LoginButton extends React.Component{
     constructor(props){
@@ -12,8 +13,8 @@ export default class LoginButton extends React.Component{
     }
     render(){
         return(
-            <TouchableOpacity style={styles.loginbtn} onPress={this.props.onPress}>
-                <Text>Login</Text>
+            <TouchableOpacity style={style.loginbtn} onPress={this.props.onPress}>
+                <Text style={style.loginBtnTxt}>Login</Text>
             </TouchableOpacity>
         )
     }
@@ -21,26 +22,28 @@ export default class LoginButton extends React.Component{
 
 export const SignUpButton = () =>{
     const navigation = useNavigation();
-        return <TouchableOpacity style={styles.signUpBtn}>
-            <Button title="Don't have an account" hasText transparent onPress={()=>
+        return <TouchableOpacity style={style.signUpBtn}>
+            <Text style={style.signUpBtnTxt} onPress={()=>
                 navigation.navigate("SignUp")
-            }/>
+            }>New User?</Text>
         </TouchableOpacity>
 }
 
 export const SignOutButton = () =>{
-    return <Button title='Sign Out' onPress={() => {
-        auth()
-        .signOut()
-        .then(() => {
-            return (<AuthenticationNavigation/>)
-    })}}/>
+    return <TouchableOpacity style={style.signOutBtn} > 
+        <Button title='Sign Out' onPress={() => {
+            auth()
+            .signOut()
+            .then(() => {
+                return (<AuthenticationNavigation/>)
+            })}}/>
+    </TouchableOpacity>
 } 
 
 export const EditButton = () =>{
     const navigation = useNavigation();
     return(
-    <TouchableOpacity>
+    <TouchableOpacity style={style.editBtn}>
     <Button title="Edit Account" hasText transparent onPress={()=>
             navigation.navigate("EditAccount")
         } 
@@ -52,17 +55,3 @@ export const EditButton = () =>{
 export const CancelButton = () =>{
 
 }
-
-const styles = StyleSheet.create({
-    loginbtn: {
-        alignSelf: 'center',
-        width: 60,
-        marginTop: 30
-    },
-    signUpBtn: {
-        height: 100,
-        alignSelf: 'center',
-        marginTop: 10, 
-        marginBottom: 30
-    }
-});

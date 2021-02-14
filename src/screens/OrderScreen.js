@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 
+import style from '../constants/Styles'
 export default class OrderScreen extends React.Component {
     
     constructor(props) {
@@ -18,8 +19,8 @@ export default class OrderScreen extends React.Component {
         const { navigation: { navigate } } = this.props;
 
         return (
-            <View style = {styles.container}>
-                <View style = {styles.mainLbl}>
+            <View style = {style.container}>
+                <View style = {style.mainLbl}>
                 <Text>You have no active orders</Text>
                 </View>
                 
@@ -27,12 +28,3 @@ export default class OrderScreen extends React.Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    mainLbl: {
-        marginTop: 50,
-    }
-});

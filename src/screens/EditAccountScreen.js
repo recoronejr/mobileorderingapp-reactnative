@@ -6,6 +6,8 @@ import { firebaseApp } from '../api/firebase'
 import UpdateInfoButton, {inputHasChanged, validateEmailInput, validatePhoneNumber, validateFirstName, validateLastName} from '../components/UserInfoComps/UpdateUserInfo'
 import UserInputs from '../components/UserInfoComps/UserInputs'
 
+import style from '../constants/Styles'
+
 class EditAccount extends React.Component{
     render(){
         return firebaseApp.createUserDocumentAndStore();
@@ -22,22 +24,22 @@ const EditAccountScreen = () =>{
         <View>
             <View>
                 <Text>First Name</Text>
-                <UserInputs style={styles.input} value={firstName} placeholder={firebaseApp.firstName} onChangeText={firstName => setFirstName(firstName)} />
+                <UserInputs style={style.input} value={firstName} placeholder={firebaseApp.firstName} onChangeText={firstName => setFirstName(firstName)} />
                 <UpdateInfoButton title="Update First Name" onPress={() => {validateFirstName(firstName)}}/>
             </View>
             <View>
                 <Text>Last Name</Text>
-                <UserInputs style={styles.input} defaultValue={lastName} placeholder={firebaseApp.lastName} onChangeText={lastName => setLastName(lastName)}/>
+                <UserInputs style={style.input} defaultValue={lastName} placeholder={firebaseApp.lastName} onChangeText={lastName => setLastName(lastName)}/>
                 <UpdateInfoButton title="Update Last Name" defaultValue={lastName} onPress={() => {validateLastName(lastName)}}/>
             </View>
             <View>
                 <Text>Email</Text>
-                <UserInputs type='email' style={styles.input} defaultValue={email} placeholder={firebaseApp.email} onChangeText={email => setEmail(email)}/>
+                <UserInputs type='email' style={style.input} defaultValue={email} placeholder={firebaseApp.email} onChangeText={email => setEmail(email)}/>
                 <UpdateInfoButton title="Update Email" defaultValue={email} onPress={() => {validateEmailInput(email)}}/>
             </View>
             <View>
                 <Text>Phone Number</Text>
-                <UserInputs style={styles.input} defaultValue={phoneNum} placeholder={firebaseApp.phoneNumber} onChangeText={phoneNum => setPhoneNumber(phoneNum)}/>
+                <UserInputs style={style.input} defaultValue={phoneNum} placeholder={firebaseApp.phoneNumber} onChangeText={phoneNum => setPhoneNumber(phoneNum)}/>
                 <UpdateInfoButton title="Update Phone Number" value={phoneNum} onPress={() => {validatePhoneNumber(phoneNum)}}/>
             </View>
             <View>
@@ -51,16 +53,5 @@ const EditAccountScreen = () =>{
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    input: {
-        height: 30,
-        width: '80%',
-        borderColor: 'gray', 
-        borderWidth: 2,
-        paddingLeft: 10,
-        alignSelf: 'center'
-    }
-});
 
 export default EditAccountScreen;

@@ -1,17 +1,13 @@
-import React from 'react'
-import { StyleSheet, Text } from 'react-native'
+import React, { Children } from 'react'
+import { Text } from 'react-native'
 
-const HeaderComp = () =>{
-    return(<Text style ={styles.signintxt} title = "Sign In">Sign In</Text>)
-}
+import style from '../../constants/Styles'
 
-const styles = StyleSheet.create({
-    signintxt: {
-        paddingBottom: 50,
-        fontWeight: 'bold',
-        fontSize: 25,
-        alignSelf: 'center'
+export default class HeaderComp extends React.Component{
+    constructor(props){
+        super(props)
     }
-});
-
-export default HeaderComp
+    render(){
+        return<Text style ={style.signintxt} titl={this.props.title}>Sign In</Text>
+    }
+}
