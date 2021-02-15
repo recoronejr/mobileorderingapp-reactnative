@@ -7,7 +7,7 @@ const style = StyleSheet.create({
         marginTop: 100,
         alignSelf: 'center',
         backgroundColor: '#ffffff',
-        width: '80%',
+        width: '87%',
         height: '50%',
         justifyContent: "center",
         alignItems: "center",
@@ -43,29 +43,49 @@ const style = StyleSheet.create({
     },
     usernamecontainer: {
         alignSelf: "center",
-        backgroundColor: '#ffffff',
-        borderRadius: 10,
-        borderWidth: 1,
-        width: 260,
-        height: 45,
+        borderBottomWidth: 1.5,
+        width: 220,
+        height: 35,
         justifyContent:"space-between",
         flexDirection: "column",
-        marginTop: 20
+        marginTop: 20,
+        textAlignVertical: 'top',
+        paddingLeft: "4%"
     }, 
+    usernamecontainerFocus:{
+
+    },
     passwordcontainer: {
         alignSelf: "center",
-        backgroundColor: '#ffffff',
-        borderRadius: 10,
-        borderWidth: 1,
-        width: 260,
+        borderBottomWidth: 1,
+        width: 200,
         height: 45,
         justifyContent:"space-between",
         flexDirection: "column",
-        marginTop: 20
+        marginTop: 20,
+        textAlignVertical: 'top',
+        paddingLeft: "10%",
+        paddingTop: 5
     },
     loginScreenBtns:{
         flexDirection: 'row',
         marginTop: 35
+    },
+    loginUsernameContainer:{
+        flexDirection: 'row',
+    },
+    loginUsernameText:{
+        marginTop: "7%",
+        fontSize: 25,
+        fontFamily: 'Optima'
+    },
+    loginPasswordContainer:{
+        flexDirection: 'row',
+    },
+    loginPasswordText:{
+        marginTop: "9%",
+        fontSize: 25,
+        fontFamily: 'Optima'
     },
     //Buttons
     signUpBtn: {
