@@ -44,17 +44,17 @@ const SignUpScreen = ({ navigation }) => {
                 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>Phone Number: </Text>
-                    <UserInputs style={style.txtInput} defaultValue = {phoneNumber} onChangeText={phoneNumber => setPhoneNumber(phoneNumber)} style={style.emailInput} />
+                    <UserInputs style={style.txtInput} defaultValue = {phoneNumber} onChangeText={phoneNumber => setPhoneNumber(phoneNumber)} />
                 </View>
                 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>Email: </Text>
-                    <UserInputs style={style.txtInput} defaultValue = {email} onChangeText={email => setEmail(email)} style={style.emailInput} />
+                    <UserInputs style={style.txtInput} defaultValue = {email} onChangeText={email => setEmail(email)} />
                 </View>
 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>Password: </Text>
-                    <UserInputs style={style.txtInput} defaultValue = {password} onChangeText={password => setPassword(password)}  style={style.passwordinput}  secureTextEntry= {true} />
+                    <UserInputs style={style.txtInput} defaultValue = {password} onChangeText={password => setPassword(password)}  secureTextEntry= {true} />
                 </View>
 
                 <View style={style.editHoriz}>
