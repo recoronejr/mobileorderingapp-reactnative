@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button, TouchableOpacity, Text } from 'react-native'
 
+import style from '../../constants/Styles'
+
 import { firebaseApp } from '../../api/firebase'
 import EditAccountScreen from '../../screens/EditAccountScreen'; 
 
@@ -10,7 +12,9 @@ export default class UpdateInfoButton extends React.Component{
     }
     render(){
         return(
-            <Button title={this.props.title} defaultValue={this.props.defaultValue} onPress={this.props.onPress}/>
+            <TouchableOpacity style={style.updateInfoBtn} onPress={this.props.onPress}>
+                <Text style={style.updateInfoBtnText}>Update</Text>
+            </TouchableOpacity>
         )
     }
 }

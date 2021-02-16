@@ -3,12 +3,12 @@ import {StyleSheet} from 'react-native'
 
 const style = StyleSheet.create({
     //LoginCard
-    loginCard: {
+    backgroundCard: {
         marginTop: 100,
         alignSelf: 'center',
         backgroundColor: '#ffffff',
         width: '87%',
-        height: '50%',
+        height: '60%',
         justifyContent: "center",
         alignItems: "center",
         shadowColor: "#000",
@@ -142,15 +142,6 @@ const style = StyleSheet.create({
     },
     mainLbl: {
         marginTop: 50
-    },
-    //Edit Account Screen
-    input: {
-        height: 30,
-        width: '80%',
-        borderColor: 'gray', 
-        borderWidth: 2,
-        paddingLeft: 10,
-        alignSelf: 'center'
     },
     //Login Screen 
     loginContainer: {
@@ -326,6 +317,51 @@ const style = StyleSheet.create({
     accountHeader:{
         fontFamily: 'Optima-Bold',
         fontSize: 20
+    },
+    //EDIT SCREEN
+    editText:{
+        marginLeft: 20,
+        marginTop: 10,
+        fontSize: 15,
+        fontFamily: 'Optima'
+    },
+    input: {
+        height: 30,
+        width: '60%',
+        borderColor: 'gray', 
+        borderBottomWidth: 2,
+        paddingLeft: 10,
+        marginLeft: 40,
+    },
+    updateInfoBtn:{
+        fontSize: 10,
+        marginLeft: 10,
+    },
+    updateInfoBtnText:{
+        fontSize: 15,
+        fontFamily: 'Optima-Bold',
+        paddingLeft: 5,
+        paddingTop: 12
+    },  
+    editHoriz:{
+        flexDirection: 'row',
+    },
+    editScrnHeader:{
+        fontSize: 30,
+        marginBottom: 40,
+        fontFamily: 'Optima'
+    },
+    updateAllBtn:{
+        paddingTop: 10
+    },
+    updateAllText:{
+        marginTop: 15,
+        borderWidth: 1,
+        borderRadius: 8,
+        paddingTop: 12,
+        width: 125,
+        height: 45,
+        textAlign: 'center'
     }
 });
 

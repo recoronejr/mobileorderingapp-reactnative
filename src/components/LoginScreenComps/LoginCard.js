@@ -16,7 +16,7 @@ const LoginCard = ({ navigation }) =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
         return(
-            <View style={style.loginCard}>
+            <View style={style.backgroundCard}>
             <HeaderComp />
 
             <View style={style.loginUsernameContainer}>
