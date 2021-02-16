@@ -63,27 +63,34 @@ export default class MenuScreen extends React.Component {
     render() {
         const { navigation: { navigate } } = this.props;
         const scrollEnabled = true;
+
+        let merchantName = this.props.route.params.merchant.name;
         let menuItems = this.state.menuItems.map((val,key) => {
+            
             let image = this.getImageById(val.image_id)
+            let itemName = val.item_data.name;
+            let itemDesc = val.item_data.description;
+
             return (
                 <TouchableOpacity style={style.menuItem}>
                     <View key={key} style={style.menuCard}>
-                            <Text style={{fontSize:28}}>{val.item_data.name}</Text>
-                            <Image style={style.img} source={{uri:image}}/>
-                            <Text style={style.desc}>{val.item_data.description}</Text>
+                        <Text style={style.menuItemText}>{itemName}</Text>
+                        <Image style={style.menuItemImg} source={{uri:image}}/>
+                        <Text style={style.menuItemDesc}>{itemDesc}</Text>
                     </View> 
                 </TouchableOpacity>
             ) 
         });
         return (
-            <SafeAreaView style={style.container}>
-                <Text style={{fontSize:40}}>{this.props.route.params.merchant.name}</Text>
-                <Text style={{fontSize:32}}>What would you like? </Text>
-                <ScrollView style={style.scroll} contentContainerStyle={style.scrollview} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
-                    
+            <SafeAreaView style={style.menuScreenContainer}>
+                <Text style={style.merchantNameText}>{merchantName}</Text>
+                <Text style={style.menuScreenText}>What would you like? </Text>
+                <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
                     {menuItems}    
                 </ScrollView> 
-                <TouchableOpacity style={style.orderBtn}><Text style={{alignSelf: 'center',fontSize:24,textAlignVertical:'center'}}>Place Order Total: $0.00</Text></TouchableOpacity>
+                <TouchableOpacity style={style.menuOrderBtn}>
+                    <Text style={style.menuOrderBtnText}>Place Order Total: $0.00</Text>
+                </TouchableOpacity>
             </SafeAreaView>
         )
     }

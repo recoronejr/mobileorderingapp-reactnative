@@ -133,10 +133,6 @@ const style = StyleSheet.create({
     map:{
         height: "65%"
     },
-    //Account Screen
-    container: {
-        flex: 1
-    },
     mainLbl: {
         marginTop: 50
     },
@@ -166,8 +162,7 @@ const style = StyleSheet.create({
 	        width: 0,
 	        height: 5,
         },
-        shadowOpacity: 0.36,
-        shadowRadius: 8,
+        borderColor: 'blue',
         elevation: 11,
         borderRadius:10,
         borderWidth: 1,
@@ -177,37 +172,6 @@ const style = StyleSheet.create({
     },
     locationDataBackground:{
         
-    },
-    //Menu Screen
-    menuCard: {
-        backgroundColor: '#ffffff',
-        width: '80%',
-        height: 240,
-        alignSelf: "center",
-        flexGrow: 1,
-        marginBottom: 10,
-        padding: 10,
-    },
-    item:{
-        alignSelf:'stretch'
-    },
-    desc: {
-        marginTop: 10,
-    },
-    scrollview: {
-        flexGrow:1,
-    },
-    scroll: {
-        flex:1,
-    },
-    img: {
-        alignSelf: 'center',
-        width: '100%',
-        height: 100
-    },
-    orderBtn: {
-        height:50,
-        backgroundColor: 'lightgray',
     },
     //Order Screen
     mainLbl: {
@@ -386,6 +350,54 @@ const style = StyleSheet.create({
         marginTop: 25,
         alignSelf: 'center'
     },
+    //MENU SCREEN
+    menuScreenText:{
+        fontSize:32
+    },
+    merchantNameText:{
+        fontSize:40
+    },
+    menuCard: {
+        backgroundColor: '#ffffff',
+        width: '80%',
+        height: 240,
+        alignSelf: "center",
+        flexGrow: 1,
+        marginBottom: 10,
+        padding: 10,
+    },
+    item:{
+        alignSelf:'stretch'
+    },
+    menuItemDesc: {
+        marginTop: 10,
+    },
+    menuScreenScrollView: {
+        flexGrow:1,
+    },
+    menuScreenScroll: {
+        flex:1,
+    },
+    menuItemImg: {
+        alignSelf: 'center',
+        width: '100%',
+        height: 100
+    },
+    menuOrderBtn: {
+        height:50,
+        backgroundColor: 'lightgray',
+    },
+    menuOrderBtnText:{
+        alignSelf: 'center',
+        fontSize: 24,
+        textAlignVertical:'center'
+    },
+    menuItemText:{
+        fontSize:28
+    },
+    menuScreenContainer:{
+        flex: 1
+    }
 });
 
 export default style;
