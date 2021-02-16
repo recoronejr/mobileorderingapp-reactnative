@@ -228,52 +228,6 @@ const style = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#fff'
     },
-    //Sign Up Screen
-    signUpContainer: {
-        flex: 1,
-        alignItems: "center",
-        backgroundColor: 'rgb(112,112,112)'
-    },
-    signUpCard: {
-        marginTop: 20,
-        alignSelf: 'center',
-        backgroundColor: '#ffffff',
-        width: '80%',
-        height: '40%',
-        justifyContent: "center",
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-	        width: 0,
-	        height: 5,
-        },
-        shadowOpacity: 0.36,
-        shadowRadius: 8,
-        elevation: 11,
-        borderRadius:10,
-        borderWidth: 1,
-        borderColor: '#fff'
-    },
-    signUpTxt: {
-        paddingTop: 200,
-        paddingBottom: 50,
-        fontWeight: 'bold',
-        fontSize: 18,
-        alignSelf: 'center'
-    },
-    txtInput: {
-        alignSelf: "center",
-        backgroundColor: '#ffffff',
-        width: 300,
-        justifyContent:"space-between",
-        flexDirection: "column",
-        marginTop: 20
-    },
-    bgImage: {
-        flex: 1,
-        resizeMode: "cover",
-        justifyContent: "center"
-    },
     //Account Info
     accountInfo:{
         textAlign: 'center',
@@ -362,7 +316,74 @@ const style = StyleSheet.create({
         width: 125,
         height: 45,
         textAlign: 'center'
-    }
+    },
+    //Sign Up Screen
+    signUpCard: {
+        marginTop: 100,
+        alignSelf: 'center',
+        backgroundColor: '#ffffff',
+        width: '87%',
+        height: '60%',
+        justifyContent: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 0,
+	        height: 5,
+        },
+        shadowOpacity: 0.36,
+        shadowRadius: 8,
+        elevation: 11,
+        borderRadius:10,
+        borderWidth: 1,
+        borderColor: '#fff',
+        paddingLeft: 10
+    }, 
+    signUpContainer: {
+        flex: 1,
+        backgroundColor: 'rgb(112,112,112)'
+    },
+    signUpTxt:{
+        marginTop: 20,
+        marginRight: 10, 
+        width: 110,
+        fontSize: 15
+    },
+    txtInput: {
+        width: '50%',
+        marginTop: 20,
+        borderBottomWidth: 1,
+        paddingLeft: 5,
+        paddingRight: 5
+    },
+    bgImage: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center"
+    },
+    signUpScreenHeader:{
+        alignSelf: 'center',
+        fontSize: 30,
+        fontFamily: 'Optima-Bold'
+    },
+    signInBtn:{
+        borderRadius: 10,
+        borderColor: 'blue',
+        borderWidth: 1,
+        width: 175,
+        height: 60,
+        marginRight: 5
+    },
+    signInBtnText:{
+        alignSelf: 'center',
+        paddingTop: 20,
+        fontSize: 17,
+        fontFamily: 'Optima'
+    },
+    signUpButtons:{
+        flexDirection: 'row',
+        marginTop: 25,
+        alignSelf: 'center'
+    },
 });
 
 export default style;
