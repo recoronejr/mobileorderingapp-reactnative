@@ -54,12 +54,12 @@ const SignUpScreen = ({ navigation }) => {
 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>Password: </Text>
-                    <UserInputs style={style.txtInput} defaultValue = {password} onChangeText={password => setPassword(password)}  secureTextEntry= {true} />
+                    <UserInputs style={style.txtInput} defaultValue = {password} onChangeText={password => setPassword(password)} secureTextEntry= {true} />
                 </View>
 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>Verify Password: </Text>
-                    <UserInputs style={style.txtInput} defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)}  secureTextEntry= {true} />
+                    <UserInputs style={style.txtInput} defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)} secureTextEntry= {true} />
                 </View>
                 <View style={style.signUpButtons}>
                     <LoginButton title = 'Login' rounded style={style.loginbtn} onPress={() => {

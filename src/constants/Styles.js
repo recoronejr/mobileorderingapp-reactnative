@@ -126,11 +126,8 @@ const style = StyleSheet.create({
     },
     //Title 
     title:{
-        fontWeight: 'bold',
-        fontSize: 28,
-        alignSelf: 'center',
-        color: '#ffffff',
-        marginTop: 100
+        fontSize: 20,
+        fontFamily: 'Optima'
     },
     //Map 
     map:{
@@ -160,8 +157,7 @@ const style = StyleSheet.create({
         flex: 1,
         backgroundColor:'#ffffff',
     },
-    item: {
-        marginTop: 20,
+    menuItem: {
         backgroundColor:'#ffffff',
         alignSelf:"center",
         width:"75%",
@@ -175,6 +171,12 @@ const style = StyleSheet.create({
         elevation: 11,
         borderRadius:10,
         borderWidth: 1,
+        marginTop: 10,
+        padding: 5,
+        height: 60
+    },
+    locationDataBackground:{
+        
     },
     //Menu Screen
     menuCard: {
@@ -186,7 +188,7 @@ const style = StyleSheet.create({
         marginBottom: 10,
         padding: 10,
     },
-    menuItem:{
+    item:{
         alignSelf:'stretch'
     },
     desc: {
