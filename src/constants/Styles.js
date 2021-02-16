@@ -3,12 +3,12 @@ import {StyleSheet} from 'react-native'
 
 const style = StyleSheet.create({
     //LoginCard
-    loginCard: {
+    backgroundCard: {
         marginTop: 100,
         alignSelf: 'center',
         backgroundColor: '#ffffff',
-        width: '80%',
-        height: '50%',
+        width: '87%',
+        height: '60%',
         justifyContent: "center",
         alignItems: "center",
         shadowColor: "#000",
@@ -43,29 +43,49 @@ const style = StyleSheet.create({
     },
     usernamecontainer: {
         alignSelf: "center",
-        backgroundColor: '#ffffff',
-        borderRadius: 10,
-        borderWidth: 1,
-        width: 260,
-        height: 45,
+        borderBottomWidth: 1.5,
+        width: 220,
+        height: 35,
         justifyContent:"space-between",
         flexDirection: "column",
-        marginTop: 20
+        marginTop: 20,
+        textAlignVertical: 'top',
+        paddingLeft: "4%",
     }, 
+    usernamecontainerFocus:{
+
+    },
     passwordcontainer: {
         alignSelf: "center",
-        backgroundColor: '#ffffff',
-        borderRadius: 10,
-        borderWidth: 1,
-        width: 260,
+        borderBottomWidth: 1,
+        width: 200,
         height: 45,
         justifyContent:"space-between",
         flexDirection: "column",
-        marginTop: 20
+        marginTop: 20,
+        textAlignVertical: 'top',
+        paddingLeft: "10%",
+        paddingTop: 5
     },
     loginScreenBtns:{
         flexDirection: 'row',
         marginTop: 35
+    },
+    loginUsernameContainer:{
+        flexDirection: 'row',
+    },
+    loginUsernameText:{
+        marginTop: "7%",
+        fontSize: 25,
+        fontFamily: 'Optima'
+    },
+    loginPasswordContainer:{
+        flexDirection: 'row',
+    },
+    loginPasswordText:{
+        marginTop: "9%",
+        fontSize: 25,
+        fontFamily: 'Optima'
     },
     //Buttons
     signUpBtn: {
@@ -122,15 +142,6 @@ const style = StyleSheet.create({
     },
     mainLbl: {
         marginTop: 50
-    },
-    //Edit Account Screen
-    input: {
-        height: 30,
-        width: '80%',
-        borderColor: 'gray', 
-        borderWidth: 2,
-        paddingLeft: 10,
-        alignSelf: 'center'
     },
     //Login Screen 
     loginContainer: {
@@ -217,52 +228,6 @@ const style = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#fff'
     },
-    //Sign Up Screen
-    signUpContainer: {
-        flex: 1,
-        alignItems: "center",
-        backgroundColor: 'rgb(112,112,112)'
-    },
-    signUpCard: {
-        marginTop: 20,
-        alignSelf: 'center',
-        backgroundColor: '#ffffff',
-        width: '80%',
-        height: '40%',
-        justifyContent: "center",
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-	        width: 0,
-	        height: 5,
-        },
-        shadowOpacity: 0.36,
-        shadowRadius: 8,
-        elevation: 11,
-        borderRadius:10,
-        borderWidth: 1,
-        borderColor: '#fff'
-    },
-    signUpTxt: {
-        paddingTop: 200,
-        paddingBottom: 50,
-        fontWeight: 'bold',
-        fontSize: 18,
-        alignSelf: 'center'
-    },
-    txtInput: {
-        alignSelf: "center",
-        backgroundColor: '#ffffff',
-        width: 300,
-        justifyContent:"space-between",
-        flexDirection: "column",
-        marginTop: 20
-    },
-    bgImage: {
-        flex: 1,
-        resizeMode: "cover",
-        justifyContent: "center"
-    },
     //Account Info
     accountInfo:{
         textAlign: 'center',
@@ -306,7 +271,119 @@ const style = StyleSheet.create({
     accountHeader:{
         fontFamily: 'Optima-Bold',
         fontSize: 20
-    }
+    },
+    //EDIT SCREEN
+    editText:{
+        marginLeft: 20,
+        marginTop: 10,
+        fontSize: 15,
+        fontFamily: 'Optima'
+    },
+    input: {
+        height: 30,
+        width: '60%',
+        borderColor: 'gray', 
+        borderBottomWidth: 2,
+        paddingLeft: 10,
+        marginLeft: 40,
+    },
+    updateInfoBtn:{
+        fontSize: 10,
+        marginLeft: 10,
+    },
+    updateInfoBtnText:{
+        fontSize: 15,
+        fontFamily: 'Optima-Bold',
+        paddingLeft: 5,
+        paddingTop: 12
+    },  
+    editHoriz:{
+        flexDirection: 'row',
+    },
+    editScrnHeader:{
+        fontSize: 30,
+        marginBottom: 40,
+        fontFamily: 'Optima'
+    },
+    updateAllBtn:{
+        paddingTop: 10
+    },
+    updateAllText:{
+        marginTop: 15,
+        borderWidth: 1,
+        borderRadius: 8,
+        paddingTop: 12,
+        width: 125,
+        height: 45,
+        textAlign: 'center'
+    },
+    //Sign Up Screen
+    signUpCard: {
+        marginTop: 100,
+        alignSelf: 'center',
+        backgroundColor: '#ffffff',
+        width: '87%',
+        height: '60%',
+        justifyContent: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 0,
+	        height: 5,
+        },
+        shadowOpacity: 0.36,
+        shadowRadius: 8,
+        elevation: 11,
+        borderRadius:10,
+        borderWidth: 1,
+        borderColor: '#fff',
+        paddingLeft: 10
+    }, 
+    signUpContainer: {
+        flex: 1,
+        backgroundColor: 'rgb(112,112,112)'
+    },
+    signUpTxt:{
+        marginTop: 20,
+        marginRight: 10, 
+        width: 110,
+        fontSize: 15
+    },
+    txtInput: {
+        width: '50%',
+        marginTop: 20,
+        borderBottomWidth: 1,
+        paddingLeft: 5,
+        paddingRight: 5,
+    },
+    bgImage: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center"
+    },
+    signUpScreenHeader:{
+        alignSelf: 'center',
+        fontSize: 30,
+        fontFamily: 'Optima-Bold'
+    },
+    signInBtn:{
+        borderRadius: 10,
+        borderColor: 'blue',
+        borderWidth: 1,
+        width: 175,
+        height: 60,
+        marginRight: 5
+    },
+    signInBtnText:{
+        alignSelf: 'center',
+        paddingTop: 20,
+        fontSize: 17,
+        fontFamily: 'Optima'
+    },
+    signUpButtons:{
+        flexDirection: 'row',
+        marginTop: 25,
+        alignSelf: 'center'
+    },
 });
 
 export default style;

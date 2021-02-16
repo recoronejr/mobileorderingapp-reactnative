@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 
 import { auth } from 'firebase'
 import style from '../../constants/Styles'
@@ -12,17 +12,27 @@ import MainNavigation from '../../navigation/MainNavigation'
 import UserInputs from '../UserInfoComps/UserInputs'
 
 const LoginCard = ({ navigation }) =>{
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
         return(
-            <View style={style.loginCard}>
+            <View style={style.backgroundCard}>
             <HeaderComp />
-            <View style={style.usernamecontainer}>
-                <UserInputs placeholder="Email" onChangeText={email => setEmail(email)} style={style.emailInput} />
+
+            <View style={style.loginUsernameContainer}>
+                <Text style={style.loginUsernameText}>Email: </Text>
+                <View>
+                    <UserInputs onChangeText={email => setEmail(email)} style={style.usernamecontainer}/>
+                </View>
             </View>
-            <View style={style.passwordcontainer}>
-                <PasswordComp placeholder="Password" onChangeText={(password) => setPassword(password)} style={style.passwordinput} />
+
+            <View style={style.loginPasswordContainer}>
+                <Text style={style.loginPasswordText}>Password: </Text>
+                <View style={style.passwordcontainer}>
+                    <PasswordComp onChangeText={(password) => setPassword(password)} style={style.passwordinput} />
+                </View>
             </View>
+
             <View style={style.loginScreenBtns}>
                 <LoginButton onPress={() => {    
                     auth()
@@ -40,5 +50,8 @@ const LoginCard = ({ navigation }) =>{
         </View>   
     )
 }
+
+
+
 
 export default LoginCard;
