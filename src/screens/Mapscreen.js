@@ -55,7 +55,7 @@ export default class MapScreen extends React.Component {
             //Will return null until datasource is properly saved to state
             <SafeAreaView>
                 <Map />
-                <Text style={{fontSize:40}}>Locations</Text>
+                <Text style={style.mapScreenLocationHeader}>Locations</Text>
                 <FlatList data={this.state.locations}
                 renderItem={this.renderItem} style={style.locationDataBackground}/>
                 
@@ -66,7 +66,7 @@ export default class MapScreen extends React.Component {
     const Location = ({title, address}) => {
         const [modalVisible, setModalVisible] = useState(false);
         return (
-            <View style={style.menuItem}>
+            <View style={style.mapScreenLocationContainer}>
                 <Text style={style.title}>{title}</Text>
                 <Text> From {address} </Text>
             </View> 

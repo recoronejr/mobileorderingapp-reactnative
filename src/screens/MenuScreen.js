@@ -83,14 +83,20 @@ export default class MenuScreen extends React.Component {
         });
         return (
             <SafeAreaView style={style.menuScreenContainer}>
+                
                 <Text style={style.merchantNameText}>{merchantName}</Text>
-                <Text style={style.menuScreenText}>What would you like? </Text>
+                
                 <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
+                <Text style={style.menuScreenText}>What would you like? </Text>
                     {menuItems}    
                 </ScrollView> 
-                <TouchableOpacity style={style.menuOrderBtn}>
-                    <Text style={style.menuOrderBtnText}>Place Order Total: $0.00</Text>
-                </TouchableOpacity>
+                
+                <View style={style.menuScreenFooter}>
+                <Text style={style.menuOrderTotalTxt}>Order Total: {'$0.00'}</Text>
+                    <TouchableOpacity style={style.menuOrderBtn}>
+                        <Text style={style.menuOrderBtnText}>Place Order</Text>
+                    </TouchableOpacity>
+                </View>
             </SafeAreaView>
         )
     }

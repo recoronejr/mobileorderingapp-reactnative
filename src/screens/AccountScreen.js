@@ -9,8 +9,8 @@ import style from '../constants/Styles'
 export default class AccountScreen extends React.Component {
     render() {
         return (
-            <View style = {style.container}>
-                <View style = {style.mainLbl}>
+            <View style = {style. accountScreenContainer}>
+                <View style = {style.backgroundCard}>
                 <Text style={style.accountHeader} text='account details'>Account Details</Text>
                     <GetUserInfo />
                     <View style={style.accountScreenBtns}>

@@ -129,13 +129,6 @@ const style = StyleSheet.create({
         fontSize: 20,
         fontFamily: 'Optima'
     },
-    //Map 
-    map:{
-        height: "65%"
-    },
-    mainLbl: {
-        marginTop: 50
-    },
     //Login Screen 
     loginContainer: {
         flex: 1,
@@ -149,11 +142,18 @@ const style = StyleSheet.create({
         marginTop: 50,
     },
     //Map Screen
+    map:{
+        height: "60%",
+        borderWidth: 1
+    },
+    mainLbl: {
+        marginTop: 50
+    },
     mapContainer: {
         flex: 1,
         backgroundColor:'#ffffff',
     },
-    menuItem: {
+    mapScreenLocationContainer: {
         backgroundColor:'#ffffff',
         alignSelf:"center",
         width:"75%",
@@ -170,8 +170,10 @@ const style = StyleSheet.create({
         padding: 5,
         height: 60
     },
-    locationDataBackground:{
-        
+    mapScreenLocationHeader:{
+        fontSize: 40,
+        fontFamily: 'Optima-Bold',
+        textAlign: 'center'
     },
     //Order Screen
     mainLbl: {
@@ -351,26 +353,37 @@ const style = StyleSheet.create({
         alignSelf: 'center'
     },
     //MENU SCREEN
-    menuScreenText:{
-        fontSize:32
-    },
     merchantNameText:{
-        fontSize:40
+        fontSize: 40,
+        alignSelf: 'center',
+        fontFamily: 'Optima',
+        padding: 5
+    },
+    menuScreenText:{
+        fontSize:32,
+        alignSelf: 'center',
+        fontFamily: 'Optima',
+        marginBottom: 15,
+        marginTop: 5
     },
     menuCard: {
         backgroundColor: '#ffffff',
-        width: '80%',
-        height: 240,
+        width: '95%',
         alignSelf: "center",
         flexGrow: 1,
         marginBottom: 10,
         padding: 10,
+        borderWidth: 1,
+        borderRadius: 10
     },
-    item:{
+    menuItem:{
         alignSelf:'stretch'
     },
     menuItemDesc: {
         marginTop: 10,
+        marginBottom: 10,
+        padding: 20,
+        fontFamily: 'Optima'
     },
     menuScreenScrollView: {
         flexGrow:1,
@@ -380,23 +393,44 @@ const style = StyleSheet.create({
     },
     menuItemImg: {
         alignSelf: 'center',
-        width: '100%',
-        height: 100
+        width: '80%',
+        height: 175,
+        borderWidth: 1,
+        borderRadius: 10,
+        marginTop: 20,
+        marginBottom: 15
     },
     menuOrderBtn: {
-        height:50,
-        backgroundColor: 'lightgray',
+        height: 50,
+        alignSelf: 'flex-end',
+        width: '40%',
+        padding: 10,
+        margin: 5,
+        marginLeft: '10%',
+        borderWidth: 1,
+        borderRadius: 4
     },
     menuOrderBtnText:{
-        alignSelf: 'center',
+        textAlign: 'center',
+        textAlignVertical:'center',
         fontSize: 24,
-        textAlignVertical:'center'
+        fontFamily: 'Optima'
     },
     menuItemText:{
-        fontSize:28
+        fontSize:28,
+        padding: 10,
+        fontFamily: 'Optima'
     },
     menuScreenContainer:{
         flex: 1
+    },
+    menuOrderTotalTxt:{
+        marginTop: 20,
+        fontSize: 20,
+        textAlign: 'center'
+    },
+    menuScreenFooter:{
+        flexDirection: 'row',
     }
 });
 
