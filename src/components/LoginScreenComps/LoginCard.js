@@ -21,8 +21,8 @@ const LoginCard = ({ navigation }) =>{
 
             <View style={style.loginUsernameContainer}>
                 <Text style={style.loginUsernameText}>Email: </Text>
-                <View style={style.usernamecontainer}>
-                    <UserInputs onChangeText={email => setEmail(email)} style={style.emailInput}/>
+                <View>
+                    <UserInputs onChangeText={email => setEmail(email)} style={style.usernamecontainer}/>
                 </View>
             </View>
 

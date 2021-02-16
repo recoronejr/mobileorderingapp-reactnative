@@ -29,37 +29,37 @@ const SignUpScreen = ({ navigation }) => {
             </View>
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>First Name: </Text>
-                    <UserInputs defaultValue = {firstName} onChangeText={firstName => setFirstName(firstName)} />
+                    <UserInputs style={style.txtInput} defaultValue = {firstName} onChangeText={firstName => setFirstName(firstName)} />
                 </View>
 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>Last Name: </Text>
-                    <UserInputs defaultValue = {lastName} onChangeText={lastName => setlastName(lastName)}  />
+                    <UserInputs style={style.txtInput} defaultValue = {lastName} onChangeText={lastName => setlastName(lastName)}  />
                 </View>
                 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>User Name: </Text>
-                    <UserInputs defaultValue = {username} onChangeText={username => setUsername(username)} />
+                    <UserInputs style={style.txtInput} defaultValue = {username} onChangeText={username => setUsername(username)} />
                 </View>
                 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>Phone Number: </Text>
-                    <UserInputs defaultValue = {phoneNumber} onChangeText={phoneNumber => setPhoneNumber(phoneNumber)} style={style.emailInput} />
+                    <UserInputs style={style.txtInput} defaultValue = {phoneNumber} onChangeText={phoneNumber => setPhoneNumber(phoneNumber)} style={style.emailInput} />
                 </View>
                 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>Email: </Text>
-                    <UserInputs defaultValue = {email} onChangeText={email => setEmail(email)} style={style.emailInput} />
+                    <UserInputs style={style.txtInput} defaultValue = {email} onChangeText={email => setEmail(email)} style={style.emailInput} />
                 </View>
 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>Password: </Text>
-                    <UserInputs defaultValue = {password} onChangeText={password => setPassword(password)}  style={style.passwordinput}  secureTextEntry= {true} />
+                    <UserInputs style={style.txtInput} defaultValue = {password} onChangeText={password => setPassword(password)}  style={style.passwordinput}  secureTextEntry= {true} />
                 </View>
 
                 <View style={style.editHoriz}>
                     <Text style={style.signUpTxt}>Verify Password: </Text>
-                    <UserInputs defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)}  secureTextEntry= {true} />
+                    <UserInputs style={style.txtInput} defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)}  secureTextEntry= {true} />
                 </View>
                 <View style={style.signUpButtons}>
                     <LoginButton title = 'Login' rounded style={style.loginbtn} onPress={() => {

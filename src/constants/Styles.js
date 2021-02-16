@@ -50,7 +50,7 @@ const style = StyleSheet.create({
         flexDirection: "column",
         marginTop: 20,
         textAlignVertical: 'top',
-        paddingLeft: "4%"
+        paddingLeft: "4%",
     }, 
     usernamecontainerFocus:{
 
@@ -353,7 +353,7 @@ const style = StyleSheet.create({
         marginTop: 20,
         borderBottomWidth: 1,
         paddingLeft: 5,
-        paddingRight: 5
+        paddingRight: 5,
     },
     bgImage: {
         flex: 1,
