@@ -40,7 +40,7 @@ export default class MainScreen extends React.Component {
         } 
         else {
             return (
-                <Stack.Navigator initialRouteName = "MapScreen" style={style.navigator}>
+                <Stack.Navigator initialRouteName = "MapScreen" style={style.mainScreenNavigator}>
                     <Stack.Screen name="MapScreen" component={MapScreen} />
                     <Stack.Screen name="Locations" component={MapScreen} />
                     <Stack.Screen name="MenuScreen" component={MenuScreen} />

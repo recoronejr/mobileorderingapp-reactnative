@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
-import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView} from 'react-native';
+import { View, Text, ImageBackground, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { color } from 'react-native-reanimated';
 
+import {imgs} from '../components/UniversalComps/BackgroundImages'
 import style from '../constants/Styles'
 
 const {height} = Dimensions.get('window')
@@ -81,15 +82,15 @@ export default class MenuScreen extends React.Component {
                 </TouchableOpacity>
             ) 
         });
+        let img = imgs.getCustomBackground();
         return (
-            <SafeAreaView style={style.menuScreenContainer}>
-                
+            <ImageBackground source={img} style={style.imgBackground}>
+            <SafeAreaView style={style.backgroundContainer}>
                 <Text style={style.merchantNameText}>{merchantName}</Text>
-                
-                <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
-                <Text style={style.menuScreenText}>What would you like? </Text>
-                    {menuItems}    
-                </ScrollView> 
+                    <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
+                    <Text style={style.menuScreenText}>What would you like? </Text>
+                        {menuItems}    
+                    </ScrollView> 
                 
                 <View style={style.menuScreenFooter}>
                 <Text style={style.menuOrderTotalTxt}>Order Total: {'$0.00'}</Text>
@@ -98,6 +99,7 @@ export default class MenuScreen extends React.Component {
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
+            </ImageBackground>
         )
     }
 }

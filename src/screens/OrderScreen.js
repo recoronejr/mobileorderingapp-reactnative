@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
+import { Navigator, ImageBackground, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
+
+import {imgs} from '../components/UniversalComps/BackgroundImages'
 
 import style from '../constants/Styles'
 export default class OrderScreen extends React.Component {
@@ -17,14 +19,17 @@ export default class OrderScreen extends React.Component {
     render() {
         
         const { navigation: { navigate } } = this.props;
+        let img = imgs.getCustomBackground();
 
         return (
-            <View style = {style.container}>
-                <View style = {style.mainLbl}>
-                <Text>You have no active orders</Text>
+            <ImageBackground source={img} style={style.imgBackground}>
+            <View style = {style.backgroundContainer}>
+                <View style = {style.backgroundCard}>
+                    <Text>You have no active orders</Text>
                 </View>
                 
             </View>
+            </ImageBackground>
         );
     }
 }

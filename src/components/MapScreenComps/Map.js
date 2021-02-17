@@ -14,10 +14,7 @@ const Map = ({navigation}) => {
                 longitude: -84.513016,
                 latitudeDelta: 0.0200,
                 longitudeDelta: 0.0200
-            }}
-        >
-
-        </MapView>
+            }}/>
     )
 }
 

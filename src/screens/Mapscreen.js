@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
-import { View, Text, FlatList, StyleSheet, Button,  Modal, Alert, TouchableHighlight} from 'react-native';
+import { View, Text, FlatList, ImageBackground, StyleSheet, Button,  Modal, Alert, TouchableHighlight} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-navigation';
 import Map from '../components/MapScreenComps/Map'
 import OrderMenu from './MenuScreen'
+import {imgs} from '../components/UniversalComps/BackgroundImages'
 
 import style from '../constants/Styles'
 export default class MapScreen extends React.Component {
@@ -51,15 +52,16 @@ export default class MapScreen extends React.Component {
     }
     render() {
         const { navigate } = this.props.navigation;
+        let img = imgs.getCustomBackground();
         return (
             //Will return null until datasource is properly saved to state
-            <SafeAreaView>
-                <Map />
-                <Text style={style.mapScreenLocationHeader}>Locations</Text>
-                <FlatList data={this.state.locations}
-                renderItem={this.renderItem} style={style.locationDataBackground}/>
-                
-            </SafeAreaView>
+            <ImageBackground source={img} style={style.imgBackground}>
+                <SafeAreaView style={style.backgroundContainer}>
+                    <Map />
+                    <Text style={style.mapScreenLocationHeader}>Locations</Text>
+                    <FlatList data={this.state.locations} renderItem={this.renderItem} style={style.locationDataBackground}/>
+                </SafeAreaView>
+            </ImageBackground>
         ) 
     }   
 }

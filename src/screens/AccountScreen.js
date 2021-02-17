@@ -1,15 +1,18 @@
 import React from 'react';
-import { Navigator, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
+import { Navigator, View, Button, ImageBackground, Text, StyleSheet, TextInput, Image } from 'react-native';
 
 import GetUserInfo from '../components/UserInfoComps/UserInfo'
-import HeaderComp from '../components/UniversalComps/HeaderComp'
 import { SignOutButton, EditButton } from '../components/UniversalComps/ButtonComp';
+
+import {imgs} from '../components/UniversalComps/BackgroundImages'
 
 import style from '../constants/Styles'
 export default class AccountScreen extends React.Component {
     render() {
+        let img = imgs.getCustomBackground();
         return (
-            <View style = {style. accountScreenContainer}>
+            <ImageBackground source={img} style={style.imgBackground}>
+            <View style = {style.backgroundContainer}>
                 <View style = {style.backgroundCard}>
                 <Text style={style.accountHeader} text='account details'>Account Details</Text>
                     <GetUserInfo />
@@ -19,6 +22,7 @@ export default class AccountScreen extends React.Component {
                     </View>
                 </View>
             </View>
+            </ImageBackground>
         );
     }
 }
