@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { firebaseApp } from '../api/firebase'
 import MainScreen from './MainScreen';
 
-import {imgs} from '../components/UniversalComps/BackgroundImages'
+import {imgs} from '../components/UniversalComps/Images'
 
 import style from '../constants/Styles'
 

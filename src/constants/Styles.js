@@ -9,22 +9,12 @@ const style = StyleSheet.create({
     backgroundCard: {
         marginTop: 100,
         alignSelf: 'center',
-        backgroundColor: '#ffffff',
+        backgroundColor: 'rgba(230, 230, 230, 0.8)',
         width: '87%',
         height: '60%',
         justifyContent: "center",
         alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-	        width: 0,
-	        height: 5,
-        },
-        shadowOpacity: 0.36,
-        shadowRadius: 8,
-        elevation: 11,
         borderRadius:10,
-        borderWidth: 1,
-        borderColor: '#fff'
     },
     customBackgroundImage:{
         width: '100%', 
@@ -40,7 +30,7 @@ const style = StyleSheet.create({
         borderColor: 'gray', 
         borderBottomWidth: 2,
         paddingLeft: 10,
-        marginLeft: 40,
+        marginLeft: 40
     }, 
     title:{
         fontSize: 20,
@@ -54,7 +44,13 @@ const style = StyleSheet.create({
         marginTop: 20,
         borderBottomWidth: 1,
         paddingLeft: 5,
-        paddingRight: 5,
+        paddingRight: 5
+    },
+    //ICONS 
+    burgerIcon:{
+        alignSelf: 'center',
+        width: "20%",
+        height: '10%'
     },
     //Account Screen
     accountInfo:{
@@ -92,31 +88,35 @@ const style = StyleSheet.create({
     //Button Comp
     loginbtn: {
         borderRadius: 10,
-        borderColor: 'blue',
+        borderColor: 'rgba(230, 230, 230, 1)',
         borderWidth: 1,
         width: 125,
         height: 60,
-        marginRight: 5
+        marginRight: 5,
+        backgroundColor: 'rgba(0, 100, 200, 1)',
     },
     loginBtnTxt:{
         fontFamily: 'Optima',
         fontSize: 18,
         textAlign: 'center',
-        paddingTop: 18
+        paddingTop: 18,
+        color: 'rgba(230, 230, 230, 1)'
     },
     signUpBtn: {
         borderRadius: 10,
-        borderColor: 'blue',
+        borderColor: 'rgba(230, 230, 230, 1)',
         borderWidth: 1,
         width: 125,
         height: 60,
-        marginLeft: 5
+        marginLeft: 5,
+        backgroundColor: 'rgba(0, 100, 200, 1)',
     },
     signUpBtnTxt:{
         fontFamily: 'Optima',
         fontSize: 18,
         textAlign: 'center',
-        paddingTop: 18
+        paddingTop: 18,
+        color: 'rgba(230, 230, 230, 1)'
     },  
     editBtn:{
         borderRadius: 10,
@@ -170,6 +170,7 @@ const style = StyleSheet.create({
     },
     //Login Screen 
     loginHeader: {
+        marginTop: 25,
         paddingBottom: 50,
         fontWeight: 'bold',
         fontSize: 25,
@@ -177,9 +178,10 @@ const style = StyleSheet.create({
         fontFamily: 'Optima-Bold'
     },
     loginUsernameText:{
-        marginTop: "7%",
+        marginTop: "5%",
         fontSize: 25,
-        fontFamily: 'Optima'
+        fontFamily: 'Optima',
+        borderBottomWidth: 1.5
     },
     loginUsernameInput: {
         alignSelf: "center",
@@ -194,17 +196,20 @@ const style = StyleSheet.create({
     }, 
     loginPasswordText:{
         marginTop: "7%",
+        marginBottom: 0.5,
+        marginLeft: 0,
         fontSize: 25,
-        fontFamily: 'Optima'
+        fontFamily: 'Optima', 
+        borderBottomWidth: 1.5,
     },
-    loginPasswordWrap:{
+    loginWrapper:{
         flexDirection: 'row'
     },
     loginPasswordInput:{
         alignSelf: "center",
         borderBottomWidth: 1.5,
-        width: 200,
-        height: 35,
+        width: 180,
+        height: 40,
         justifyContent:"space-between",
         flexDirection: "column",
         marginTop: 20,
@@ -232,6 +237,10 @@ const style = StyleSheet.create({
         backgroundColor: '#000000',
     },
     //Map Screen
+    mapScreenBackgroundImg:{
+        height: '100%',
+        width: '100%'
+    },
     map:{
         height: "60%",
         borderWidth: 1,
@@ -240,13 +249,13 @@ const style = StyleSheet.create({
     mapScreenLocationHeader:{
         fontSize: 40,
         fontFamily: 'Optima-Bold',
-        textAlign: 'center'
+        color: '#FFF',
+        padding: 10
     },
     locationDataBackground:{
         
     },
     mapScreenLocationContainer: {
-        backgroundColor:'#ffffff',
         alignSelf:"center",
         width:"75%",
         shadowColor: "#000",
@@ -254,12 +263,25 @@ const style = StyleSheet.create({
 	        width: 0,
 	        height: 5,
         },
-        borderColor: 'blue',
         elevation: 11,
         borderRadius:10,
-        borderWidth: 1,
+        borderColor: '#FFF',
         marginTop: 10,
         padding: 5,
+        height: 60,
+        backgroundColor: 'rgba(0, 100, 200, .7)'
+    },
+    mapScreenLocatonTitle:{
+        color: 'white',
+        fontSize: 20,
+        fontFamily: 'Optima-Bold',
+        paddingLeft: 10
+    },  
+    mapScreenLocationAddress:{
+        color: 'white',
+        fontSize: 15,
+        fontFamily: 'Optima',
+        textAlign: 'center',
         height: 60
     },
     //Order Screen
@@ -279,44 +301,37 @@ const style = StyleSheet.create({
         fontSize: 15
     },
     //MENU SCREEN
-    merchantNameText:{
-        fontSize: 40,
-        alignSelf: 'center',
-        fontFamily: 'Optima',
-        padding: 5
-    },
-    menuScreenText:{
-        fontSize:32,
-        alignSelf: 'center',
-        fontFamily: 'Optima',
-        marginBottom: 15,
-        marginTop: 5
+    menuItem:{
+        
     },
     menuCard: {
-        backgroundColor: '#ffffff',
-        width: '95%',
+        backgroundColor: 'rgba(230, 230, 230, 0.8)',
+        width: '85%',
         alignSelf: "center",
         flexGrow: 1,
         marginBottom: 10,
         padding: 10,
         borderWidth: 1,
-        borderRadius: 10
+        borderRadius: 10,
+        borderColor: '#FFF'
     },
-    menuItem:{
-        alignSelf:'stretch'
+    menuSideBySide:{
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
     },
-    menuItemDesc: {
-        marginTop: 10,
-        marginBottom: 10,
-        padding: 20,
-        fontFamily: 'Optima'
+    menuItemName:{
+        width: '65%',
+        fontSize: 25,
+        padding: 10,
+        fontFamily: 'Optima-Bold'
     },
-    menuScreenScrollView: {
-        flexGrow:1,
-    },
-    menuScreenScroll: {
-        flex:1,
-    },
+    menuItemPrice:{
+        width: '35%',
+        fontSize: 25,
+        padding: 10,
+        fontFamily: 'Optima-Bold',
+        textAlign: 'right',
+    },  
     menuItemImg: {
         alignSelf: 'center',
         width: '80%',
@@ -324,7 +339,55 @@ const style = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         marginTop: 20,
-        marginBottom: 15
+        marginBottom: 15,
+    },
+    menuItemDescContainer:{
+        backgroundColor: 'rgba(0, 100, 200, .7)',
+        borderWidth: 1,
+        borderColor: '#FFF',
+        borderRadius: 10
+    },
+    menuItemDesc: {
+        marginTop: 10,
+        marginBottom: 10,
+        padding: 15,
+        fontFamily: 'Optima',
+        fontSize: 15,
+        color: '#FFF',
+    },
+    merchantTextWrapper:{
+        backgroundColor: 'rgba(0, 100, 200, .7)',
+        width: '100%',
+        height: 80,
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+        borderColor: '#FFF',
+        borderWidth: 1
+    },
+    merchantNameText:{
+        fontSize: 45,
+        textAlign: 'center',
+        fontFamily: 'Optima',
+        padding: 20,
+        color: '#FFF'
+    },
+    menuScreenScrollView: {
+        flexGrow: 1,
+        marginTop: 10
+    },
+    menuScreenScroll: {
+        flex:1,
+    },
+    menuScreenFooter:{
+        flexDirection: 'row',
+        backgroundColor: 'rgba(0, 100, 200, .6)',
+    },
+    menuOrderTotalTxt:{
+        marginTop: 20,
+        marginLeft: 10,
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#FFF'
     },
     menuOrderBtn: {
         height: 50,
@@ -334,29 +397,21 @@ const style = StyleSheet.create({
         margin: 5,
         marginLeft: '10%',
         borderWidth: 1,
-        borderRadius: 4
+        borderRadius: 4,
+        borderColor: '#FFF'
     },
     menuOrderBtnText:{
         textAlign: 'center',
         textAlignVertical:'center',
         fontSize: 24,
-        fontFamily: 'Optima'
+        fontFamily: 'Optima',
+        color: '#FFF'
     },
-    menuItemText:{
-        fontSize:28,
-        padding: 10,
-        fontFamily: 'Optima'
+    item:{
+       
     },
-    menuScreenContainer:{
-        flex: 1
-    },
-    menuOrderTotalTxt:{
-        marginTop: 20,
-        fontSize: 20,
-        textAlign: 'center'
-    },
-    menuScreenFooter:{
-        flexDirection: 'row',
+    title:{
+        
     },
 });
 

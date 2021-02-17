@@ -4,7 +4,7 @@ import { Navigator, View, Button, ImageBackground, Text, StyleSheet, TextInput, 
 import GetUserInfo from '../components/UserInfoComps/UserInfo'
 import { SignOutButton, EditButton } from '../components/UniversalComps/ButtonComp';
 
-import {imgs} from '../components/UniversalComps/BackgroundImages'
+import {imgs} from '../components/UniversalComps/Images'
 
 import style from '../constants/Styles'
 export default class AccountScreen extends React.Component {

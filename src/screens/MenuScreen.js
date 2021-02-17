@@ -4,7 +4,7 @@ import { View, Text, ImageBackground, FlatList, StyleSheet, Button, TouchableOpa
 import { ScrollView } from 'react-native-gesture-handler';
 import { color } from 'react-native-reanimated';
 
-import {imgs} from '../components/UniversalComps/BackgroundImages'
+import {imgs} from '../components/UniversalComps/Images'
 import style from '../constants/Styles'
 
 const {height} = Dimensions.get('window')
@@ -71,29 +71,40 @@ export default class MenuScreen extends React.Component {
             let image = this.getImageById(val.image_id)
             let itemName = val.item_data.name;
             let itemDesc = val.item_data.description;
+            
+            let itemPrice = '$0.00'
 
+            //These are what are displayed
             return (
                 <TouchableOpacity style={style.menuItem}>
                     <View key={key} style={style.menuCard}>
-                        <Text style={style.menuItemText}>{itemName}</Text>
+                        <View style={style.menuSideBySide}>
+                            <Text style={style.menuItemName}>{itemName}</Text>
+                            <Text style={style.menuItemPrice}>{itemPrice}</Text>
+                        </View>
                         <Image style={style.menuItemImg} source={{uri:image}}/>
-                        <Text style={style.menuItemDesc}>{itemDesc}</Text>
+                        <View style={style.menuItemDescContainer}>    
+                            <Text style={style.menuItemDesc}>{itemDesc}</Text>
+                        </View>
                     </View> 
                 </TouchableOpacity>
             ) 
         });
         let img = imgs.getCustomBackground();
+        let totalPrice = '$0.00'
         return (
             <ImageBackground source={img} style={style.imgBackground}>
             <SafeAreaView style={style.backgroundContainer}>
-                <Text style={style.merchantNameText}>{merchantName}</Text>
-                    <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
-                    <Text style={style.menuScreenText}>What would you like? </Text>
-                        {menuItems}    
-                    </ScrollView> 
-                
+                <View style={style.merchantTextWrapper}>
+                    <Text style={style.merchantNameText}>{merchantName}</Text>
+                </View>
+                <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
+                        
+                    {menuItems}    
+                    
+                </ScrollView> 
                 <View style={style.menuScreenFooter}>
-                <Text style={style.menuOrderTotalTxt}>Order Total: {'$0.00'}</Text>
+                    <Text style={style.menuOrderTotalTxt}>Order Total: {totalPrice}</Text>
                     <TouchableOpacity style={style.menuOrderBtn}>
                         <Text style={style.menuOrderBtnText}>Place Order</Text>
                     </TouchableOpacity>
