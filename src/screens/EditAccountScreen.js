@@ -3,7 +3,7 @@ import { View, ImageBackground, Text, StyleSheet, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { firebaseApp } from '../api/firebase'
-import {imgs} from '../components/UniversalComps/BackgroundImages'
+import {imgs} from '../components/UniversalComps/Images'
 
 import UpdateInfoButton, {inputHasChanged, validateEmailInput, validatePhoneNumber, validateFirstName, validateLastName} from '../components/UserInfoComps/UpdateUserInfo'
 import UserInputs from '../components/UserInfoComps/UserInputs'

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Navigator, ImageBackground, View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 
-import {imgs} from '../components/UniversalComps/BackgroundImages'
+import {imgs} from '../components/UniversalComps/Images'
 
 import style from '../constants/Styles'
 export default class OrderScreen extends React.Component {
