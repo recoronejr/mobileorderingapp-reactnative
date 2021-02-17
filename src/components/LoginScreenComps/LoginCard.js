@@ -4,7 +4,6 @@ import { View, StyleSheet, Text } from 'react-native'
 import { auth } from 'firebase'
 import style from '../../constants/Styles'
 
-import HeaderComp from '../UniversalComps/HeaderComp'
 import PasswordComp from '../UserInfoComps/PasswordComp'
 import LoginButton, { SignUpButton } from '../UniversalComps/ButtonComp'
 
@@ -17,19 +16,19 @@ const LoginCard = ({ navigation }) =>{
     const [password, setPassword] = useState('');
         return(
             <View style={style.backgroundCard}>
-            <HeaderComp />
+            <Text style ={style.loginHeader}>Sign In</Text>
 
-            <View style={style.loginUsernameContainer}>
+            <View style={style.sideBySideContainer}>
                 <Text style={style.loginUsernameText}>Email: </Text>
                 <View>
-                    <UserInputs onChangeText={email => setEmail(email)} style={style.usernamecontainer}/>
+                    <UserInputs onChangeText={email => setEmail(email)} style={style.loginUsernameInput}/>
                 </View>
             </View>
 
-            <View style={style.loginPasswordContainer}>
+            <View style={style.sideBySideContainer}>
                 <Text style={style.loginPasswordText}>Password: </Text>
-                <View style={style.passwordcontainer}>
-                    <PasswordComp onChangeText={(password) => setPassword(password)} style={style.passwordinput} />
+                <View style={style.loginPasswordWrap}>
+                    <PasswordComp onChangeText={(password) => setPassword(password)} style={style.loginPasswordInput} />
                 </View>
             </View>
 
