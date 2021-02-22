@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
-import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView} from 'react-native';
+import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView, Modal, Pressable} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { color } from 'react-native-reanimated';
 
@@ -11,16 +11,22 @@ export default class MenuScreen extends React.Component {
         // Save the content height in state
         this.setState({ screenHeight: contentHeight });
     };
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
+    }
     constructor(props) {
         super(props)
         this.state = {
-            menu: [],
+            menu: this.props.route.params.menu,
             menuItems: [],
             menuImages: [],
+            modalVisible: false,
+            variations: [],
+            variation: []
         }
     }
     componentWillMount() {
-        this.setState({menu:this.props.route.params.menu})
+        // this.setState({menu:this.props.route.params.menu})
     }
     getImageById(id){
         for (var i = 0; i < this.state.menuImages.length; i++) {
@@ -29,19 +35,37 @@ export default class MenuScreen extends React.Component {
             }
         }
     }
-    componentDidMount() {
+    getVariationsById(id){
+        const variation = Array();
+        for (var i = 0; i < this.state.variations.length; i++) {
+            if (id == this.state.variations[i].item_variation_data.item_id) {
+                // variation.push(this.state.variations[i]);
+                variation.push(this.state.variations[i]);
+            }
+        }
+        return variation;
+    } 
+       componentDidMount() {
         let items = [];
         let images = [];
+        let { variations } = this.state;
 
         for (var i = 0; i < this.state.menu.length; i++) {
             if (this.state.menu[i].type == "ITEM") {
-                items.push(this.state.menu[i])
+                items.push(this.state.menu[i]);
+                this.state.menu[i].item_data.variations.forEach(e => {
+                    if (e.type == "ITEM_VARIATION") {
+                        variations.push(e);
+                    }
+                });
+
             }
             else if (this.state.menu[i].type == "IMAGE") {
                 images.push(this.state.menu[i])
             }
             this.setState({menuItems: items});
             this.setState({menuImages: images});
+            this.setState({variations: variations})
         }
     }
     renderItem = ({ item }) => {
@@ -63,8 +87,13 @@ export default class MenuScreen extends React.Component {
         const scrollEnabled = true;
         let menuItems = this.state.menuItems.map((val,key) => {
             let image = this.getImageById(val.image_id)
+            let variation = this.getVariationsById(val.id);
+
             return (
-                <TouchableOpacity style={styles.item}>
+                <TouchableOpacity style={styles.item} onPress={() => {
+                    this.props.navigation.navigate("ItemVariationScreen", {variation})
+                   
+                }}>
                     <View key={key} style={styles.card}>
                             <Text style={{fontSize:28}}>{val.item_data.name}</Text>
                             <Image style={styles.img} source={{uri:image}}/>
@@ -127,5 +156,46 @@ const styles = StyleSheet.create({
     orderBtn: {
         height:50,
         backgroundColor: 'lightgray',
-    }
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+      modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+      },
+      buttonOpen: {
+        backgroundColor: "#F194FF",
+      },
+      buttonClose: {
+        backgroundColor: "#2196F3",
+      },
+      textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+      },
+      modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+      }
 })

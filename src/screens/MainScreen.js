@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SafeAreaView } from 'react-navigation'
 import { Navigator, View, Button, Text, StyleSheet, TextInput, Image, Dimensions, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, StackView } from '@react-navigation/stack';
 
 import FirebaseAPI from '../api/firebase';
 
@@ -10,7 +10,7 @@ import MenuScreen from './MenuScreen';
 import MapScreen from "./Mapscreen"
 import OrderScreen from './OrderScreen';
 import EditAccountScreen from './EditAccountScreen';
-
+import ItemVariationScreen from './ItemVariationScreen';
 const Stack = createStackNavigator();
 
 export default class MainScreen extends React.Component {
@@ -42,6 +42,7 @@ export default class MainScreen extends React.Component {
                     <Stack.Screen name="MapScreen" component={MapScreen} />
                     <Stack.Screen name="Locations" component={MapScreen} />
                     <Stack.Screen name="MenuScreen" component={MenuScreen} />
+                    <Stack.Screen name = "ItemVariationScreen" component = {ItemVariationScreen} />
                     <Stack.Screen name="EditAccount" component={EditAccountScreen} />
                 </Stack.Navigator>
                 
