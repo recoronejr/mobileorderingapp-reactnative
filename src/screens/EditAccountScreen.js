@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native'
+import { View, ImageBackground, Text, StyleSheet, Button } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { firebaseApp } from '../api/firebase'
+import {imgs} from '../components/UniversalComps/Images'
 
-import EmailComp from '../components/EmailComp'
-import UpdateUserInfo from '../components/UpdateUserInfo'
-import UserInputs from '../components/UserInputs'
+import UpdateInfoButton, {inputHasChanged, validateEmailInput, validatePhoneNumber, validateFirstName, validateLastName} from '../components/UserInfoComps/UpdateUserInfo'
+import UserInputs from '../components/UserInfoComps/UserInputs'
+
+import style from '../constants/Styles'
 
 class EditAccount extends React.Component{
     render(){
@@ -18,45 +21,62 @@ const EditAccountScreen = () =>{
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNum, setPhoneNumber] = useState('');
-
+    
+    let img = imgs.getCustomBackground();
+    
     return (
-        <View>
+        <ImageBackground source={img} style={style.imgBackground}>
+        <View style={style.backgroundContainer}>
+        <View style={style.backgroundCard}>
             <View>
-                <Text>First Name</Text>
-                <UserInputs style={styles.input} value={firstName} placeholder={firebaseApp.firstName} onChangeText={firstName => setFirstName(firstName)} />
-                <UpdateUserInfo title="Update First Name" defaultValue={firstName} onPress={()=>{ 
-                    firebaseApp.updateFirstName(firstName);
-                    alert("FName updated to " + firstName)
-            }}/>
+                <Text style={style.editScrnHeader}>Edit Account Details: </Text>
             </View>
             <View>
-                <Text>Last Name</Text>
-                <UserInputs style={styles.input} defaultValue={lastName} placeholder={firebaseApp.lastName} onChangeText={lastName => setLastName(lastName)}/>
-                <UpdateUserInfo title="Update Last Name" defaultValue={lastName}/>
+                <Text style={style.editText}>First Name</Text>
+                <View style={style.sideBySideContainer}>
+                    <UserInputs style={style.input} value={firstName} placeholder={firebaseApp.firstName} onChangeText={firstName => setFirstName(firstName)} />
+                    <UpdateInfoButton title="Update" onPress={() => {validateFirstName(firstName)}}/>
+                </View>
             </View>
+
             <View>
-                <Text>Email</Text>
-                <EmailComp style={styles.input} defaultValue={email} placeholder={firebaseApp.email} onChangeText={email => setEmail(email)}/>
-                <UpdateUserInfo title="Update Email" defaultValue={email}/>
+                <Text style={style.editText}>Last Name</Text>
+                <View style={style.sideBySideContainer}>
+                    <UserInputs style={style.input} defaultValue={lastName} placeholder={firebaseApp.lastName} onChangeText={lastName => setLastName(lastName)}/>
+                    <UpdateInfoButton title="Update" defaultValue={lastName} onPress={() => {validateLastName(lastName)}}/>
+                </View>
             </View>
+
             <View>
-                <Text>Phone Number</Text>
-                <UserInputs style={styles.input} defaultValue={phoneNum} placeholder={firebaseApp.phoneNumber} onChangeText={phoneNum => setPhoneNumber(phoneNum)}/>
-                <UpdateUserInfo title="Update Phone Number" value={phoneNum}/>
+                <Text style={style.editText}>Email</Text>
+                <View style={style.sideBySideContainer}>
+                    <UserInputs type='email' style={style.input} defaultValue={email} placeholder={firebaseApp.email} onChangeText={email => setEmail(email)}/>
+                    <UpdateInfoButton title="Update" defaultValue={email} onPress={() => {validateEmailInput(email)}}/>
+                </View>
+            </View>
+
+            <View>
+                <Text style={style.editText}>Phone Number</Text>
+                <View style={style.sideBySideContainer}>    
+                    <UserInputs style={style.input} defaultValue={phoneNum} placeholder={firebaseApp.phoneNumber} onChangeText={phoneNum => setPhoneNumber(phoneNum)}/>
+                    <UpdateInfoButton title="Update" value={phoneNum} onPress={() => {validatePhoneNumber(phoneNum)}}/>
+                </View>
+            </View>
+
+            <View>
+                <TouchableOpacity style={style.updateAllBtn} onPress={()=>{
+                    validateEmailInput(email)
+                    validatePhoneNumber(phoneNum)
+                    validateFirstName(firstName)
+                    validateLastName(lastName)
+                }}>
+                <Text style={style.updateAllText}>Update All</Text>
+                </TouchableOpacity>
             </View>
         </View>
+        </View>
+        </ImageBackground>
     )
 }
-
-const styles = StyleSheet.create({
-    input: {
-        height: 30,
-        width: '80%',
-        borderColor: 'gray', 
-        borderWidth: 2,
-        paddingLeft: 10,
-        alignSelf: 'center'
-    }
-});
 
 export default EditAccountScreen;

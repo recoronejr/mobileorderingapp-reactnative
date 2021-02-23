@@ -6,6 +6,7 @@ export default class PasswordComp extends React.Component{
     constructor(props){
         super(props);
     }
+
     render(){
         return(
             <TextInput placeholder={this.props.placeholder} onChangeText={this.props.onChangeText}  style={this.props.style}  secureTextEntry= {true} />

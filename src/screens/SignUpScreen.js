@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { View, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
+import { View, ImageBackground, Button, Text, StyleSheet, TextInput, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { firebaseApp } from '../api/firebase'
 import MainScreen from './MainScreen';
 
+import {imgs} from '../components/UniversalComps/Images'
 
+import style from '../constants/Styles'
 
+import UserInputs from '../components/UserInfoComps/UserInputs'
+import LoginButton from '../components/UniversalComps/ButtonComp'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SignUpScreen = ({ navigation }) => {
 
@@ -17,131 +22,69 @@ const SignUpScreen = ({ navigation }) => {
     const [password, setPassword] = useState('');
     const [verifyPassword, setVerifyPassword] = useState('');
 
+    let img = imgs.getCustomBackground();
 
     return (
-        <View style={styles.container}>
-            <View style ={styles.card}>
-                <Text style ={styles.signintxt} title = "Sign Up">
-                    Sign Up
-                </Text>
-                <View  rounded style={styles.txtInput}>
-                    <TextInput placeholder='First Name' defaultValue = {firstName} onChangeText={firstName => setFirstName(firstName)} />
-                </View>
-                <View  rounded style={styles.txtInput}>
-                    <TextInput placeholder='Last Name' defaultValue = {lastName} onChangeText={lastName => setlastName(lastName)}  />
-                </View>
-                <View  rounded style={styles.txtInput}>
-                    <TextInput placeholder='Username' defaultValue = {username} onChangeText={username => setUsername(username)} />
-                </View>
-                <View  rounded style={styles.txtInput}>
-                    <TextInput placeholder='Phone Number' defaultValue = {phoneNumber} onChangeText={phoneNumber => setPhoneNumber(phoneNumber)} style={styles.emailInput} />
-                </View>
-                <View  rounded style={styles.txtInput}>
-                    <TextInput placeholder='Email' defaultValue = {email} onChangeText={email => setEmail(email)} style={styles.emailInput} />
+        <ImageBackground source={img} style={style.imgBackground}>
+        <View style={style.backgroundContainer}>
+            <View style ={style.backgroundCard}>
+            <View>
+                <Text style={style.signUpScreenHeader}>Sign Up: </Text>
+            </View>
+                <View style={style.sideBySideContainer}>
+                    <Text style={style.signUpTxt}>First Name: </Text>
+                    <UserInputs style={style.txtInput} defaultValue = {firstName} onChangeText={firstName => setFirstName(firstName)} />
                 </View>
 
-                <View rounded style={styles.txtInput}>
-                    <TextInput placeholder='Password' defaultValue = {password} onChangeText={password => setPassword(password)}  style={styles.passwordinput}  secureTextEntry= {true} />
+                <View style={style.sideBySideContainer}>
+                    <Text style={style.signUpTxt}>Last Name: </Text>
+                    <UserInputs style={style.txtInput} defaultValue = {lastName} onChangeText={lastName => setlastName(lastName)}  />
+                </View>
+                
+                <View style={style.sideBySideContainer}>
+                    <Text style={style.signUpTxt}>User Name: </Text>
+                    <UserInputs style={style.txtInput} defaultValue = {username} onChangeText={username => setUsername(username)} />
+                </View>
+                
+                <View style={style.sideBySideContainer}>
+                    <Text style={style.signUpTxt}>Phone Number: </Text>
+                    <UserInputs style={style.txtInput} defaultValue = {phoneNumber} onChangeText={phoneNumber => setPhoneNumber(phoneNumber)} />
+                </View>
+                
+                <View style={style.sideBySideContainer}>
+                    <Text style={style.signUpTxt}>Email: </Text>
+                    <UserInputs style={style.txtInput} defaultValue = {email} onChangeText={email => setEmail(email)} />
                 </View>
 
-                <View rounded style={styles.txtInput}>
-                    <TextInput placeholder='Verify Password' defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)}  secureTextEntry= {true} />
+                <View style={style.sideBySideContainer}>
+                    <Text style={style.signUpTxt}>Password: </Text>
+                    <UserInputs style={style.txtInput} defaultValue = {password} onChangeText={password => setPassword(password)} secureTextEntry= {true} />
                 </View>
 
-                <Button title = 'Login' rounded style={styles.loginbtn}  
-                onPress={() => {
+                <View style={style.sideBySideContainer}>
+                    <Text style={style.signUpTxt}>Verify Password: </Text>
+                    <UserInputs style={style.txtInput} defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)} secureTextEntry= {true} />
+                </View>
+                <View style={style.signUpButtons}>
+                    <LoginButton title = 'Login' rounded style={style.loginbtn} onPress={() => {
                     // Sign Up
                     if (password == verifyPassword) {
                       firebaseApp.signUp(firstName,lastName,phoneNumber,email,password)
                       return (
                         <MainScreen/>
                       )
-                    }
-                    else {
+                    }else {
                       console.log("Password Do Not Match");
-                    }
-                }}/>
-                <Button title = 'Already have an account?' hasText transparent onPress={() => {
-                    // Go to Sign Up Screen
-                    return (
-                      navigation.navigate("Login")
-                    )
-                    
-                }}/>
-                <Text style ={styles.signintxt}>
-                    
-                </Text>
+                    }}}/>
+                    <TouchableOpacity style={style.signInBtn} onPress={() => { return (navigation.navigate("Login"))}}>
+                            <Text style={style.signInBtnText}>Have an Account?</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
-       
+        </ImageBackground>
     );
 
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        backgroundColor: 'rgb(112,112,112)'
-    },
-    card: {
-        marginTop: 150,
-        alignSelf: 'center',
-        backgroundColor: '#ffffff',
-        width: '80%',
-        height: '40%',
-        justifyContent: "center",
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-	        width: 0,
-	        height: 5,
-        },
-        shadowOpacity: 0.36,
-        shadowRadius: 8,
-        elevation: 11,
-        borderRadius:10,
-        borderWidth: 1,
-        borderColor: '#fff'
-    },
-    loginbtn: {
-        alignSelf: 'center',
-        width: 50,
-        marginTop: 20,
-        
-    },
-    signupbtn: {
-        alignSelf: 'center',
-       
-    },
-    signintxt: {
-        paddingTop: 200,
-        paddingBottom: 50,
-        fontWeight: 'bold',
-        fontSize: 18,
-        alignSelf: 'center'
-    },
-    passwordcontainer: {
-        alignSelf: "center",
-        backgroundColor: '#ffffff',
-        width: 300,
-        justifyContent:"space-between",
-        marginTop: 20,
-    },
-    txtInput: {
-        alignSelf: "center",
-        backgroundColor: '#ffffff',
-        width: 300,
-        justifyContent:"space-between",
-        flexDirection: "column",
-        marginTop: 20,
-    },
-    bgImage: {
-        flex: 1,
-        resizeMode: "cover",
-        justifyContent: "center"
-    }
-
-    });
   
     export default SignUpScreen;
