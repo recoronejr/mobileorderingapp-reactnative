@@ -21,6 +21,10 @@ class BackgroundImages{
         const image = require('../../assets/cityimg.jpg')
         return image
     }
+    getDinerImage(){
+        const image = require('../../assets/TileBackground.jpg')
+        return image
+    }
 }
 
 const imgs = new BackgroundImages();

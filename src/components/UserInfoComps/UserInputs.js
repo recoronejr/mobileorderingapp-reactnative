@@ -9,7 +9,7 @@ export default class UserInputs extends React.Component{
     }
     render(){
         return(
-            <TextInput value={this.props.value} style={this.props.style} placeholder={this.props.placeholder} onChangeText={this.props.onChangeText} secureTextEntry={this.props.secureTextEntry}/>
+            <TextInput value={this.props.value} style={this.props.style} placeholder={this.props.placeholder} placeholderTextColor={this.props.placeholderTextColor} onChangeText={this.props.onChangeText} secureTextEntry={this.props.secureTextEntry}/>
         )
     }
 }

@@ -7,6 +7,8 @@ import { color } from 'react-native-reanimated';
 import {imgs} from '../components/UniversalComps/Images'
 import style from '../constants/Styles'
 
+import {ReviewScreenButton} from '../components/UniversalComps/ButtonComp'
+
 const {height} = Dimensions.get('window')
 
 export default class MenuScreen extends React.Component {
@@ -96,7 +98,10 @@ export default class MenuScreen extends React.Component {
             <ImageBackground source={img} style={style.imgBackground}>
             <SafeAreaView style={style.backgroundContainer}>
                 <View style={style.merchantTextWrapper}>
-                    <Text style={style.merchantNameText}>{merchantName}</Text>
+                    <View style={style.sideBySideContainer}>
+                        <Text style={style.merchantNameText}>{merchantName}</Text>
+                        <ReviewScreenButton />
+                    </View>
                 </View>
                 <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
                         

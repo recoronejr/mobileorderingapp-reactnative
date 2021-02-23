@@ -7,18 +7,28 @@ const style = StyleSheet.create({
         height: '100%'
     },
     backgroundCard: {
-        marginTop: 100,
+        marginTop: 50,
         alignSelf: 'center',
-        backgroundColor: 'rgba(230, 230, 230, 0.8)',
+        backgroundColor: 'rgba(230, 230, 230, 1)',
         width: '87%',
-        height: '60%',
+        height: '65%',
+        borderRadius: 10,
+        alignItems: 'center'
+    },
+    backgroundCardOutline:{
+        height: "97%",
+        width: '97%',
+        borderWidth: 1,
+        borderColor: 'red',
+        borderRadius: 10,
         justifyContent: "center",
         alignItems: "center",
-        borderRadius:10,
+        margin: 5,
+        marginTop: 7
     },
     customBackgroundImage:{
         width: '100%', 
-        height: '100%'
+        height: '100%',
     },
     imgBackground:{
         width: '100%', 
@@ -27,10 +37,12 @@ const style = StyleSheet.create({
     input: {
         height: 30,
         width: '60%',
-        borderColor: 'gray', 
-        borderBottomWidth: 2,
+        borderColor: 'white', 
+        borderBottomWidth: 1,
         paddingLeft: 10,
-        marginLeft: 40
+        marginLeft: 40,
+        marginBottom: 5,
+        color: 'white'
     }, 
     title:{
         fontSize: 20,
@@ -74,17 +86,6 @@ const style = StyleSheet.create({
         fontFamily: 'Optima-Bold',
         fontSize: 20
     },
-    //Update User Account
-    updateInfoBtn:{
-        fontSize: 10,
-        marginLeft: 10,
-    },
-    updateInfoBtnText:{
-        fontSize: 15,
-        fontFamily: 'Optima-Bold',
-        paddingLeft: 5,
-        paddingTop: 12
-    }, 
     //Button Comp
     loginbtn: {
         borderRadius: 10,
@@ -125,7 +126,21 @@ const style = StyleSheet.create({
         width: 140,
         height: 60,
         padding: 10,
-        margin: 10
+        margin: 10,
+        backgroundColor: 'rgba(0, 100, 200, 1)',
+    },
+    editBtnTxt:{
+        fontFamily: 'Optima',
+        fontSize: 18,
+        textAlign: 'center',
+        paddingTop: 10,
+        color: 'rgba(230, 230, 230, 1)'
+    },
+    reviewScrnBtn:{
+
+    },
+    reviewScrnBtnTxt:{
+
     },
     signOutBtn:{
         borderRadius: 10,
@@ -133,35 +148,61 @@ const style = StyleSheet.create({
         borderWidth: 1,
         width: 140,
         height: 60,
-        textAlign: 'center',
+        padding: 10,
         margin: 10,
-        padding: 10
+        backgroundColor: 'rgba(0, 100, 200, 1)',
     }, 
+    signOutBtnTxt:{
+        fontFamily: 'Optima',
+        fontSize: 18,
+        textAlign: 'center',
+        paddingTop: 10,
+        color: 'rgba(230, 230, 230, 1)'
+    },
     updateAllBtn:{
-        paddingTop: 10
+        borderRadius: 10,
+        borderColor: 'blue',
+        borderWidth: 1,
+        width: 140,
+        height: 60,
+        padding: 10,
+        margin: 10,
+        marginTop: 20,
+        backgroundColor: 'rgba(0, 100, 200, 1)'
     },
     updateAllText:{
-        marginTop: 15,
-        borderWidth: 1,
-        borderRadius: 8,
-        paddingTop: 12,
-        width: 125,
-        height: 45,
-        textAlign: 'center'
+        fontFamily: 'Optima',
+        fontSize: 18,
+        textAlign: 'center',
+        paddingTop: 10,
+        color: 'rgba(230, 230, 230, 1)'
     },
+    updateInfoBtn:{
+        fontSize: 10,
+        marginLeft: 10
+    },
+    updateInfoBtnText:{
+        fontSize: 15,
+        fontFamily: 'Optima-Bold',
+        paddingLeft: 5,
+        color: 'white'
+    }, 
     signInBtn:{
         borderRadius: 10,
         borderColor: 'blue',
         borderWidth: 1,
-        width: 175,
+        maxWidth: '100%',
         height: 60,
-        marginRight: 5
+        padding: 10,
+        marginLeft: 10,
+        backgroundColor: 'rgba(0, 100, 200, 1)',
     },
-    signInBtnText:{
-        alignSelf: 'center',
-        paddingTop: 20,
-        fontSize: 17,
-        fontFamily: 'Optima'
+    signInBtnTxt:{
+        fontFamily: 'Optima',
+        fontSize: 18,
+        textAlign: 'center',
+        paddingTop: 10,
+        color: 'rgba(230, 230, 230, 1)'
     },
     signUpButtons:{
         flexDirection: 'row',
@@ -221,16 +262,29 @@ const style = StyleSheet.create({
         marginTop: 35
     },
     //Edit Account Screen
+    editScrnHeaderContainer:{
+        borderBottomWidth: 1,
+        borderBottomColor: 'black',
+        marginBottom: 20
+    },
     editScrnHeader:{
         fontSize: 30,
-        marginBottom: 40,
-        fontFamily: 'Optima'
+        marginTop: 20,
+        fontFamily: 'Optima',
     },
     editText:{
         marginLeft: 20,
         marginTop: 10,
         fontSize: 15,
-        fontFamily: 'Optima'
+        fontFamily: 'Optima',
+        color: 'white'
+    },
+    editAccountScrnInputContainers:{
+        backgroundColor: 'rgba(0, 100, 200, .7)',
+        marginBottom: 2,
+        borderWidth: 1,
+        borderColor: '#fff',
+        borderRadius: 10
     },
     //Main Screen
     mainScreenNavigator:{
@@ -362,7 +416,7 @@ const style = StyleSheet.create({
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
         borderColor: '#FFF',
-        borderWidth: 1
+        borderWidth: 1,
     },
     merchantNameText:{
         fontSize: 45,
@@ -412,6 +466,82 @@ const style = StyleSheet.create({
     },
     title:{
         
+    },
+
+    //Review Screen 
+    reviewScreenProgressText:{
+
+    },
+    container: {
+        flex: 1,
+        backgroundColor: "#F5F8FF",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    reviewContainer: {
+        backgroundColor: "#FFFFFF",
+        borderRadius: 10,
+        paddingHorizontal: 30,
+        paddingVertical: 40,
+        minWidth: "80%",
+        shadowOffset: { width: 0, height: 5 },
+        shadowOpacity: 1.0,
+        shadowRadius: 2,
+        shadowColor: "rgba(193, 211, 251, 0.5)",
+        elevation: 5,
+    },
+    title: {
+        fontWeight: "bold",
+        fontSize: 20,
+        color: "#323357",
+        textAlign: "center",
+    },
+    totalWrap: {
+        marginTop: 20,
+        marginBottom: 5,
+        backgroundColor: "#F5F8FF",
+        borderRadius: 40,
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+    },
+    amountText: {
+        fontSize: 16,
+        color: "#595B71",
+        textAlign: "center",
+    },
+    progressText: {
+        width: 50,
+        fontSize: 14,
+        color: "#2A5BDA",
+    },
+    progressPercentText: { width: 40, fontSize: 14, color: "#323357" },
+    progressMiddle: {
+        height: 15,
+        flex: 1,
+        marginHorizontal: 10,
+    },
+    progressWrap: {
+        backgroundColor: "#F5F8FF",
+        borderRadius: 18,
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        padding: 2,
+    },
+    progressBar: {
+        flex: 1,
+        shadowOffset: { width: 0, height: 0 },
+        shadowColor: "#ffcc48",
+        shadowOpacity: 1.0,
+        shadowRadius: 4,
+        backgroundColor: "#FFCC48",
+        borderRadius: 18,
+        minWidth: 5,
     },
 });
 

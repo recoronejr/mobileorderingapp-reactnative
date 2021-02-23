@@ -19,15 +19,16 @@ export default class OrderScreen extends React.Component {
     render() {
         
         const { navigation: { navigate } } = this.props;
-        let img = imgs.getCustomBackground();
+        let img = imgs.getDinerImage();
 
         return (
             <ImageBackground source={img} style={style.imgBackground}>
             <View style = {style.backgroundContainer}>
                 <View style = {style.backgroundCard}>
-                    <Text>You have no active orders</Text>
+                    <View style={style.backgroundCardOutline}>
+                        <Text>You have no active orders</Text>
+                    </View>
                 </View>
-                
             </View>
             </ImageBackground>
         );

@@ -9,7 +9,7 @@ import {imgs} from '../components/UniversalComps/Images'
 import style from '../constants/Styles'
 
 import UserInputs from '../components/UserInfoComps/UserInputs'
-import LoginButton from '../components/UniversalComps/ButtonComp'
+import LoginButton, {ExistingUserButton} from '../components/UniversalComps/ButtonComp'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SignUpScreen = ({ navigation }) => {
@@ -22,12 +22,13 @@ const SignUpScreen = ({ navigation }) => {
     const [password, setPassword] = useState('');
     const [verifyPassword, setVerifyPassword] = useState('');
 
-    let img = imgs.getCustomBackground();
+    let img = imgs.getDinerImage();
 
     return (
         <ImageBackground source={img} style={style.imgBackground}>
         <View style={style.backgroundContainer}>
             <View style ={style.backgroundCard}>
+            <View style={style.backgroundCardOutline}>
             <View>
                 <Text style={style.signUpScreenHeader}>Sign Up: </Text>
             </View>
@@ -66,7 +67,7 @@ const SignUpScreen = ({ navigation }) => {
                     <UserInputs style={style.txtInput} defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)} secureTextEntry= {true} />
                 </View>
                 <View style={style.signUpButtons}>
-                    <LoginButton title = 'Login' rounded style={style.loginbtn} onPress={() => {
+                    <LoginButton title = 'Login' rounded onPress={() => {
                     // Sign Up
                     if (password == verifyPassword) {
                       firebaseApp.signUp(firstName,lastName,phoneNumber,email,password)
@@ -76,12 +77,11 @@ const SignUpScreen = ({ navigation }) => {
                     }else {
                       console.log("Password Do Not Match");
                     }}}/>
-                    <TouchableOpacity style={style.signInBtn} onPress={() => { return (navigation.navigate("Login"))}}>
-                            <Text style={style.signInBtnText}>Have an Account?</Text>
-                    </TouchableOpacity>
+                    <ExistingUserButton />
                 </View>
             </View>
-        </View>
+            </View>
+            </View>
         </ImageBackground>
     );
 

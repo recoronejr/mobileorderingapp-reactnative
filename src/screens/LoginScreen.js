@@ -6,11 +6,11 @@ import {imgs} from '../components/UniversalComps/Images'
 
 import style from '../constants/Styles'
 const LoginScreen = () => {
-    let img = imgs.getCustomBackground();
+    let img = imgs.getDinerImage();
     return (
         <View style={style.customBackgroundImage}>
             <ImageBackground source={img} style={style.imgBackground}>
-                 <LoginCard />
+                <LoginCard />
             </ImageBackground>
         </View>   
     );

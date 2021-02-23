@@ -21,6 +21,7 @@ const LoginCard = ({ navigation }) =>{
     
         return(
             <View style={style.backgroundCard}>
+                <View style={style.backgroundCardOutline}>
                 <BurgerIcon />
                 <Text style ={style.loginHeader}>Sign In</Text>
 
@@ -51,6 +52,7 @@ const LoginCard = ({ navigation }) =>{
                         })
                     }}/>
                     <SignUpButton />
+                </View>
                 </View>
             </View>   
         )
