@@ -20,12 +20,5 @@ const AuthenticationNavigation = () => {
         </NavigationContainer>
     );
 }
-export const ReviewStackNav = () =>{
-    <NavigationContainer>
-        <Stack.Navigator>
-            <Stack.Screen name="Review" component={ReviewScreen}/>
-        </Stack.Navigator>
-    </NavigationContainer>
-}
 
 export default AuthenticationNavigation;

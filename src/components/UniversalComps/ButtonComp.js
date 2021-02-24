@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, TouchableOpacity, Text} from 'react-native';
 
-import AuthenticationNavigation, {ReviewStackNav} from '../../navigation/AuthenticationNavigation';
+import AuthenticationNavigation from '../../navigation/AuthenticationNavigation';
 import { useNavigation } from '@react-navigation/native';
 import {validateEmailInput, validatePhoneNumber, validateFirstName, validateLastName} from '../UserInfoComps/UpdateUserInfo'
 
@@ -55,7 +55,7 @@ export const ReviewScreenButton = () =>{
     const navigation = useNavigation();
     return(
     <TouchableOpacity style={style.reviewScrnBtn} onPress={()=>
-        navigation.navigate("Review")}>
+        navigation.navigate("Reviews")}>
         <Text style={style.reviewScrnBtnTxt}>Reviews</Text>
     </TouchableOpacity>
     )

@@ -7,6 +7,7 @@ import MainScreen from '../screens/MainScreen';
 import AccountScreen from '../screens/AccountScreen';
 import OrderScreen from '../screens/OrderScreen';
 import MenuScreen from '../screens/Mapscreen';
+import ReviewScreen from '../screens/ReviewScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -22,6 +23,7 @@ const MainNavigation = ({navigation}) => {
                 <Tab.Screen name="OrderMenu" component={OrderScreen} />
                 <Tab.Screen name="Account" component={AccountScreen} />
                 <Tab.Screen name="MenuScreen" component={MenuScreen} />
+                <Tab.Screen name="Reviews" component={ReviewScreen} />
             </Tab.Navigator>
         </NavigationContainer> 
     );

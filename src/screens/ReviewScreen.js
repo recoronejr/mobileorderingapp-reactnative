@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View } from "react-native";
 
 import PercentageBar, {PercentBar} from '../components/ReviewScreen/PercentageBar'
+import Star from '../components/ReviewScreen/Star'
 
 import style from '../constants/Styles'
 
@@ -12,10 +13,12 @@ export default class ReviewScreen extends React.Component{
             <View style={style.reviewContainer}>
                 <Text style={style.title}>Customer reviews</Text>
                 <View style={style.totalWrap}>
-                    <View
-                        style={style.sideBySideContainer}>
-                        <Star /><Star /><Star /><Star /><Star />
+                    
+                    <View style={style.sideBySideContainer}>
+                    
+                        
                     </View>
+                    
                     <Text>4.7 out of 5</Text>
                     <View style={{ marginTop: 40 }}>
                         <PercentageBar starText="5 star" percentage={84}/>
