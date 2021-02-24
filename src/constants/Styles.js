@@ -34,7 +34,7 @@ const style = StyleSheet.create({
         width: '100%', 
         height: '100%'
     },
-    input: {
+    userInput: {
         height: 30,
         width: '60%',
         borderColor: 'white', 
@@ -42,11 +42,10 @@ const style = StyleSheet.create({
         paddingLeft: 10,
         marginLeft: 40,
         marginBottom: 5,
-        color: 'white'
+        fontSize: 18
     }, 
     title:{
         fontSize: 20,
-        fontFamily: 'Optima'
     },
     sideBySideContainer:{
         flexDirection: 'row',
@@ -70,6 +69,16 @@ const style = StyleSheet.create({
         fontFamily: 'Optima',
         fontSize: 20
     },
+    accountInfoCard:{
+        backgroundColor: 'rgba(200, 200, 200, .6)',
+        borderWidth: 1.5,
+        borderColor: 'red',
+        borderRadius: 10,
+        padding: 10,
+        paddingTop: 5,
+        marginTop: 40,
+        marginBottom: 40
+    },
     accountInfoLabel:{
         textAlign: 'left',
         fontFamily: 'Optima-Bold',
@@ -83,8 +92,9 @@ const style = StyleSheet.create({
         marginTop: 15
     }, 
     accountHeader:{
-        fontFamily: 'Optima-Bold',
-        fontSize: 20
+        fontFamily: 'Optima',
+        fontSize: 30,
+        marginTop: '-10%'
     },
     //Button Comp
     loginbtn: {
@@ -185,7 +195,7 @@ const style = StyleSheet.create({
         fontSize: 15,
         fontFamily: 'Optima-Bold',
         paddingLeft: 5,
-        color: 'white'
+        color: 'red'
     }, 
     signInBtn:{
         borderRadius: 10,
@@ -262,29 +272,31 @@ const style = StyleSheet.create({
         marginTop: 35
     },
     //Edit Account Screen
-    editScrnHeaderContainer:{
-        borderBottomWidth: 1,
-        borderBottomColor: 'black',
-        marginBottom: 20
-    },
-    editScrnHeader:{
-        fontSize: 30,
-        marginTop: 20,
-        fontFamily: 'Optima',
-    },
-    editText:{
-        marginLeft: 20,
-        marginTop: 10,
-        fontSize: 15,
-        fontFamily: 'Optima',
-        color: 'white'
-    },
     editAccountScrnInputContainers:{
-        backgroundColor: 'rgba(0, 100, 200, .7)',
+        backgroundColor: 'rgba(200, 200, 200, .6)',
         marginBottom: 2,
         borderWidth: 1,
         borderColor: '#fff',
         borderRadius: 10
+    },
+    editText:{
+        marginLeft: 10,
+        marginTop: 5, 
+        fontSize: 15,
+        fontFamily: 'Optima-Bold',
+        color: 'red'
+    },
+    editScrnHeaderContainer:{
+        
+        marginBottom: 20,
+        marginBottom: '8%'
+    },
+    editScrnHeader:{
+        fontSize: 30,
+        marginTop: 20
+    },
+    editScreenInput:{
+        color: 'red'
     },
     //Main Screen
     mainScreenNavigator:{

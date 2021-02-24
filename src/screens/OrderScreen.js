@@ -19,10 +19,10 @@ export default class OrderScreen extends React.Component {
     render() {
         
         const { navigation: { navigate } } = this.props;
-        let img = imgs.getDinerImage();
+        let img = imgs.getCustomBackground();
 
         return (
-            <ImageBackground source={img} style={style.imgBackground}>
+            <ImageBackground blurRadius={ Platform.OS == 'ios' ? 10 : 5 } source={img} style={style.imgBackground}>
             <View style = {style.backgroundContainer}>
                 <View style = {style.backgroundCard}>
                     <View style={style.backgroundCardOutline}>

@@ -6,10 +6,10 @@ import {imgs} from '../components/UniversalComps/Images'
 
 import style from '../constants/Styles'
 const LoginScreen = () => {
-    let img = imgs.getDinerImage();
+    let img = imgs.getCustomBackground();
     return (
         <View style={style.customBackgroundImage}>
-            <ImageBackground source={img} style={style.imgBackground}>
+            <ImageBackground blurRadius={ Platform.OS == 'ios' ? 10 : 5 } source={img} style={style.imgBackground}>
                 <LoginCard />
             </ImageBackground>
         </View>   

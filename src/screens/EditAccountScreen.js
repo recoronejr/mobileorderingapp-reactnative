@@ -23,10 +23,10 @@ const EditAccountScreen = () =>{
     const [email, setEmail] = useState('');
     const [phoneNum, setPhoneNumber] = useState('');
     
-    let img = imgs.getDinerImage();
+    let img = imgs.getCustomBackground();
     
     return (
-        <ImageBackground source={img} style={style.imgBackground}>
+        <ImageBackground blurRadius={ Platform.OS == 'ios' ? 10 : 5 } source={img} style={style.imgBackground}>
         <View style={style.backgroundContainer}>
         <View style={style.backgroundCard}>
             <View style={style.backgroundCardOutline}>
@@ -36,7 +36,7 @@ const EditAccountScreen = () =>{
             <View style={style.editAccountScrnInputContainers}>
                 <Text style={style.editText}>First Name</Text>
                 <View style={style.sideBySideContainer}>
-                    <UserInputs style={style.input} value={firstName} placeholder={firebaseApp.firstName} placeholderTextColor="#FFF" onChangeText={firstName => setFirstName(firstName)} />
+                    <UserInputs style={style.userInput} value={firstName} placeholder={firebaseApp.firstName} placeholderTextColor="white" onChangeText={firstName => setFirstName(firstName)} />
                     <UpdateInfoButton title="Update" onPress={() => {validateFirstName(firstName)}}/>
                 </View>
             </View>
@@ -44,7 +44,7 @@ const EditAccountScreen = () =>{
             <View style={style.editAccountScrnInputContainers}>
                 <Text style={style.editText}>Last Name</Text>
                 <View style={style.sideBySideContainer}>
-                    <UserInputs style={style.input} defaultValue={lastName} placeholder={firebaseApp.lastName} placeholderTextColor="#FFF" onChangeText={lastName => setLastName(lastName)}/>
+                    <UserInputs style={style.userInput} defaultValue={lastName} placeholder={firebaseApp.lastName} placeholderTextColor="white" onChangeText={lastName => setLastName(lastName)}/>
                     <UpdateInfoButton title="Update" defaultValue={lastName} onPress={() => {validateLastName(lastName)}}/>
                 </View>
             </View>
@@ -52,7 +52,7 @@ const EditAccountScreen = () =>{
             <View style={style.editAccountScrnInputContainers}>
                 <Text style={style.editText}>Email</Text>
                 <View style={style.sideBySideContainer}>
-                    <UserInputs type='email' style={style.input} defaultValue={email} placeholder={firebaseApp.email} placeholderTextColor="#FFF" onChangeText={email => setEmail(email)}/>
+                    <UserInputs type='email' style={style.userInput} defaultValue={email} placeholder={firebaseApp.email} placeholderTextColor="white" onChangeText={email => setEmail(email)}/>
                     <UpdateInfoButton title="Update" defaultValue={email} onPress={() => {validateEmailInput(email)}}/>
                 </View>
             </View>
@@ -60,8 +60,8 @@ const EditAccountScreen = () =>{
             <View style={style.editAccountScrnInputContainers}>
                 <Text style={style.editText}>Phone Number</Text>
                 <View style={style.sideBySideContainer}>    
-                    <UserInputs style={style.input} defaultValue={phoneNum} placeholder={firebaseApp.phoneNumber} placeholderTextColor="#FFF" onChangeText={phoneNum => setPhoneNumber(phoneNum)}/>
-                    <UpdateInfoButton title="Update" value={phoneNum} onPress={() => {validatePhoneNumber(phoneNum)}}/>
+                    <UserInputs style={style.userInput} defaultValue={phoneNum} placeholder={firebaseApp.phoneNumber} placeholderTextColor="white" onChangeText={phoneNum => setPhoneNumber(phoneNum)}/>
+                    <UpdateInfoButton title="Update" titleTextColor={'red'} value={phoneNum} onPress={() => {validatePhoneNumber(phoneNum)}}/>
                 </View>
             </View>
                 <UpdateAllInfoBtn />

@@ -9,9 +9,9 @@ import {imgs} from '../components/UniversalComps/Images'
 import style from '../constants/Styles'
 export default class AccountScreen extends React.Component {
     render() {
-        let img = imgs.getDinerImage();
+        let img = imgs.getCustomBackground();
         return (
-            <ImageBackground source={img} style={style.imgBackground}>
+            <ImageBackground blurRadius={ Platform.OS == 'ios' ? 10 : 5 } source={img} style={style.imgBackground}>
             <View style = {style.backgroundContainer}>
                 <View style = {style.backgroundCard}>
                     <View style = {style.backgroundCardOutline}>

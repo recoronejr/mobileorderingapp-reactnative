@@ -95,7 +95,7 @@ export default class MenuScreen extends React.Component {
         let img = imgs.getCustomBackground();
         let totalPrice = '$0.00'
         return (
-            <ImageBackground source={img} style={style.imgBackground}>
+            <ImageBackground blurRadius={ Platform.OS == 'ios' ? 10 : 5 } source={img} style={style.imgBackground}>
             <SafeAreaView style={style.backgroundContainer}>
                 <View style={style.merchantTextWrapper}>
                     <View style={style.sideBySideContainer}>

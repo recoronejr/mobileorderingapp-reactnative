@@ -53,7 +53,7 @@ export default class MapScreen extends React.Component {
         let img = imgs.getCityImage();
         return (
             //Will return null until datasource is properly saved to state
-            <ImageBackground style={style.mapScreenBackgroundImg} source={img}>
+            <ImageBackground blurRadius={ Platform.OS == 'ios' ? 10 : 5 } style={style.mapScreenBackgroundImg} source={img}>
                 <SafeAreaView>
                     <Map />
                     <Text style={style.mapScreenLocationHeader}>Locations</Text>
