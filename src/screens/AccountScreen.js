@@ -11,7 +11,7 @@ export default class AccountScreen extends React.Component {
     render() {
         let img = imgs.getCustomBackground();
         return (
-            <ImageBackground source={img} style={style.imgBackground}>
+            <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
             <View style = {style.backgroundContainer}>
                 <View style = {style.backgroundCard}>
                 <Text style={style.accountHeader} text='account details'>Account Details</Text>

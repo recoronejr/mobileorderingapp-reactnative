@@ -9,7 +9,7 @@ const LoginScreen = () => {
     let img = imgs.getCustomBackground();
     return (
         <View style={style.customBackgroundImage}>
-            <ImageBackground source={img} style={style.imgBackground}>
+            <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
                  <LoginCard />
             </ImageBackground>
         </View>   

@@ -177,6 +177,21 @@ const style = StyleSheet.create({
         alignSelf: 'center',
         fontFamily: 'Optima-Bold'
     },
+    loginUsernameContainer:{
+
+    },
+    loginPwdContainer:{
+        marginTop: 30,
+        marginBottom: 30
+    },
+    userIconCntainer:{
+        marginLeft: -20,
+        marginRight: 30,
+    },
+    pwdIconCntainer:{
+        marginLeft: -20,
+        marginRight: 20,
+    },
     loginUsernameText:{
         marginTop: "5%",
         fontSize: 25,
@@ -186,13 +201,11 @@ const style = StyleSheet.create({
     loginUsernameInput: {
         alignSelf: "center",
         borderBottomWidth: 1.5,
-        width: 220,
+        width: 220,                                                     /////
         height: 35,
-        justifyContent:"space-between",
-        flexDirection: "column",
-        marginTop: 20,
-        textAlignVertical: 'top',
-        paddingLeft: "4%",
+        paddingLeft: "2%",
+        fontSize: 24,
+        color: 'black'
     }, 
     loginPasswordText:{
         marginTop: "7%",
@@ -208,17 +221,20 @@ const style = StyleSheet.create({
     loginPasswordInput:{
         alignSelf: "center",
         borderBottomWidth: 1.5,
-        width: 180,
-        height: 40,
-        justifyContent:"space-between",
-        flexDirection: "column",
-        marginTop: 20,
-        textAlignVertical: 'top',
-        paddingLeft: "4%",
+        width: 220,
+        height: 40,                                 ////
+        paddingLeft: "2%",
+        fontSize: 24
     },
     loginScreenBtns:{
         flexDirection: 'row',
         marginTop: 35
+    },
+    userInputContainer:{
+        alignItems: 'flex-end'
+    },
+    pwdInputContainer:{
+
     },
     //Edit Account Screen
     editScrnHeader:{
@@ -429,31 +445,42 @@ const style = StyleSheet.create({
         fontSize: 20,
         color: "#323357",
         textAlign: "center",
-    },
-    reviewScreenWrapper: {
-        marginTop: 20,
-        marginBottom: 5,
-        backgroundColor: "#F5F8FF",
-        borderRadius: 40,
-        alignItems: "center",
-        justifyContent: "space-between",
-        flexDirection: "row",
-        paddingHorizontal: 15,
-        paddingVertical: 10,
+        marginBottom: 20
     },
     reviewScreenAmountText: {
         fontSize: 16,
         color: "#595B71",
         textAlign: "center",
     },
+    revScreenCustomerReview:{
+        backgroundColor: 'yellow',
+        width: '75%',
+        height: 200,
+        alignItems: 'center'
+    },
+    //Customer Review
+    customerReviewBodyWrap:{
+        backgroundColor: '#F5F8FF',
+        borderRadius: 10,
+    },
+    customerReviewInput:{
+        borderColor: 'black',
+        borderRadius: 10,
+        width: 200,
+        height: 125,
+        textAlignVertical: 'top',
+        padding: 10,
+        paddingTop: 10,
+    },
+    //Percent Comp
     percentBarProgressText: {
-        width: 50,
-        fontSize: 14,
+        width: 35,
+        fontSize: 11,
         color: "#2A5BDA",
     },
     progressPercentText: { 
         width: 40, 
-        fontSize: 14, 
+        fontSize: 11, 
         color: "#323357" 
     },
     percentBarProgressMiddle: {
@@ -479,16 +506,30 @@ const style = StyleSheet.create({
         shadowRadius: 4,
         backgroundColor: "#FFCC48",
         borderRadius: 18,
-        minWidth: 5,
+        minWidth: 5
     },
-
-
-    
-    item:{
-       
+    //Star Comp
+    starPercentContainer:{
+        padding: 10
+    },  
+    starsAmountText:{
+        textAlign: 'center',
+        paddingTop: 10,
+        fontSize: 11
+    }, 
+    starsContainer:{
+        marginBottom: -20
     },
-    title:{
-        
+    starsWrapper: {
+        marginTop: 20,
+        marginBottom: 5,
+        width: '75%',
+        backgroundColor: "#F5F8FF",
+        borderRadius: 20,
+        alignItems: "center",
+        paddingHorizontal: 20,
+        paddingBottom: 25,
+        flexDirection: 'row',
     },
 });
 

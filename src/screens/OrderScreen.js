@@ -22,7 +22,7 @@ export default class OrderScreen extends React.Component {
         let img = imgs.getCustomBackground();
 
         return (
-            <ImageBackground source={img} style={style.imgBackground}>
+            <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
             <View style = {style.backgroundContainer}>
                 <View style = {style.backgroundCard}>
                     <Text>You have no active orders</Text>

@@ -25,7 +25,7 @@ const SignUpScreen = ({ navigation }) => {
     let img = imgs.getCustomBackground();
 
     return (
-        <ImageBackground source={img} style={style.imgBackground}>
+        <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
         <View style={style.backgroundContainer}>
             <View style ={style.backgroundCard}>
             <View>

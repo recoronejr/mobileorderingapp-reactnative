@@ -6,10 +6,7 @@ import style from '../../constants/Styles'
 const PercentageBar = ({ starText, percentage }) => {
     const [animation] = useState(new Animated.Value(0));
     useEffect(() => {
-        Animated.timing(animation, {
-            toValue: percentage,
-            duration: 500,
-        }).start();
+        Animated.timing(animation, { toValue: percentage, duration: 500,}).start();
     }, [percentage]);
     return (
         <View style={style.sideBySideContainer}>

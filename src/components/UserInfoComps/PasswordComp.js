@@ -9,7 +9,7 @@ export default class PasswordComp extends React.Component{
 
     render(){
         return(
-            <TextInput placeholder={this.props.placeholder} onChangeText={this.props.onChangeText}  style={this.props.style}  secureTextEntry= {true} />
+            <TextInput placeholder={this.props.placeholder} onChangeText={this.props.onChangeText}  style={this.props.style}  secureTextEntry= {true} placeholderTextColor = "black"/>
         )   
     }
 }
