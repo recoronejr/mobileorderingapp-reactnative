@@ -362,7 +362,8 @@ const style = StyleSheet.create({
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
         borderColor: '#FFF',
-        borderWidth: 1
+        borderWidth: 1,
+        flexDirection: 'row'
     },
     merchantNameText:{
         fontSize: 45,

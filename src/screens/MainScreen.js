@@ -10,6 +10,7 @@ import MenuScreen from './MenuScreen';
 import MapScreen from "./Mapscreen"
 import OrderScreen from './OrderScreen';
 import EditAccountScreen from './EditAccountScreen';
+import ReviewScreen from './ReviewScreen'
 
 import style from '../constants/Styles'
 
@@ -45,6 +46,7 @@ export default class MainScreen extends React.Component {
                     <Stack.Screen name="Locations" component={MapScreen} />
                     <Stack.Screen name="MenuScreen" component={MenuScreen} />
                     <Stack.Screen name="EditAccount" component={EditAccountScreen} />
+                    <Stack.Screen name="Reviews" component={ReviewScreen} />
                 </Stack.Navigator>
                 
             );  

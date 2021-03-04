@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { render } from 'react-dom';
 import { View, Text, ImageBackground, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView} from 'react-native';
@@ -6,6 +7,8 @@ import { color } from 'react-native-reanimated';
 
 import {imgs} from '../components/UniversalComps/Images'
 import style from '../constants/Styles'
+
+import {ReviewsButton} from '../components/UniversalComps/ButtonComp'
 
 const {height} = Dimensions.get('window')
 
@@ -62,7 +65,6 @@ export default class MenuScreen extends React.Component {
         ) 
     }
     render() {
-        const { navigation: { navigate } } = this.props;
         const scrollEnabled = true;
 
         let merchantName = this.props.route.params.merchant.name;
@@ -97,6 +99,7 @@ export default class MenuScreen extends React.Component {
             <SafeAreaView style={style.backgroundContainer}>
                 <View style={style.merchantTextWrapper}>
                     <Text style={style.merchantNameText}>{merchantName}</Text>
+                    <ReviewsButton />
                 </View>
                 <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
                         

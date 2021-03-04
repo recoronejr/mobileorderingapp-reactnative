@@ -55,3 +55,12 @@ export const EditButton = () =>{
 export const CancelButton = () =>{
 
 }
+
+export const ReviewsButton = () =>{
+    const navigation = useNavigation();
+    return <TouchableOpacity>
+        <Button title="Reviews" hasText transparent onPress={()=>{
+            navigation.navigate('Reviews')
+        }}/> 
+    </TouchableOpacity>
+}

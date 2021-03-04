@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {View, Text, Animated} from 'react-native'
 
 import style from '../../constants/Styles'
@@ -13,9 +13,9 @@ const PercentageBar = ({ starText, percentage }) => {
     }, [percentage]);
     return (
         <View style={style.sideBySideContainer}>
-            <Text style={styles.percentBarProgressText}>{starText}</Text>
-            <View style={styles.percentBarProgressMiddle}>
-                <View style={styles.percentBarProgressWrap}>
+            <Text style={style.percentBarProgressText}>{starText}</Text>
+            <View style={style.percentBarProgressMiddle}>
+                <View style={style.percentBarProgressWrap}>
                     <Animated.View
                         style={[ style.progressBar,{ width: animation.interpolate({
                                                      inputRange: [0, 100],
@@ -24,7 +24,7 @@ const PercentageBar = ({ starText, percentage }) => {
                         },]}/>
                 </View>
             </View>
-            <Text style={styles.progressPercentText}>{percentage}%</Text>
+            <Text style={style.progressPercentText}>{percentage}%</Text>
         </View>
     );
 };
