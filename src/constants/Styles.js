@@ -407,6 +407,82 @@ const style = StyleSheet.create({
         fontFamily: 'Optima',
         color: '#FFF'
     },
+    //Review Screen
+    reviewScreenSpacer: {
+
+    },
+    reviewContainer: {
+        backgroundColor: "#FFFFFF",
+        borderRadius: 10,
+        paddingHorizontal: 30,
+        paddingVertical: 40,
+        minWidth: "80%",
+        shadowOffset: { width: 0, height: 5 },
+        shadowOpacity: 1.0,
+        shadowRadius: 2,
+        shadowColor: "rgba(193, 211, 251, 0.5)",
+        elevation: 5,
+    },
+    reviewScreenTitle: {
+        fontWeight: "bold",
+        fontSize: 20,
+        color: "#323357",
+        textAlign: "center",
+    },
+    reviewScreenWrapper: {
+        marginTop: 20,
+        marginBottom: 5,
+        backgroundColor: "#F5F8FF",
+        borderRadius: 40,
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+    },
+    reviewScreenAmountText: {
+        fontSize: 16,
+        color: "#595B71",
+        textAlign: "center",
+    },
+    percentBarProgressText: {
+        width: 50,
+        fontSize: 14,
+        color: "#2A5BDA",
+    },
+    progressPercentText: { 
+        width: 40, 
+        fontSize: 14, 
+        color: "#323357" 
+    },
+    percentBarProgressMiddle: {
+        height: 15,
+        flex: 1,
+        marginHorizontal: 10,
+    },
+    percentBarProgressWrap: {
+        backgroundColor: "#F5F8FF",
+        borderRadius: 18,
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        padding: 2,
+    },
+    progressBar: {
+        flex: 1,
+        shadowOffset: { width: 0, height: 0 },
+        shadowColor: "#ffcc48",
+        shadowOpacity: 1.0,
+        shadowRadius: 4,
+        backgroundColor: "#FFCC48",
+        borderRadius: 18,
+        minWidth: 5,
+    },
+
+
+    
     item:{
        
     },
