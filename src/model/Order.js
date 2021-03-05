@@ -2,17 +2,17 @@ import LinesItems from './LineItem';
 
 export default class Order {
     
-    let location: string;
-    let lineItems[] = new LinesItems();
+    let locationId: string;
+    let lineItems = new Array();
 
     constructor() {
         
     }
-    addLineItem(item){
-      lineItems.push(item);
+    addItem(item){
+      return lineItems.push(item);
     }
-    deleteLineItem(index){
-      lineItems.splice(index,1);
+    deleteItem(index){
+      return lineItems.splice(index,1);
     }
     // Call based on location store
     completeOrder(){
