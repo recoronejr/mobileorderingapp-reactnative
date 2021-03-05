@@ -531,6 +531,10 @@ const style = StyleSheet.create({
         paddingBottom: 25,
         flexDirection: 'row',
     },
+    //Navigation
+    navIcon:{
+        marginBottom: -10
+    }
 });
 
 export default style;
