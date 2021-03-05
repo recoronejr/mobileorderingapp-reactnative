@@ -11,7 +11,7 @@ const style = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: 'rgba(230, 230, 230, 0.8)',
         width: '87%',
-        height: '60%',
+        height: "80%",
         justifyContent: "center",
         alignItems: "center",
         borderRadius:10,
@@ -45,6 +45,63 @@ const style = StyleSheet.create({
         borderBottomWidth: 1,
         paddingLeft: 5,
         paddingRight: 5
+    },
+    //Home Screen
+    homeScreenContainer:{
+        
+    },
+    homeScreenBackgroundCard:{
+        marginTop: 5,
+        alignSelf: 'center',
+        backgroundColor: 'rgba(230, 230, 230, 0.8)',
+        width: '87%',
+        height: "75%",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10,
+    },
+    homeScreenWelcomeBannerContainer:{
+        width: "75%",
+        height: 150,
+        marginBottom: 10
+    },
+    homeScreenImage:{
+        width: '100%',
+        height: 130,
+        marginTop: 50
+    },
+    homeScreenWecomeText:{
+        alignSelf: 'center',
+        fontSize: 38,
+        fontFamily: 'Optima',
+        marginTop: -125
+    },
+    homeScreenDesc:{
+        textAlign: 'center',
+        fontFamily: 'Optima'
+    },
+    homeScreenMiddleContainer:{
+        borderRadius: 10,
+        borderWidth: 1,
+        width: "75%",
+        height: 150,
+        marginTop: -100,
+        marginBottom: 10,
+        padding: 10
+    },
+    homeScreenMiddleContainerText:{
+        fontFamily: 'Optima'
+    },
+    homeScreenBottomContainer:{
+        borderRadius: 10,
+        borderWidth: 1,
+        width: "75%",
+        height: 150,
+        marginBottom: 10,
+        padding: 10
+    },
+    homeScreenBottomContainerText:{
+        fontFamily: 'Optima'
     },
     //ICONS 
     burgerIcon:{

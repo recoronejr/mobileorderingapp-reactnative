@@ -3,10 +3,10 @@ import {View, Image} from 'react-native'
 import { NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import MainScreen from '../screens/MainScreen';
+import HomeScreen from '../screens/HomeScreen';
 import AccountScreen from '../screens/AccountScreen';
 import OrderScreen from '../screens/OrderScreen';
-import MenuScreen from '../screens/Mapscreen';
+import MenuScreen from '../screens/MapScreen';
 
 import style from '../constants/Styles'
 
@@ -20,7 +20,7 @@ const MainNavigation = ({navigation}) => {
     return (
         <NavigationContainer>
             <Tab.Navigator headerMode="none" initialRouteName="Main" screenOptions={{ }}>
-                <Tab.Screen name="Home" component={MainScreen} style={style.mainScreenNav} options={{
+                <Tab.Screen name="Home" component={HomeScreen} style={style.mainScreenNav} options={{
                     tabBarIcon: () => (
                         <FontAwesomeIcon style={style.navIcon} icon={faHome} />
                       ),}}/>
