@@ -7,7 +7,7 @@ import MainScreen from '../screens/MainScreen';
 import HomeScreen from '../screens/HomeScreen';
 import AccountScreen from '../screens/AccountScreen';
 import OrderScreen from '../screens/OrderScreen';
-import MapScreen from '../screens/Mapscreen';
+import MapScreen from '../screens/MapScreen';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import style from '../constants/Styles';
 import { faHome, faUser, faUtensils, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';

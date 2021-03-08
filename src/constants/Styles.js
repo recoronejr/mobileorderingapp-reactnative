@@ -515,6 +515,59 @@ const style = StyleSheet.create({
         height: 200,
         alignItems: 'center'
     },
+    // Review Modal
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    reviewModalButton: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    reviewModalBtnOpen: {
+        backgroundColor: "#F194FF",
+    },
+    reviewModalBtnClose: {
+        backgroundColor: "#2196F3",
+    },
+    reviewModalBtn: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    reviewModalTxt: {
+        marginBottom: 15,
+        textAlign: "center"
+    },
+    reviewModalSubjectInput:{
+        borderRadius: 10,
+        width: 200,
+        height: 35,
+        textAlignVertical: 'top',
+        paddingLeft: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
+        backgroundColor: '#F5F8FF',
+        marginBottom: 10
+    },
     //Customer Review
     customerReviewBodyWrap:{
         backgroundColor: '#F5F8FF',
@@ -527,7 +580,7 @@ const style = StyleSheet.create({
         height: 125,
         textAlignVertical: 'top',
         padding: 10,
-        paddingTop: 10,
+        paddingTop: 10
     },
     //Percent Comp
     percentBarProgressText: {
@@ -591,7 +644,7 @@ const style = StyleSheet.create({
     //Navigation
     navIcon:{
         marginBottom: -10
-    }
+    },
 });
 
 export default style;

@@ -13,7 +13,7 @@ export default class UserInputs extends React.Component{
                 value={this.props.value} 
                 style={this.props.style} 
                 placeholder={this.props.placeholder} 
-                placeholderTextColor = "black"
+                placeholderTextColor = "gray"
                 onChangeText={this.props.onChangeText} 
                 secureTextEntry={this.props.secureTextEntry} 
                 multiline={this.props.multiline}

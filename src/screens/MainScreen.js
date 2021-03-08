@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import FirebaseAPI from '../api/firebase';
 
 import MenuScreen from './MenuScreen';
-import MapScreen from "./Mapscreen"
+import MapScreen from "./MapScreen"
 import EditAccountScreen from './EditAccountScreen';
 import ReviewScreen from './ReviewScreen'
 import HomeScreen from './HomeScreen'

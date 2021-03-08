@@ -12,13 +12,10 @@ export default class Review extends React.Component{
     render(){
         return(
             <View style={style.customerReviewBodyWrap}>
-                <UserInput style={style.customerReviewInput} 
-                    placeholder={'Leave a Review'} 
-                    multiline={true} 
-                    numberOfLines={10} 
-                    maxLength={200} 
+                <UserInput style={style.customerReviewInput} placeholder={'Leave a Review'} multiline={true} numberOfLines={10}  maxLength={200} 
                     onChangeText={()=>{
-                }}/>
+                
+                    }}/>
             </View>
         )
     }
