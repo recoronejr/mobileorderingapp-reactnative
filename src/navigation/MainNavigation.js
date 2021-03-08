@@ -3,15 +3,14 @@ import {View, Image} from 'react-native'
 import { NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import MainScreen from '../screens/MainScreen';
 import HomeScreen from '../screens/HomeScreen';
 import AccountScreen from '../screens/AccountScreen';
 import OrderScreen from '../screens/OrderScreen';
-import MenuScreen from '../screens/MapScreen';
-
-import style from '../constants/Styles'
-
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
-import { faHome, faUtensils, faUser, faMapMarkedAlt} from '@fortawesome/free-solid-svg-icons'
+import MapScreen from '../screens/Mapscreen';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import style from '../constants/Styles';
+import { faHome, faUser, faUtensils, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,23 +18,30 @@ const MainNavigation = ({navigation}) => {
 
     return (
         <NavigationContainer>
-            <Tab.Navigator headerMode="none" initialRouteName="Main" screenOptions={{ }}>
-                <Tab.Screen name="Home" component={HomeScreen} style={style.mainScreenNav} options={{
-                    tabBarIcon: () => (
-                        <FontAwesomeIcon style={style.navIcon} icon={faHome} />
-                      ),}}/>
-                <Tab.Screen name="Orders" component={OrderScreen} style={style.orderScreenNav} options={{
-                    tabBarIcon: () => (
-                        <FontAwesomeIcon style={style.navIcon} icon={faUtensils} />
-                      ),}}/>
-                <Tab.Screen name="Account" component={AccountScreen} style={style.accountScreenNav} options={{
-                    tabBarIcon: () => (
-                        <FontAwesomeIcon style={style.navIcon} icon={faUser} />
-                      ),}}/>
-                <Tab.Screen name="Map" component={MenuScreen} style={style.menuScreenNav} options={{
-                    tabBarIcon: () => (
-                        <FontAwesomeIcon style={style.navIcon} icon={faMapMarkedAlt} />
-                      ),}}/>
+            <Tab.Navigator headerMode="none" 
+            initialRouteName="Home"
+            screenOptions={{
+            }}>
+                <Tab.Screen name="Home" component={MainScreen} options={{
+                    tabBarIcon:()=>(
+                        <FontAwesomeIcon style={style.navIcon} icon={faHome}/>
+                    )
+                }}/>
+                <Tab.Screen name="OrderMenu" component={OrderScreen} options={{
+                    tabBarIcon:()=>(
+                        <FontAwesomeIcon style={style.navIcon} icon={faUtensils}/>
+                    )
+                }}/>
+                <Tab.Screen name="Account" component={AccountScreen} options={{
+                    tabBarIcon:()=>(
+                        <FontAwesomeIcon style={style.navIcon} icon={faUser}/>
+                    )
+                }}/>
+                <Tab.Screen name="MapScreen" component={MapScreen} options={{
+                    tabBarIcon:()=>(
+                        <FontAwesomeIcon style={style.navIcon} icon={faMapMarkedAlt}/>
+                    )
+                }}/>
             </Tab.Navigator>
         </NavigationContainer> 
     );

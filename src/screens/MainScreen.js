@@ -8,9 +8,9 @@ import FirebaseAPI from '../api/firebase';
 
 import MenuScreen from './MenuScreen';
 import MapScreen from "./Mapscreen"
-import OrderScreen from './OrderScreen';
 import EditAccountScreen from './EditAccountScreen';
 import ReviewScreen from './ReviewScreen'
+import HomeScreen from './HomeScreen'
 
 import style from '../constants/Styles'
 
@@ -41,9 +41,9 @@ export default class MainScreen extends React.Component {
         } 
         else {
             return (
-                <Stack.Navigator initialRouteName = "MapScreen" style={style.mainScreenNavigator}>
+                <Stack.Navigator initialRouteName = "HomeScreen" style={style.mainScreenNavigator}>
+                    <Stack.Screen name="HomeScreen" component={HomeScreen} />
                     <Stack.Screen name="MapScreen" component={MapScreen} />
-                    <Stack.Screen name="Locations" component={MapScreen} />
                     <Stack.Screen name="MenuScreen" component={MenuScreen} />
                     <Stack.Screen name="EditAccount" component={EditAccountScreen} />
                     <Stack.Screen name="Reviews" component={ReviewScreen} />
