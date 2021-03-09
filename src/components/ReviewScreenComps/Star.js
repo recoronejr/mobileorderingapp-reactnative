@@ -92,3 +92,7 @@ export const FiveStarRating = () =>{
           <Text style={style.starsAmountText}>5 out of 5 stars</Text>
         </View>
 }
+
+export const CustomerRating = () =>{
+  
+}

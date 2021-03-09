@@ -118,7 +118,7 @@ class FirebaseAPI {
         this.email = doc.data().email;
     })
   }
-  createNewReview(merchantID, subject, body, stars){
+  createNewReview(merchantID, subject, body, rating){
     firebase.firestore()
     .collection('Reviews')
     .doc(uid)
@@ -126,10 +126,10 @@ class FirebaseAPI {
       merchantID: merchantID,
       subject: subject, 
       body: body, 
-      stars: stars, 
+      rating: rating, 
       email: this.email,
       time: new Date().toTimeString(),
-  
+      
     })
     .then(() => {
       console.log('Review submitted!');

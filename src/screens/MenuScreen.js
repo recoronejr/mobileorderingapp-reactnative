@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import { View, Text, ImageBackground, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -22,11 +22,12 @@ export default class MenuScreen extends React.Component {
         this.state = {
             menu: [],
             menuItems: [],
-            menuImages: [],
+            menuImages: []
         }
     }
     componentWillMount() {
-        this.setState({menu:this.props.route.params.menu})
+        this.setState({menu: this.props.route.params.menu})
+        alert(this.state.merchantName)
     }
     getImageById(id){
         for (var i = 0; i < this.state.menuImages.length; i++) {
@@ -118,9 +119,4 @@ export default class MenuScreen extends React.Component {
     }
 }
 
-const MenuItem = () => (
-    <View style={styles.item}>
-        <Text style={styles.title}></Text>
-        <Button title="Place Order"/>        
-    </View> 
-);
+export const merchantInfo = new MenuScreen();

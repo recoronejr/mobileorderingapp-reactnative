@@ -537,7 +537,21 @@ const style = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
+    modalHeader:{
+        fontSize: 22,
+        marginBottom: 15,
+        marginTop: -15
+    },  
+    modalExitBtn:{
+        marginTop: -20,
+        marginLeft: '75%'
+    },
+    reviewModalCloseBtn:{
+        fontSize: 20,
+        padding: 10
+    },
     reviewModalButton: {
+        marginTop: 45,
         borderRadius: 20,
         padding: 10,
         elevation: 2
@@ -559,7 +573,7 @@ const style = StyleSheet.create({
     },
     reviewModalSubjectInput:{
         borderRadius: 10,
-        width: 200,
+        width: 250,
         height: 35,
         textAlignVertical: 'top',
         paddingLeft: 10,
@@ -568,16 +582,30 @@ const style = StyleSheet.create({
         backgroundColor: '#F5F8FF',
         marginBottom: 10
     },
+    reviewModalCustomerRatingContainer:{
+        borderRadius: 10,
+        width: 200,
+        height: 35,
+        textAlignVertical: 'top',
+        paddingLeft: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
+        marginBottom: 10
+    },  
+    customerRating:{
+        
+    },
     //Customer Review
     customerReviewBodyWrap:{
         backgroundColor: '#F5F8FF',
         borderRadius: 10,
+        marginBottom: 15
     },
     customerReviewInput:{
         borderColor: 'black',
         borderRadius: 10,
-        width: 200,
-        height: 125,
+        width: 250,
+        height: 175,
         textAlignVertical: 'top',
         padding: 10,
         paddingTop: 10

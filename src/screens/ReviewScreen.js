@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 import { render } from "react-dom";
-import { TextInput, Text, View, ImageBackground, Modal, Pressable} from "react-native";
+import { Button, Text, View, ImageBackground, Modal, Pressable} from "react-native";
+
+import {Rating} from 'react-native-ratings'
 
 import style from '../constants/Styles'
 import {imgs} from '../components/UniversalComps/Images'
 
 import {OneStarRating, TwoStarRating, ThreeStarRating, FourStarRating, FiveStarRating, AmountOfReviews} from '../components/ReviewScreenComps/Star'
 
+import {mapScrn} from './MapScreen'
 import Star from '../components/ReviewScreenComps/Star'
 import PercentageBar from '../components/ReviewScreenComps/PercentageBar'
 import Review from "../components/ReviewScreenComps/Review";
@@ -45,10 +48,19 @@ export default function App() {
                                 <View style={style.centeredView}>
                                 <View style={style.modalView}>
                                     
-                                    
-                                    <Text style={style.modalText}>Leave a Review</Text>
+                                    <View style={style.modalExitBtn}>
+                                        <Pressable style={style.reviewModalBtnCloseTop} onPress={() => setModalVisible(!modalVisible)}>
+                                            <Text style={style.reviewModalCloseBtn}>X</Text>
+                                        </Pressable>
+                                    </View>
+                                    <Text style={style.modalHeader}>Leave a Review</Text>
+
                                     <UserInputs style={style.reviewModalSubjectInput} placeholder={'Subject'}></UserInputs>
                                     <Review />
+                                    
+                                    <View style={style.reviewModalCustomerRatingContainer}>
+                                        <Rating showRating imageSize={30}/>
+                                    </View>
 
                                     <Pressable style={[style.reviewModalButton, style.reviewModalBtnClose]} onPress={() => setModalVisible(!modalVisible)}>
                                         <Text style={style.reviewModalBtn}>Submit Review</Text>
@@ -59,6 +71,10 @@ export default function App() {
                             <Pressable style={[style.reviewModalButton, style.reviewModalBtnOpen]} onPress={() => setModalVisible(true)}>
                                 <Text style={style.reviewModalBtn}>Leave Review</Text>
                             </Pressable>
+
+                            <Button title="Temp" onPress={()=>{
+                                mapScrn.getMerchantName()
+                            }}/>
                             </View>
 
                     </View>
