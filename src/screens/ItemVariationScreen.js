@@ -4,6 +4,7 @@ import { color } from 'react-native-reanimated';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { withOrientation } from 'react-navigation';
 import GlobalLineItem from '../model/LineItem';
+import Order from '../model/Order';
 
 export default class ItemVariationScreen extends React.Component {
     constructor(props) {
@@ -11,6 +12,9 @@ export default class ItemVariationScreen extends React.Component {
         this.state = {
             dataSource: this.props.route.params.variation,
         }   
+    }
+    addToOrder(GlobalLineItem) {
+        Order.addItem(GlobalLineItem);
     }
     goBack() {
         const { navigation } = this.props;
@@ -32,23 +36,26 @@ export default class ItemVariationScreen extends React.Component {
                 onPress: () => console.log("Cancel Pressed"),
                 style: "cancel"
                 },
-                { text: "Yes", onPress: () => this.goBack() }
+                { text: "Yes", onPress: () => {this.addToOrder(GlobalLineItem); this.goBack(); }}
                 ],
                 { cancelable: false }
             )   
         )  
     }
-    Item = ({name, price, item_id}) => {
-        GlobalLineItem.setName(name);
+    Item = ({name, price, id}) => {
+        GlobalLineItem.setSize(name);
         GlobalLineItem.setPrice(price);
+        GlobalLineItem.setId(id);
+
         return (
             <View style={styles.item}>
                 <Text style={styles.title}>{name}</Text>
                 <Text style={styles.price}>{this.convertToDollars(price)}</Text>
                 <TextInput
-                    style={{height: 40,width:100,marginLeft: 10, position:"relative"}}
+                    style={{height: 40, width:100, marginLeft: 10, position:"relative"}}
                     placeholder="How many?"
                     keyboardType="number-pad"
+                    onChangeText={text => GlobalLineItem.setQuantity(text)}
                 />
                 <Button title="Add to Order" onPress={this.createTwoButtonAlert} />
             </View>  
@@ -56,7 +63,7 @@ export default class ItemVariationScreen extends React.Component {
     } 
     render() {
         const renderItem = ({ item }) => (
-            <this.Item name={item.item_variation_data.name} price={item.item_variation_data.price_money.amount} item_id={item.item_variation_data.item_ID}/>
+            <this.Item name={item.item_variation_data.name} price={item.item_variation_data.price_money.amount} id={item.item_variation_data.item_id}/>
         );
         return (
             <View style = {styles.container}>  

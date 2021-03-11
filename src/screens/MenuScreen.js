@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
-import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView, Modal, Pressable, ImageBackground} from 'react-native';
+import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView, Modal, Pressable, Alert, ImageBackground} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { color } from 'react-native-reanimated';
-
+import GlobalLineItem from '../model/LineItem';
 import {imgs} from '../components/UniversalComps/Images'
 import style from '../constants/Styles'
+import Order from '../model/Order';
 
-const {height} = Dimensions.get('window')
+const {height} = Dimensions.get('window');
 
 export default class MenuScreen extends React.Component {
     onContentSizeChange = (contentWidth, contentHeight) => {
-        // Save the content height in state
         this.setState({ screenHeight: contentHeight });
     };
     setModalVisible = (visible) => {
@@ -29,7 +29,6 @@ export default class MenuScreen extends React.Component {
         }
     }
     componentWillMount() {
-        // this.setState({menu:this.props.route.params.menu})
     }
     getImageById(id){
         for (var i = 0; i < this.state.menuImages.length; i++) {
@@ -52,7 +51,7 @@ export default class MenuScreen extends React.Component {
         let items = [];
         let images = [];
         let { variations } = this.state;
-
+    
         for (var i = 0; i < this.state.menu.length; i++) {
             if (this.state.menu[i].type == "ITEM") {
                 items.push(this.state.menu[i]);
@@ -71,6 +70,9 @@ export default class MenuScreen extends React.Component {
             this.setState({variations: variations})
         }
     }
+    renderOrderItem = ({ item }) => (
+        <OrderItem title={item.name} />
+      );
     renderItem = ({ item }) => {
         let merchant = {
             id: item.merchant_id,
@@ -85,8 +87,20 @@ export default class MenuScreen extends React.Component {
                 
         ) 
     }
+    OrderItem = ({ item }) => (
+        <View style={styles.item}>
+            <Text style={styles.title}>{item.quatity} x {item.size} {item.name} @ { item.price}</Text>
+        </View>
+    );
+    convertToDollars(num){
+        let dollars = num / 100;
+        dollars = dollars.toLocaleString("en-US", {style:"currency", currency:"USD"});
+        return dollars;
+    }
+
     render() {
         const { navigation: { navigate } } = this.props;
+        const { modalVisible } = this.state;
         const scrollEnabled = true;
 
         let merchantName = this.props.route.params.merchant.name;
@@ -97,8 +111,8 @@ export default class MenuScreen extends React.Component {
 
             return (
                 <TouchableOpacity style={styles.item} onPress={() => {
-                    this.props.navigation.navigate("ItemVariationScreen", {variation})
-                   
+                    GlobalLineItem.setName(val.item_data.name);
+                    this.props.navigation.navigate("ItemVariationScreen", {variation}); 
                 }}>
                     <View key={key} style={styles.card}>
                             <Text style={{fontSize:28}}>{val.item_data.name}</Text>
@@ -109,7 +123,8 @@ export default class MenuScreen extends React.Component {
             ) 
         });
         let img = imgs.getCustomBackground();
-        let totalPrice = '$0.00'
+        let total = Order.getTotalInNumber();
+        console.log(order);
         return (
             <ImageBackground source={img} style={style.imgBackground}>
             <SafeAreaView style={style.backgroundContainer}>
@@ -117,28 +132,45 @@ export default class MenuScreen extends React.Component {
                     <Text style={style.merchantNameText}>{merchantName}</Text>
                 </View>
                 <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
-                        
                     {menuItems}    
-                    
                 </ScrollView> 
                 <View style={style.menuScreenFooter}>
-                    <Text style={style.menuOrderTotalTxt}>Order Total: {totalPrice}</Text>
-                    <TouchableOpacity style={style.menuOrderBtn}>
+                    <Text style={style.menuOrderTotalTxt}>Order Total: {this.convertToDollars(total)}</Text>
+                    <TouchableOpacity style={style.menuOrderBtn} onPress={() => { 
+                        this.setModalVisible(true);  
+                    }}>
                         <Text style={style.menuOrderBtnText}>Place Order</Text>
                     </TouchableOpacity>
                 </View>
-            </SafeAreaView>
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => {
+                            Alert.alert("Modal has been closed.");
+                            this.setModalVisible(!modalVisible);
+                        }}
+                    >
+                        <View style={styles.centeredView}>
+                            <View style={styles.modalView}>
+                                <Text style={styles.modalText}>Confirm your order</Text>
+                                <FlatList
+                                data={Order.lineItems}
+                                renderItem={OrderItem}
+                                keyExtractor={item => item.id}
+                                />
+                                <Button title= "Pay"></Button>
+                                <Button title= "Cancel" onPress={() => this.setModalVisible(!modalVisible)}></Button>
+                             
+                            </View>
+                        </View>
+                    </Modal>  
+                </SafeAreaView>
             </ImageBackground>
         )
     }
 }
 
-const MenuItem = () => (
-    <View style={styles.item}>
-        <Text style={styles.title}></Text>
-        <Button title="Place Order"/>        
-    </View> 
-);
 
 const styles = StyleSheet.create({
     container:{
@@ -181,6 +213,8 @@ const styles = StyleSheet.create({
         marginTop: 22
       },
       modalView: {
+        width: 300,
+        height: 500,
         margin: 20,
         backgroundColor: "white",
         borderRadius: 20,
