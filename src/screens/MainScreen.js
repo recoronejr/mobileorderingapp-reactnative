@@ -7,10 +7,14 @@ import { createStackNavigator, StackView } from '@react-navigation/stack';
 import FirebaseAPI from '../api/firebase';
 
 import MenuScreen from './MenuScreen';
-import MapScreen from "./Mapscreen"
-import OrderScreen from './OrderScreen';
+import MapScreen from "./MapScreen"
 import EditAccountScreen from './EditAccountScreen';
+<<<<<<< HEAD
 import ItemVariationScreen from './ItemVariationScreen';
+=======
+import ReviewScreen from './ReviewScreen'
+import HomeScreen from './HomeScreen'
+>>>>>>> 5d88d7e5b920bfed4fb706239f26d0b216a6bb25
 
 import style from '../constants/Styles'
 
@@ -41,12 +45,13 @@ export default class MainScreen extends React.Component {
         } 
         else {
             return (
-                <Stack.Navigator initialRouteName = "MapScreen" style={style.mainScreenNavigator}>
+                <Stack.Navigator initialRouteName = "HomeScreen" style={style.mainScreenNavigator}>
+                    <Stack.Screen name="HomeScreen" component={HomeScreen} />
                     <Stack.Screen name="MapScreen" component={MapScreen} />
-                    <Stack.Screen name="Locations" component={MapScreen} />
                     <Stack.Screen name="MenuScreen" component={MenuScreen} />
                     <Stack.Screen name = "ItemVariationScreen" component = {ItemVariationScreen} />
                     <Stack.Screen name="EditAccount" component={EditAccountScreen} />
+                    <Stack.Screen name="Reviews" component={ReviewScreen} />
                 </Stack.Navigator>
                 
             );  

@@ -11,7 +11,7 @@ const style = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: 'rgba(230, 230, 230, 0.8)',
         width: '87%',
-        height: '60%',
+        height: "80%",
         justifyContent: "center",
         alignItems: "center",
         borderRadius:10,
@@ -45,6 +45,63 @@ const style = StyleSheet.create({
         borderBottomWidth: 1,
         paddingLeft: 5,
         paddingRight: 5
+    },
+    //Home Screen
+    homeScreenContainer:{
+        
+    },
+    homeScreenBackgroundCard:{
+        marginTop: 5,
+        alignSelf: 'center',
+        backgroundColor: 'rgba(230, 230, 230, 0.8)',
+        width: '87%',
+        height: "75%",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10,
+    },
+    homeScreenWelcomeBannerContainer:{
+        width: "75%",
+        height: 150,
+        marginBottom: 10
+    },
+    homeScreenImage:{
+        width: '100%',
+        height: 130,
+        marginTop: 50
+    },
+    homeScreenWecomeText:{
+        alignSelf: 'center',
+        fontSize: 38,
+        fontFamily: 'Optima',
+        marginTop: -125
+    },
+    homeScreenDesc:{
+        textAlign: 'center',
+        fontFamily: 'Optima'
+    },
+    homeScreenMiddleContainer:{
+        borderRadius: 10,
+        borderWidth: 1,
+        width: "75%",
+        height: 150,
+        marginTop: -100,
+        marginBottom: 10,
+        padding: 10
+    },
+    homeScreenMiddleContainerText:{
+        fontFamily: 'Optima'
+    },
+    homeScreenBottomContainer:{
+        borderRadius: 10,
+        borderWidth: 1,
+        width: "75%",
+        height: 150,
+        marginBottom: 10,
+        padding: 10
+    },
+    homeScreenBottomContainerText:{
+        fontFamily: 'Optima'
     },
     //ICONS 
     burgerIcon:{
@@ -177,6 +234,21 @@ const style = StyleSheet.create({
         alignSelf: 'center',
         fontFamily: 'Optima-Bold'
     },
+    loginUsernameContainer:{
+
+    },
+    loginPwdContainer:{
+        marginTop: 30,
+        marginBottom: 30
+    },
+    userIconCntainer:{
+        marginLeft: -20,
+        marginRight: 30,
+    },
+    pwdIconCntainer:{
+        marginLeft: -20,
+        marginRight: 20,
+    },
     loginUsernameText:{
         marginTop: "5%",
         fontSize: 25,
@@ -186,13 +258,11 @@ const style = StyleSheet.create({
     loginUsernameInput: {
         alignSelf: "center",
         borderBottomWidth: 1.5,
-        width: 220,
+        width: 220,                                                     /////
         height: 35,
-        justifyContent:"space-between",
-        flexDirection: "column",
-        marginTop: 20,
-        textAlignVertical: 'top',
-        paddingLeft: "4%",
+        paddingLeft: "2%",
+        fontSize: 24,
+        color: 'black'
     }, 
     loginPasswordText:{
         marginTop: "7%",
@@ -208,17 +278,20 @@ const style = StyleSheet.create({
     loginPasswordInput:{
         alignSelf: "center",
         borderBottomWidth: 1.5,
-        width: 180,
-        height: 40,
-        justifyContent:"space-between",
-        flexDirection: "column",
-        marginTop: 20,
-        textAlignVertical: 'top',
-        paddingLeft: "4%",
+        width: 220,
+        height: 40,                                 ////
+        paddingLeft: "2%",
+        fontSize: 24
     },
     loginScreenBtns:{
         flexDirection: 'row',
         marginTop: 35
+    },
+    userInputContainer:{
+        alignItems: 'flex-end'
+    },
+    pwdInputContainer:{
+
     },
     //Edit Account Screen
     editScrnHeader:{
@@ -362,7 +435,8 @@ const style = StyleSheet.create({
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
         borderColor: '#FFF',
-        borderWidth: 1
+        borderWidth: 1,
+        flexDirection: 'row'
     },
     merchantNameText:{
         fontSize: 45,
@@ -407,11 +481,197 @@ const style = StyleSheet.create({
         fontFamily: 'Optima',
         color: '#FFF'
     },
-    item:{
-       
+    //Review Screen
+    reviewScreenSpacer: {
+
     },
-    title:{
+    reviewContainer: {
+        backgroundColor: "#FFFFFF",
+        borderRadius: 10,
+        paddingHorizontal: 30,
+        paddingVertical: 40,
+        minWidth: "80%",
+        shadowOffset: { width: 0, height: 5 },
+        shadowOpacity: 1.0,
+        shadowRadius: 2,
+        shadowColor: "rgba(193, 211, 251, 0.5)",
+        elevation: 5,
+    },
+    reviewScreenTitle: {
+        fontWeight: "bold",
+        fontSize: 20,
+        color: "#323357",
+        textAlign: "center",
+        marginBottom: 20
+    },
+    reviewScreenAmountText: {
+        fontSize: 16,
+        color: "#595B71",
+        textAlign: "center",
+    },
+    revScreenCustomerReview:{
+        backgroundColor: 'yellow',
+        width: '75%',
+        height: 200,
+        alignItems: 'center'
+    },
+    // Review Modal
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    modalHeader:{
+        fontSize: 22,
+        marginBottom: 15,
+        marginTop: -15
+    },  
+    modalExitBtn:{
+        marginTop: -20,
+        marginLeft: '75%'
+    },
+    reviewModalCloseBtn:{
+        fontSize: 20,
+        padding: 10
+    },
+    reviewModalButton: {
+        marginTop: 45,
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    reviewModalBtnOpen: {
+        backgroundColor: "#F194FF",
+    },
+    reviewModalBtnClose: {
+        backgroundColor: "#2196F3",
+    },
+    reviewModalBtn: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    reviewModalTxt: {
+        marginBottom: 15,
+        textAlign: "center"
+    },
+    reviewModalSubjectInput:{
+        borderRadius: 10,
+        width: 250,
+        height: 35,
+        textAlignVertical: 'top',
+        paddingLeft: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
+        backgroundColor: '#F5F8FF',
+        marginBottom: 10
+    },
+    reviewModalCustomerRatingContainer:{
+        borderRadius: 10,
+        width: 200,
+        height: 35,
+        textAlignVertical: 'top',
+        paddingLeft: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
+        marginBottom: 10
+    },  
+    customerRating:{
         
+    },
+    //Customer Review
+    customerReviewBodyWrap:{
+        backgroundColor: '#F5F8FF',
+        borderRadius: 10,
+        marginBottom: 15
+    },
+    customerReviewInput:{
+        borderColor: 'black',
+        borderRadius: 10,
+        width: 250,
+        height: 175,
+        textAlignVertical: 'top',
+        padding: 10,
+        paddingTop: 10
+    },
+    //Percent Comp
+    percentBarProgressText: {
+        width: 35,
+        fontSize: 11,
+        color: "#2A5BDA",
+    },
+    progressPercentText: { 
+        width: 40, 
+        fontSize: 11, 
+        color: "#323357" 
+    },
+    percentBarProgressMiddle: {
+        height: 15,
+        flex: 1,
+        marginHorizontal: 10,
+    },
+    percentBarProgressWrap: {
+        backgroundColor: "#F5F8FF",
+        borderRadius: 18,
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        padding: 2,
+    },
+    progressBar: {
+        flex: 1,
+        shadowOffset: { width: 0, height: 0 },
+        shadowColor: "#ffcc48",
+        shadowOpacity: 1.0,
+        shadowRadius: 4,
+        backgroundColor: "#FFCC48",
+        borderRadius: 18,
+        minWidth: 5
+    },
+    //Star Comp
+    starPercentContainer:{
+        padding: 10
+    },  
+    starsAmountText:{
+        textAlign: 'center',
+        paddingTop: 10,
+        fontSize: 11
+    }, 
+    starsContainer:{
+        marginBottom: -20
+    },
+    starsWrapper: {
+        marginTop: 20,
+        marginBottom: 5,
+        width: '75%',
+        backgroundColor: "#F5F8FF",
+        borderRadius: 20,
+        alignItems: "center",
+        paddingHorizontal: 20,
+        paddingBottom: 25,
+        flexDirection: 'row',
+    },
+    //Navigation
+    navIcon:{
+        marginBottom: -10
     },
 });
 

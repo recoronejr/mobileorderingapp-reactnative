@@ -13,6 +13,9 @@ import LoginButton, { SignUpButton } from '../UniversalComps/ButtonComp'
 import MainNavigation from '../../navigation/MainNavigation'
 import UserInputs from '../UserInfoComps/UserInputs'
 
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUserLock } from '@fortawesome/free-solid-svg-icons'
 const LoginCard = ({ navigation }) =>{
 
     const [email, setEmail] = useState('');
@@ -23,18 +26,25 @@ const LoginCard = ({ navigation }) =>{
             <View style={style.backgroundCard}>
                 <BurgerIcon />
                 <Text style ={style.loginHeader}>Sign In</Text>
-
-                <View style={style.sideBySideContainer}>
-                    <TextInput style={style.loginUsernameText} editable={false} value={'Email: '}/>
-                    <View style={style.loginWrapper}>
-                        <UserInputs onChangeText={email => setEmail(email)} style={style.loginUsernameInput}/>
+                <View style={style.loginUsernameContainer}>
+                    <View style={style.sideBySideContainer}>
+                        <View style={style.userIconCntainer}>
+                            <FontAwesomeIcon icon={faUser} size={32} style={style.userIcon} />
+                        </View>
+                        <View style={style.userInputContainer}>
+                            <UserInputs placeholder={"Email"} onChangeText={email => setEmail(email)} style={style.loginUsernameInput}/>
+                        </View>
                     </View>
                 </View>
 
-                <View style={style.sideBySideContainer}>
-                    <TextInput style={style.loginPasswordText} value={'Password: '}/>
-                    <View style={style.loginWrapper}>
-                        <PasswordComp onChangeText={(password) => setPassword(password)} style={style.loginPasswordInput} />
+                <View style={style.loginPwdContainer}>
+                    <View style={style.sideBySideContainer}>
+                        <View style={style.pwdIconCntainer}>
+                            <FontAwesomeIcon icon={faUserLock} size={42} style={style.pwdIcon}/>
+                        </View>
+                        <View style={style.pwdInputContainer}>
+                            <PasswordComp placeholder={"Password"} onChangeText={(password) => setPassword(password)} style={style.loginPasswordInput} />
+                        </View>
                     </View>
                 </View>
 

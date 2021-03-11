@@ -21,6 +21,10 @@ class BackgroundImages{
         const image = require('../../assets/cityimg.jpg')
         return image
     }
+    getBanner(){
+        const image = require('../../assets/Banner.png')
+        return image
+    }
 }
 
 const imgs = new BackgroundImages();

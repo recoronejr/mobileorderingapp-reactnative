@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import {auth} from 'firebase';
 import style from '../../constants/Styles'
+import { merchantInfo } from '../../screens/MenuScreen';
 
 export default class LoginButton extends React.Component{
     constructor(props){
@@ -54,4 +55,13 @@ export const EditButton = () =>{
 
 export const CancelButton = () =>{
 
+}
+
+export const ReviewsButton = () =>{
+    const navigation = useNavigation();
+    return <TouchableOpacity>
+        <Button title="Reviews" hasText transparent onPress={()=>{
+            navigation.navigate('Reviews')
+        }}/> 
+    </TouchableOpacity>
 }

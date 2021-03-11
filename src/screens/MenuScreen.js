@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView, Modal, Pressable, ImageBackground} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -6,6 +7,8 @@ import { color } from 'react-native-reanimated';
 
 import {imgs} from '../components/UniversalComps/Images'
 import style from '../constants/Styles'
+
+import {ReviewsButton} from '../components/UniversalComps/ButtonComp'
 
 const {height} = Dimensions.get('window')
 
@@ -22,6 +25,7 @@ export default class MenuScreen extends React.Component {
         this.state = {
             menu: this.props.route.params.menu,
             menuItems: [],
+<<<<<<< HEAD
             menuImages: [],
             modalVisible: false,
             variations: [],
@@ -30,6 +34,14 @@ export default class MenuScreen extends React.Component {
     }
     componentWillMount() {
         // this.setState({menu:this.props.route.params.menu})
+=======
+            menuImages: []
+        }
+    }
+    componentWillMount() {
+        this.setState({menu: this.props.route.params.menu})
+        alert(this.state.merchantName)
+>>>>>>> 5d88d7e5b920bfed4fb706239f26d0b216a6bb25
     }
     getImageById(id){
         for (var i = 0; i < this.state.menuImages.length; i++) {
@@ -86,7 +98,6 @@ export default class MenuScreen extends React.Component {
         ) 
     }
     render() {
-        const { navigation: { navigate } } = this.props;
         const scrollEnabled = true;
 
         let merchantName = this.props.route.params.merchant.name;
@@ -111,10 +122,11 @@ export default class MenuScreen extends React.Component {
         let img = imgs.getCustomBackground();
         let totalPrice = '$0.00'
         return (
-            <ImageBackground source={img} style={style.imgBackground}>
+            <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
             <SafeAreaView style={style.backgroundContainer}>
                 <View style={style.merchantTextWrapper}>
                     <Text style={style.merchantNameText}>{merchantName}</Text>
+                    <ReviewsButton />
                 </View>
                 <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
                         
@@ -133,6 +145,7 @@ export default class MenuScreen extends React.Component {
     }
 }
 
+<<<<<<< HEAD
 const MenuItem = () => (
     <View style={styles.item}>
         <Text style={styles.title}></Text>
@@ -216,3 +229,6 @@ const styles = StyleSheet.create({
         textAlign: "center"
       }
 })
+=======
+export const merchantInfo = new MenuScreen();
+>>>>>>> 5d88d7e5b920bfed4fb706239f26d0b216a6bb25

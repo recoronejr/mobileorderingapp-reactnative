@@ -14,10 +14,14 @@ export default class MapScreen extends React.Component {
         this.state = {
             locations: null,
             menu: null,
+            merchantName: 'test'
         }
     }
     componentDidMount() {
         this.getLocations();
+    }
+    getMerchantName(){
+        alert(this.state.merchantName)
     }
     async getLocations() {
         while(this.state.locations == [] || this.state.locations == null) {
@@ -35,16 +39,14 @@ export default class MapScreen extends React.Component {
         let merchant = {
             id: item.merchant_id,
             name: item.name,
-            
         }
-        
         return (
             <TouchableOpacity onPress={() => {
                     this.props.navigation.navigate("MenuScreen", {
-                        merchant:merchant,
+                        merchant: merchant,
                         menu: this.state.menu[merchant.id].items
-                    })}}>
-                <Location title={item.name} address={item.address.address_line_1} merchantId={item.id}/>  
+                },)}}>
+                <Location title={merchant.name} address={item.address.address_line_1}/>  
             </TouchableOpacity>     
         ) 
     }
@@ -53,7 +55,7 @@ export default class MapScreen extends React.Component {
         let img = imgs.getCityImage();
         return (
             //Will return null until datasource is properly saved to state
-            <ImageBackground style={style.mapScreenBackgroundImg} source={img}>
+            <ImageBackground style={style.mapScreenBackgroundImg} source={img} blurRadius={20}>
                 <SafeAreaView>
                     <Map />
                     <Text style={style.mapScreenLocationHeader}>Locations</Text>
@@ -63,11 +65,13 @@ export default class MapScreen extends React.Component {
         ) 
     }   
 }
-    const Location = ({title, address}) => {
-        return (
-            <View style={style.mapScreenLocationContainer}>
-                <Text style={style.mapScreenLocatonTitle}>{title}</Text>
-                <Text style={style.mapScreenLocationAddress}>{address}</Text>
-            </View> 
-        )
-    }
+const Location = ({title, address}) => {
+    return (
+        <View style={style.mapScreenLocationContainer}>
+            <Text style={style.mapScreenLocatonTitle}>{title}</Text>
+            <Text style={style.mapScreenLocationAddress}>{address}</Text>
+        </View> 
+    )
+}
+
+export const mapScrn = new MapScreen();

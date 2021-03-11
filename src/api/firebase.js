@@ -118,6 +118,28 @@ class FirebaseAPI {
         this.email = doc.data().email;
     })
   }
+  createNewReview(merchantID, subject, body, rating){
+    firebase.firestore()
+    .collection('Reviews')
+    .doc(uid)
+    .set({
+      merchantID: merchantID,
+      subject: subject, 
+      body: body, 
+      rating: rating, 
+      email: this.email,
+      time: new Date().toTimeString(),
+      
+    })
+    .then(() => {
+      console.log('Review submitted!');
+    });
+  }
+  getReviewInfo(merchantID){
+    firebase.firestore().
+    collection('Reviews')
+    .doc(merchantID)
+  }
 }
   
 const firebaseApp = new FirebaseAPI();

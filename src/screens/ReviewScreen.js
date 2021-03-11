@@ -1,160 +1,86 @@
-import React from "react";
+import React, {useState} from "react";
 import { render } from "react-dom";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, Text, View, ImageBackground, Modal, Pressable} from "react-native";
+
+import {Rating} from 'react-native-ratings'
+
+import style from '../constants/Styles'
+import {imgs} from '../components/UniversalComps/Images'
+
+import {OneStarRating, TwoStarRating, ThreeStarRating, FourStarRating, FiveStarRating, AmountOfReviews} from '../components/ReviewScreenComps/Star'
+
+import {mapScrn} from './MapScreen'
+import Star from '../components/ReviewScreenComps/Star'
+import PercentageBar from '../components/ReviewScreenComps/PercentageBar'
+import Review from "../components/ReviewScreenComps/Review";
+import UserInputs from "../components/UserInfoComps/UserInputs";
 
 export default function App() {
 
-    
+    let img = imgs.getCustomBackground();
+    const [modalVisible, setModalVisible] = useState(false);
     return (
-        <View style={styles.container}>
-            <View style={styles.reviewContainer}>
-                <Text style={styles.title}>Customer reviews</Text>
-                <View style={styles.totalWrap}>
-                    <View
-                        style={{
-                            flexDirection: "row",
-                        }}
-                    >
-                        <Star />
-                        <Star />
-                        <Star />
-                        <Star />
-                        <Star />
+        <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
+            <View style={style.backgroundCard}>
+                <Text style={style.reviewScreenTitle}>Customer reviews</Text>
+                    <View style={style.revScreenCustomerReview}>
+                        
+                        <View style={style.reviewScreenSubjectContainer}>
+
+                        </View>
+                        <View style={style.reviewScreenBodyContainer}>
+
+                        </View>
+                        <View style={style.reviewScreenReviewInfoContainer}>
+                            <View style={style.userWhoLeftReviewContainer}>
+                            
+                            </View>
+                            <View style={style.starsGivenForReviewContainer}>
+
+                            </View>
+                        </View>
+                        
+                        {/*This is a Modal, which is used to animate the popup between Reviews and Leaving a Review.*/}
+                        <View style={style.centeredView}>
+                            <Modal animationType="slide" transparent={true} visible={modalVisible}
+                                onRequestClose={() => {
+                                setModalVisible(!modalVisible);}}>
+                                <View style={style.centeredView}>
+                                <View style={style.modalView}>
+                                    
+                                    <View style={style.modalExitBtn}>
+                                        <Pressable style={style.reviewModalBtnCloseTop} onPress={() => setModalVisible(!modalVisible)}>
+                                            <Text style={style.reviewModalCloseBtn}>X</Text>
+                                        </Pressable>
+                                    </View>
+                                    <Text style={style.modalHeader}>Leave a Review</Text>
+
+                                    <UserInputs style={style.reviewModalSubjectInput} placeholder={'Subject'}></UserInputs>
+                                    <Review />
+                                    
+                                    <View style={style.reviewModalCustomerRatingContainer}>
+                                        <Rating showRating imageSize={30}/>
+                                    </View>
+
+                                    <Pressable style={[style.reviewModalButton, style.reviewModalBtnClose]} onPress={() => setModalVisible(!modalVisible)}>
+                                        <Text style={style.reviewModalBtn}>Submit Review</Text>
+                                    </Pressable>
+                                </View>
+                                </View>
+                            </Modal>
+                            <Pressable style={[style.reviewModalButton, style.reviewModalBtnOpen]} onPress={() => setModalVisible(true)}>
+                                <Text style={style.reviewModalBtn}>Leave Review</Text>
+                            </Pressable>
+
+                            <Button title="Temp" onPress={()=>{
+                                mapScrn.getMerchantName()
+                            }}/>
+                            </View>
+
                     </View>
-                    <Text>4.7 out of 5</Text>
-                    <View style={{ marginTop: 40 }}>
-                        <View style={styles.spacer}>
-                            <PercentageBar starText="5 star" percentage={84} />
-                        </View>
-                        <View style={styles.spacer}>
-                            <PercentageBar starText="4 star" percentage={9} />
-                        </View>
-                        <View style={styles.spacer}>
-                            <PercentageBar starText="3 star" percentage={4} />
-                        </View>
-                        <View style={styles.spacer}>
-                            <PercentageBar starText="2 star" percentage={2} />
-                        </View>
-                        <View style={styles.spacer}>
-                            <PercentageBar starText="1 star" percentage={1} />
-                        </View>
-                    </View>
-                </View>
-                <Text style={styles.amountText}>40 customer ratings</Text>
+                    <Star />
+                <Text style={style.reviewScreenAmountText}>40 customer ratings</Text>
             </View>
-        </View>
+        </ImageBackground>
     );
 }
-
-const PercentageBar = ({ starText, percentage }) => {
-    const [animation] = useState(new Animated.Value(0));
-    useEffect(() => {
-        Animated.timing(animation, {
-            toValue: percentage,
-            duration: 500,
-        }).start();
-    }, [percentage]);
-    return (
-        <View
-            style={{
-                flexDirection: "row",
-            }}
-        >
-            <Text style={styles.progressText}>{starText}</Text>
-            <View style={styles.progressMiddle}>
-                <View style={styles.progressWrap}>
-                    <Animated.View
-                        style={[
-                            styles.progressBar,
-                            {
-                                width: animation.interpolate({
-                                    inputRange: [0, 100],
-                                    outputRange: ["0%", "100%"],
-                                }),
-                            },
-                        ]}
-                    />
-                </View>
-            </View>
-            <Text style={styles.progressPercentText}>{percentage}%</Text>
-        </View>
-    );
-};
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#F5F8FF",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    reviewContainer: {
-        backgroundColor: "#FFFFFF",
-        borderRadius: 10,
-        paddingHorizontal: 30,
-        paddingVertical: 40,
-        minWidth: "80%",
-        shadowOffset: { width: 0, height: 5 },
-        shadowOpacity: 1.0,
-        shadowRadius: 2,
-        shadowColor: "rgba(193, 211, 251, 0.5)",
-        elevation: 5,
-    },
-    title: {
-        fontWeight: "bold",
-        fontSize: 20,
-        color: "#323357",
-        textAlign: "center",
-    },
-    totalWrap: {
-        marginTop: 20,
-        marginBottom: 5,
-        backgroundColor: "#F5F8FF",
-        borderRadius: 40,
-        alignItems: "center",
-        justifyContent: "space-between",
-        flexDirection: "row",
-        paddingHorizontal: 15,
-        paddingVertical: 10,
-    },
-    amountText: {
-        fontSize: 16,
-        color: "#595B71",
-        textAlign: "center",
-    },
-    progressText: {
-        width: 50,
-        fontSize: 14,
-        color: "#2A5BDA",
-    },
-    progressPercentText: { width: 40, fontSize: 14, color: "#323357" },
-    progressMiddle: {
-        height: 15,
-        flex: 1,
-        marginHorizontal: 10,
-    },
-    progressWrap: {
-        backgroundColor: "#F5F8FF",
-        borderRadius: 18,
-        position: "absolute",
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        padding: 2,
-    },
-    progressBar: {
-        flex: 1,
-        shadowOffset: { width: 0, height: 0 },
-        shadowColor: "#ffcc48",
-        shadowOpacity: 1.0,
-        shadowRadius: 4,
-        backgroundColor: "#FFCC48",
-        borderRadius: 18,
-        minWidth: 5,
-    },
-    width: animation.interpolate({
-        inputRange: [0, 100],
-        outputRange: ["0%", "100%"],
-    }),
-});
