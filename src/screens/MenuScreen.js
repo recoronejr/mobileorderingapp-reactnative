@@ -117,7 +117,12 @@ export default class MenuScreen extends React.Component {
             <SafeAreaView style={style.backgroundContainer}>
                 <View style={style.merchantTextWrapper}>
                     <Text style={style.merchantNameText}>{merchantName}</Text>
-                    <ReviewsButton />
+                    
+                    <TouchableOpacity>
+                        <Button title="Reviews" hasText transparent onPress={()=>{
+                        this.props.navigation.navigate('Reviews', {merchantName})}}/> 
+                    </TouchableOpacity>
+                
                 </View>
                 <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
                         

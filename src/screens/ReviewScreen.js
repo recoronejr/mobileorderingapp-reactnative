@@ -15,6 +15,14 @@ import Review from "../components/ReviewScreenComps/Review";
 import UserInputs from "../components/UserInfoComps/UserInputs";
 
 export default class ReviewScreen extends React.Component {
+    constructor(props){
+        super(props);
+        this.state={
+            merchant:{
+                name: this.props.route.params.merchantName
+            }
+        }
+    }
     render(){
         let img = imgs.getCustomBackground();
         return (
@@ -41,7 +49,7 @@ export default class ReviewScreen extends React.Component {
                                 <ReviewModal />
                             
                                 <Button title="Temp" onPress={()=>{
-                                    mapScrn.getMerchantName()
+                                    alert(this.state.merchant.name)
                                 }}/>
                                 </View>
 
