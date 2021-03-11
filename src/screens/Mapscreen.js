@@ -8,7 +8,6 @@ import OrderMenu from './MenuScreen'
 import {imgs} from '../components/UniversalComps/Images'
 
 import style from '../constants/Styles'
-import Order from '../model/Order';
 export default class MapScreen extends React.Component {
     constructor(props) {
         super(props)
@@ -41,8 +40,6 @@ export default class MapScreen extends React.Component {
         
         return (
             <TouchableOpacity onPress={() => {
-                    Order.clear();
-                    Order.setLocationId(merchant.id);
                     this.props.navigation.navigate("MenuScreen", {
                         merchant:merchant,
                         menu: this.state.menu[merchant.id].items
