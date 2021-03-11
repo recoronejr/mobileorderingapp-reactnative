@@ -8,6 +8,7 @@ import OrderMenu from './MenuScreen'
 import {imgs} from '../components/UniversalComps/Images'
 
 import style from '../constants/Styles'
+
 export default class MapScreen extends React.Component {
     constructor(props) {
         super(props)

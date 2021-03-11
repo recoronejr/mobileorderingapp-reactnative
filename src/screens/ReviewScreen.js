@@ -13,6 +13,7 @@ import Star from '../components/ReviewScreenComps/Star'
 import PercentageBar from '../components/ReviewScreenComps/PercentageBar'
 import Review from "../components/ReviewScreenComps/Review";
 import UserInputs from "../components/UserInfoComps/UserInputs";
+import { Value } from "react-native-reanimated";
 
 export default class ReviewScreen extends React.Component {
     constructor(props){
@@ -23,6 +24,9 @@ export default class ReviewScreen extends React.Component {
             }
         }
     }
+    getMerchantName(){
+        alert('hello')
+    }
     render(){
         let img = imgs.getCustomBackground();
         return (
@@ -32,27 +36,26 @@ export default class ReviewScreen extends React.Component {
                         <View style={style.revScreenCustomerReview}>
                             
                             <View style={style.reviewScreenSubjectContainer}>
-
+                                <UserInputs style={style.reviewSubjectInput} placeholder={'Subject'}/>
                             </View>
                             <View style={style.reviewScreenBodyContainer}>
-
+                            <UserInputs style={style.reviewBodyInput} placeholder={'Body'} />
                             </View>
                             <View style={style.reviewScreenReviewInfoContainer}>
                                 <View style={style.userWhoLeftReviewContainer}>
                                 
                                 </View>
                                 <View style={style.starsGivenForReviewContainer}>
-
+                                    {/*Get this from firebase*/}
                                 </View>
                             </View>
                             
                                 <ReviewModal />
                             
                                 <Button title="Temp" onPress={()=>{
-                                    alert(this.state.merchant.name)
+                                    
                                 }}/>
                                 </View>
-
                         </View>
                         <Star />
                     <Text style={style.reviewScreenAmountText}>40 customer ratings</Text>
@@ -60,3 +63,5 @@ export default class ReviewScreen extends React.Component {
         );
     }
 }
+
+export const revScrn = new ReviewScreen(); 

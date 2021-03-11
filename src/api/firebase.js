@@ -129,7 +129,6 @@ class FirebaseAPI {
       rating: rating, 
       email: this.email,
       time: new Date().toTimeString(),
-      
     })
     .then(() => {
       console.log('Review submitted!');
