@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {View, Modal, Pressable, Text, Button} from 'react-native'
 
 import style from '../../constants/Styles'
@@ -7,15 +7,24 @@ import Review from '../ReviewScreenComps/Review'
 
 import {revScrn} from '../../screens/ReviewScreen'
 
-import {Rating} from 'react-native-ratings'
-import { SearchLoyaltyAccountsRequestLoyaltyAccountQuery } from 'square-connect'
+import {AirbnbRating, Rating} from 'react-native-ratings'
 
-const ReviewModal = () =>{
+import {firebaseApp} from '../../api/firebase'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+
+const ReviewModal = (props) =>{
 
     const [modalVisible, setModalVisible] = useState(false);
+    //Email collected from firebase
+    //Timestamp collected from react-native
     const [subject, setSubject] = useState();
     const [body, setBody] = useState();
     const [rating, setRating] = useState();
+    const [merchantName, setMerchantName] = useState();
+
+    useEffect(()=>{
+        setMerchantName(props.name)
+    })
 
     return <View style={style.centeredView}>
             <Modal animationType="slide" transparent={true} visible={modalVisible}
@@ -35,15 +44,15 @@ const ReviewModal = () =>{
                         <Review onChangeText={body => setBody(body)}/>
                         
                         <View style={style.reviewModalCustomerRatingContainer}>
-                            <Rating showRating imageSize={30}/>
+                            <AirbnbRating showRating imageSize={30} startingValue={5} onFinishRating={(rating => (setRating(rating)))}/>
                         </View>
 
-                        <Pressable style={[style.reviewModalButton, style.reviewModalBtnClose]} onPress={() => setModalVisible(!modalVisible)}>
+                        <Pressable style={[style.reviewModalButton, style.reviewModalBtnClose]} onPress={() => {
+                            firebaseApp.createNewReview(merchantName, subject, body, rating);
+                            setModalVisible(!modalVisible)
+                        }}>
                             <Text style={style.reviewModalBtn}>Submit Review</Text>
                         </Pressable>
-                        <Button title="Temp" onPress={()=>{
-                            console.log(revScrn.getMerchantName())
-                        }}/>
                     </View>
                 </View>
             </Modal>

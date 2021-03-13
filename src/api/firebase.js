@@ -119,15 +119,16 @@ class FirebaseAPI {
     })
   }
   createNewReview(merchantID, subject, body, rating){
+    let user = this.getUser();
     firebase.firestore()
     .collection('Reviews')
-    .doc(uid)
+    .doc()
     .set({
       merchantID: merchantID,
       subject: subject, 
       body: body, 
       rating: rating, 
-      email: this.email,
+      email: user.email,
       time: new Date().toTimeString(),
     })
     .then(() => {

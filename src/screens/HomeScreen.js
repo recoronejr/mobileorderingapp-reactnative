@@ -16,7 +16,7 @@ export default class HomeScreen extends React.Component{
                         <View style={style.homeScreenWelcomeBannerContainer}>
                             <Text style={style.homeScreenWecomeText}>Welcome!</Text>
                             <Text style={style.homeScreenDesc}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             </Text>
                         </View>
                         <View style={style.homeScreenMiddleContainer}>

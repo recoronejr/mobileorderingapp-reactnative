@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { render } from "react-dom";
 import { Button, Text, View, ImageBackground, Modal, Pressable} from "react-native";
 
@@ -17,17 +17,10 @@ import { Value } from "react-native-reanimated";
 
 export default class ReviewScreen extends React.Component {
     constructor(props){
-        super(props);
-        this.state={
-            merchant:{
-                name: this.props.route.params.merchantName
-            }
-        }
-    }
-    getMerchantName(){
-        alert('hello')
+        super(props);   
     }
     render(){
+        let merchantName = this.props.route.params.merchantName;
         let img = imgs.getCustomBackground();
         return (
             <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
@@ -45,19 +38,16 @@ export default class ReviewScreen extends React.Component {
                                 <View style={style.userWhoLeftReviewContainer}>
                                 
                                 </View>
-                                <View style={style.starsGivenForReviewContainer}>
-                                    {/*Get this from firebase*/}
+                                    <View style={style.starsGivenForReviewContainer}>
+                                        {/*Get this from firebase*/}
+                                    </View>
                                 </View>
-                            </View>
                             
-                                <ReviewModal />
-                            
-                                <Button title="Temp" onPress={()=>{
-                                    
-                                }}/>
+                                <ReviewModal name={merchantName}/>
+
                                 </View>
+                            <Star />
                         </View>
-                        <Star />
                     <Text style={style.reviewScreenAmountText}>40 customer ratings</Text>
             </ImageBackground>
         );

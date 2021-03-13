@@ -99,9 +99,7 @@ export default class MenuScreen extends React.Component {
 
             return (
                 <TouchableOpacity style={styles.item} onPress={() => {
-                    this.props.navigation.navigate("ItemVariationScreen", {variation})
-                   
-                }}>
+                    this.props.navigation.navigate("ItemVariationScreen", {variation}) }}>
                     <View key={key} style={styles.card}>
                             <Text style={{fontSize:28}}>{val.item_data.name}</Text>
                             <Image style={styles.img} source={{uri:image}}/>

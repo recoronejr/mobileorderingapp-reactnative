@@ -9,7 +9,7 @@ export default class ItemVariationScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            dataSource: this.props.route.params.variation,
+            dataSource: 'this.props.route.params.variation'
         }   
     }
     goBack() {
