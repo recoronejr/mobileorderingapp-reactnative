@@ -16,7 +16,6 @@ import OrderScreen from './src/screens/OrderScreen';
 
 import {auth} from 'firebase';
 
-
 const App = ({navigation}) => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
