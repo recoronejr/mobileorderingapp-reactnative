@@ -10,7 +10,7 @@ export default class HomeScreen extends React.Component{
         let background = imgs.getCustomBackground();
         return(
             <View style={style.homeScreenContainer}>
-            <Image source={banner} style={style.homeScreenImage}/>
+                <Image source={banner} style={style.homeScreenImage}/>
                 <ImageBackground source={background} style={style.imgBackground} blurRadius={30}>
                     <View style={style.homeScreenBackgroundCard}>
                         <View style={style.homeScreenWelcomeBannerContainer}>

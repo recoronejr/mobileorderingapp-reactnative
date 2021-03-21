@@ -9,19 +9,21 @@ const PercentageBar = ({ starText, percentage }) => {
         Animated.timing(animation, { toValue: percentage, duration: 500,}).start();
     }, [percentage]);
     return (
-        <View style={style.sideBySideContainer}>
-            <Text style={style.percentBarProgressText}>{starText}</Text>
-            <View style={style.percentBarProgressMiddle}>
-                <View style={style.percentBarProgressWrap}>
-                    <Animated.View
-                        style={[ style.progressBar,{ width: animation.interpolate({
-                                                     inputRange: [0, 100],
-                                                     outputRange: ["0%", "100%"],
-                            }),
-                        },]}/>
+        <View style={style.ratingContainer}>
+            <View style={style.sideBySideContainer}>
+                <Text style={style.percentBarProgressText}>{starText}</Text>
+                <View style={style.percentBarProgressMiddle}>
+                    <View style={style.percentBarProgressWrap}>
+                        <Animated.View
+                            style={[ style.progressBar,{ width: animation.interpolate({
+                                                        inputRange: [0, 100],
+                                                        outputRange: ["0%", "100%"],
+                                }),
+                            },]}/>
+                    </View>
                 </View>
+                <Text style={style.progressPercentText}>{percentage}%</Text>
             </View>
-            <Text style={style.progressPercentText}>{percentage}%</Text>
         </View>
     );
 };

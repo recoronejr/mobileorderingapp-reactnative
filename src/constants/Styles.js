@@ -68,13 +68,13 @@ const style = StyleSheet.create({
     homeScreenImage:{
         width: '100%',
         height: 130,
-        marginTop: 50
+        
     },
     homeScreenWecomeText:{
         alignSelf: 'center',
         fontSize: 38,
         fontFamily: 'Optima',
-        marginTop: -125
+        marginTop: -100
     },
     homeScreenDesc:{
         textAlign: 'center',
@@ -482,14 +482,12 @@ const style = StyleSheet.create({
         color: '#FFF'
     },
     //Review Screen
-    reviewScreenSpacer: {
-
-    },
     reviewContainer: {
         backgroundColor: "#FFFFFF",
         borderRadius: 10,
         paddingHorizontal: 30,
-        paddingVertical: 40,
+        paddingVertical: 20,
+        marginBottom: 10,
         minWidth: "80%",
         shadowOffset: { width: 0, height: 5 },
         shadowOpacity: 1.0,
@@ -509,11 +507,21 @@ const style = StyleSheet.create({
         color: "#595B71",
         textAlign: "center",
     },
-    revScreenCustomerReview:{
-        backgroundColor: 'yellow',
-        width: '75%',
-        height: 200,
-        alignItems: 'center'
+    reviewUserInfo:{
+        marginLeft: -20,
+        padding: 5,
+    },
+    reviewScreenReviewInfo:{
+        marginLeft: 10,
+        padding: 5,
+        width: '60%'
+    },
+    reviewInfoText:{
+        fontSize: 12
+    },
+    reviewScreenScroll:{
+        width: '90%',
+        height: 250
     },
     // Review Modal
     centeredView: {
@@ -551,10 +559,8 @@ const style = StyleSheet.create({
         padding: 10
     },
     reviewModalButton: {
-        marginTop: 45,
         borderRadius: 20,
         padding: 10,
-        elevation: 2
     },
     reviewModalBtnOpen: {
         backgroundColor: "#F194FF",
@@ -592,9 +598,9 @@ const style = StyleSheet.create({
         paddingBottom: 5,
         marginBottom: 10
     },  
-    customerRating:{
-        
-    },
+    reviewRating:{
+        marginTop: 10
+    },  
     //Customer Review
     customerReviewBodyWrap:{
         backgroundColor: '#F5F8FF',
@@ -647,9 +653,6 @@ const style = StyleSheet.create({
         minWidth: 5
     },
     //Star Comp
-    starPercentContainer:{
-        padding: 10
-    },  
     starsAmountText:{
         textAlign: 'center',
         paddingTop: 10,
@@ -659,16 +662,22 @@ const style = StyleSheet.create({
         marginBottom: -20
     },
     starsWrapper: {
-        marginTop: 20,
+        marginTop: 10,
         marginBottom: 5,
         width: '75%',
         backgroundColor: "#F5F8FF",
         borderRadius: 20,
         alignItems: "center",
-        paddingHorizontal: 20,
-        paddingBottom: 25,
+        padding: 10,
         flexDirection: 'row',
     },
+    amountOfStarsContainer:{
+        flexDirection: 'row',
+        width: 95
+    },
+    totalStars:{
+        marginLeft: 10
+    },  
     //Navigation
     navIcon:{
         marginBottom: -10

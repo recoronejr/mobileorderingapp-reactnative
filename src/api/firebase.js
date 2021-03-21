@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import * as firebase from 'firebase';
 import '@firebase/firestore';
 
-import { View, ListItem, Text } from 'react-native'
-
 import {firebaseConfig} from './config';
+import { revScrn } from '../screens/ReviewScreen';
+
 
 class FirebaseAPI {
   constructor() {
@@ -120,6 +120,8 @@ class FirebaseAPI {
   }
   createNewReview(merchantID, subject, body, rating){
     let user = this.getUser();
+    let date = new Date().toDateString();
+    
     firebase.firestore()
     .collection('Reviews')
     .doc()
@@ -129,19 +131,29 @@ class FirebaseAPI {
       body: body, 
       rating: rating, 
       email: user.email,
-      time: new Date().toTimeString(),
+      time: (date)
     })
     .then(() => {
       console.log('Review submitted!');
     });
   }
-  getReviewInfo(merchantID){
-    firebase.firestore().
-    collection('Reviews')
-    .doc(merchantID)
+
+  async GetUserWhoLeftReview(merchantName){ 
+    let reviewInfo = []
+    let document = await firebase.firestore()
+    .collection('Reviews')
+    .where('merchantID', '==', merchantName)
+    .get()
+
+    document.forEach(doc => {
+      reviewInfo.push(doc.data());
+    })
+    
+    console.log(reviewInfo)
+    return reviewInfo
   }
 }
-  
+
 const firebaseApp = new FirebaseAPI();
 
 export {firebaseApp};

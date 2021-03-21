@@ -60,7 +60,10 @@ export default class MapScreen extends React.Component {
                 <SafeAreaView>
                     <Map />
                     <Text style={style.mapScreenLocationHeader}>Locations</Text>
-                    <FlatList data={this.state.locations} renderItem={this.renderItem} style={style.locationDataBackground}/>
+                    <FlatList 
+                    data={this.state.locations} 
+                    renderItem={this.renderItem} 
+                    style={style.locationDataBackground}/>
                 </SafeAreaView>
             </ImageBackground>
         ) 
