@@ -482,25 +482,23 @@ const style = StyleSheet.create({
         color: '#FFF'
     },
     //Review Screen
-    reviewContainer: {
-        backgroundColor: "#FFFFFF",
-        borderRadius: 10,
-        paddingHorizontal: 30,
-        paddingVertical: 20,
-        marginBottom: 10,
-        minWidth: "80%",
-        shadowOffset: { width: 0, height: 5 },
-        shadowOpacity: 1.0,
-        shadowRadius: 2,
-        shadowColor: "rgba(193, 211, 251, 0.5)",
-        elevation: 5,
+    reviewScreenBackgroundCard:{
+        marginTop: 40,
+        alignSelf: 'center',
+        backgroundColor: 'rgba(230, 230, 230, 0.8)',
+        width: '87%',
+        height: "90%",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius:10,
     },
     reviewScreenTitle: {
         fontWeight: "bold",
-        fontSize: 20,
+        fontSize: 24,
         color: "#323357",
         textAlign: "center",
-        marginBottom: 20
+        marginBottom: 10,
+        marginTop: 20
     },
     reviewScreenAmountText: {
         fontSize: 16,
@@ -521,16 +519,62 @@ const style = StyleSheet.create({
     },
     reviewScreenScroll:{
         width: '90%',
-        height: 250
+        height: 325
     },
-    // Review Modal
-    centeredView: {
+            //Customer Reviews
+    reviewContainer: {
+        backgroundColor: "#FFFFFF",
+        borderRadius: 10,
+        marginBottom: 10,
+    },
+    reviewUserInfo:{
+        backgroundColor: 'red'
+    },
+    reviewHeader:{
+        flexDirection: 'row',
+        marginTop: 8
+    },
+    reviewEmailText:{
+        margin: 10
+    },
+    reviewDateText:{
+        marginLeft: '25%'
+    },
+    reviewRatingContainer:{
+        margin: 5,
+        marginTop: 7,
+        position: 'relative'
+    },
+    reviewRatingText:{
+        
+    },
+    reviewSubjectText:{
+        marginLeft: 10,
+        fontSize: 18
+    },
+    reviewBodyContainer:{
+        borderRadius: 5,
+        borderWidth: 1,
+        height: 70,
+        width: '95%',
+        alignSelf: 'center',
+        padding: 5,
+        margin: 2
+    },
+    reviewBodyText:{
+
+    },
+    reviewFooter:{
+
+    },
+            // Review Modal
+    reviewModalCenteredView: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
         marginTop: 22
     },
-    modalView: {
+    reviewModalView: {
         margin: 20,
         backgroundColor: "white",
         borderRadius: 20,
@@ -545,31 +589,33 @@ const style = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
-    modalHeader:{
+    reviewModalHeader:{
         fontSize: 22,
         marginBottom: 15,
         marginTop: -15
     },  
-    modalExitBtn:{
+    reviewModalExitBtnContainer:{
         marginTop: -20,
         marginLeft: '75%'
     },
-    reviewModalCloseBtn:{
+    reviewModalExitBtn:{
         fontSize: 20,
         padding: 10
     },
-    reviewModalButton: {
+    reviewModalSubmitButton:{
+        marginTop: 50,
         borderRadius: 20,
+        width: 250,
+        backgroundColor: "white",
+    },
+    reviewModalOpenButton:{
+        borderRadius: 10,
         padding: 10,
+        width: 250,
+        backgroundColor: "white",
     },
-    reviewModalBtnOpen: {
-        backgroundColor: "#F194FF",
-    },
-    reviewModalBtnClose: {
-        backgroundColor: "#2196F3",
-    },
-    reviewModalBtn: {
-        color: "white",
+    reviewModalBtnText: {
+        color: "black",
         fontWeight: "bold",
         textAlign: "center"
     },
@@ -663,7 +709,7 @@ const style = StyleSheet.create({
     },
     starsWrapper: {
         marginTop: 10,
-        marginBottom: 5,
+        marginBottom: 15,
         width: '75%',
         backgroundColor: "#F5F8FF",
         borderRadius: 20,

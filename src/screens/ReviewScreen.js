@@ -26,19 +26,23 @@ export default class ReviewScreen extends React.Component {
 
     showReviews = () =>{
         return this.state.review.map(function(ref, i){
-            return <View key={i} style={style.reviewContainer}>
-                        <View style={style.sideBySideContainer}>
-                            <View style={style.reviewUserInfo}>
-                                <Text style={style.reviewInfoText}>{ref.email}</Text>
-                                <Text style={style.reviewInfoText}>{ref.time}</Text>
-                                <Text style={style.reviewRating}>{star.GetCustomerRating(ref.rating)}</Text>
-                            </View>
-                            <View style={style.reviewScreenReviewInfo}>
-                                <Text style={style.reviewInfoText}>{ref.subject}</Text>
-                                <Text style={style.reviewInfoText}>{ref.body}</Text>
-                            </View>
-                        </View>
+            return (
+            <View key={i} style={style.reviewContainer}>
+                <View style={style.reviewHeader}>
+                    <View style={style.reviewRatingContainer}>
+                        <Text style={style.reviewRatingText}>{star.GetCustomerRating(ref.rating)}</Text>
+                    </View>
+                    <Text style={style.reviewDateText}>{ref.time}</Text>
                 </View>
+                <Text style={style.reviewSubjectText}>{ref.subject}</Text>
+                <View style={style.reviewBodyContainer}>
+                    <Text style={style.reviewBodyText}>{ref.body}</Text>
+                </View>
+                <View style={style.reviewFooter}>
+                    <Text style={style.reviewEmailText}>Posted By: {ref.email}</Text>
+                </View>
+            </View>
+            )
         })
     }
 
@@ -48,15 +52,13 @@ export default class ReviewScreen extends React.Component {
 
         return (
             <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
-                <View style={style.backgroundCard}>
+                <View style={style.reviewScreenBackgroundCard}>
                     <Text style={style.reviewScreenTitle}>Reviews for {merchantName}</Text>
-                        
+                    <Star />
                         <ScrollView style={style.reviewScreenScroll}>
                             {this.showReviews()}
                         </ScrollView>
-
                     <ReviewModal name={merchantName}/>
-                    <Star />
                 </View>
             </ImageBackground>
         );
