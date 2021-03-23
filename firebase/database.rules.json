@@ -1,0 +1,13 @@
+{
+  "rules": {
+    ".read": "now < 1602907200000",  // 2020-10-17
+    ".write": "now < 1602907200000",  // 2020-10-17
+      "$userId": {
+        // grants read & write access to the owner of this user account
+        // whose uid must exactly match the key ($userId)
+        ".read": "$userId === auth.uid"
+        ".write": "$userId === auth.uid"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "mobileorderingapp",
+    "slug": "mobileorderingapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/icon.png",
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "config": {
+        "googleMaps":{
+          "apiKey": "AIzaSyDm3DBYsnyBoA1Gf_r74G9EHok45roCFNw"
+        }
+      }
+    }
+  }
+}
