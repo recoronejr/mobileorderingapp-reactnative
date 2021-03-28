@@ -80,5 +80,3 @@ const Location = ({title, address}) => {
 }
 
 export const mapScrn = new MapScreen();
-
-export const mapScrn = new MapScreen();

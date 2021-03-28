@@ -6,8 +6,8 @@ import { SafeAreaView } from 'react-navigation';
 import Map from '../components/MapScreenComps/Map'
 import OrderMenu from './MenuScreen'
 import {imgs} from '../components/UniversalComps/Images'
-
 import style from '../constants/Styles'
+import OrderModel from '../model/Order';
 
 export default class MapScreen extends React.Component {
     constructor(props) {
@@ -15,11 +15,14 @@ export default class MapScreen extends React.Component {
         this.state = {
             locations: null,
             menu: null,
-            merchantName: 'test'
+            merchantName: 'test',
+            order: new OrderModel(),
         }
     }
     componentDidMount() {
         this.getLocations();
+        const { order } = this.state;
+        order.clear();
     }
     getMerchantName(){
         alert(this.state.merchantName)
@@ -45,8 +48,9 @@ export default class MapScreen extends React.Component {
             <TouchableOpacity onPress={() => {
                     this.props.navigation.navigate("MenuScreen", {
                         merchant: merchant,
-                        menu: this.state.menu[merchant.id].items
-                },)}}>
+                        menu: this.state.menu[merchant.id].items,
+                        order: this.state.order,
+                })}}>
                 <Location title={merchant.name} address={item.address.address_line_1}/>  
             </TouchableOpacity>     
         ) 
@@ -60,10 +64,7 @@ export default class MapScreen extends React.Component {
                 <SafeAreaView>
                     <Map />
                     <Text style={style.mapScreenLocationHeader}>Locations</Text>
-                    <FlatList 
-                    data={this.state.locations} 
-                    renderItem={this.renderItem} 
-                    style={style.locationDataBackground}/>
+                    <FlatList data={this.state.locations} renderItem={this.renderItem} style={style.locationDataBackground}/>
                 </SafeAreaView>
             </ImageBackground>
         ) 
