@@ -11,7 +11,6 @@ import MenuScreen from './MenuScreen';
 import MapScreen from "./MapScreen"
 import ReviewScreen from './ReviewScreen'
 import EditAccountScreen from './EditAccountScreen';
-import ItemVariationScreen from './ItemVariationScreen';
 
 import style from '../constants/Styles'
 
@@ -46,7 +45,6 @@ export default class MainScreen extends React.Component {
                     <Stack.Screen name="HomeScreen" component={HomeScreen} />
                     <Stack.Screen name="MapScreen" component={MapScreen} />
                     <Stack.Screen name="MenuScreen" component={MenuScreen} />
-                    <Stack.Screen name = "ItemVariationScreen" component = {ItemVariationScreen} />
                     <Stack.Screen name="EditAccount" component={EditAccountScreen} />
                     <Stack.Screen name="Reviews" component={ReviewScreen} />
                 </Stack.Navigator>

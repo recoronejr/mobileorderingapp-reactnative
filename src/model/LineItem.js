@@ -1,21 +1,26 @@
 
-export class LineItemModel {
+export default class LineItem {
     name;
     price;
     item_id;
+    quantity;
 
-    constructor() {}
-
+    constructor(name, price, id, quantity) {
+      this.name = name;
+      this.price = price;
+      this.item_id = id;
+      this.quantity = quantity;
+    }
     setName(s) {
-      this.name = s;
+      return this.name = s;
     }
     setPrice(s){
-      this.price = s;
+      return this.price = s;
     } 
     setId(s) {
-      this.item_id = s;
+      return this.item_id = s;
     }  
+    setQuantity(q) {
+      return this.quantity = q;
+    }
   }
-
-  const GlobalLineItem  = new LineItemModel();
-  export default GlobalLineItem;
