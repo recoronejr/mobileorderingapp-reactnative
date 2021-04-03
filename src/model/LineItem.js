@@ -4,11 +4,15 @@ export default class LineItem {
     price;
     item_id;
     quantity;
+    base_price_money;
 
-    constructor(name, price, id, quantity) {
-      this.name = name;
-      this.price = price;
-      this.item_id = id;
+    constructor(name,size, price, id, quantity) {
+      this.name = size + " " + name;
+      this.base_price_money = {
+        amount: price,
+        currency: "USD"
+      }
+      // this.item_id = id;
       this.quantity = quantity;
     }
     setName(s) {

@@ -24,6 +24,9 @@ export default class MenuScreen extends React.Component {
     setVariation = (variation) => {
         this.setState({ variation: variation});
     }
+    setItemName = (name) => {
+        this.setState({ itemName: name});
+    }
     setItemModalVisible = (visible) => {
         this.setState({ itemModalVisible: visible });
     }
@@ -35,6 +38,7 @@ export default class MenuScreen extends React.Component {
             menuImages: [],
             orderModalVisible: false,
             itemModalVisible: false,
+            itemName:'',
             variations: [],
             variation: [],
             model: new OrderModel(),
@@ -47,12 +51,12 @@ export default class MenuScreen extends React.Component {
         const { model } = this.state;
 
     }
-    Item = ({name, price, item_id}) => {
+    Item = ({size, price, item_id}) => {
         const { lineItem,quantity } = this.state;
 
         return (
             <View style={styles.item}>
-                <Text style={styles.title}>{name}</Text>
+                <Text style={styles.title}>{size}</Text>
                 <Text style={styles.price}>{this.convertToDollars(price)}</Text>
                 <TextInput
                     style={{height: 40,width:150,marginLeft: 10, position:"relative"}}
@@ -61,7 +65,7 @@ export default class MenuScreen extends React.Component {
                     onChangeText={text => this.setState({quantity:text})}
                 />
                 <Button title="Add to Order" onPress = {() => {
-                    this.createTwoButtonAlert(name,price,item_id,this.state.quantity);
+                    this.createTwoButtonAlert(this.state.itemName,size,price,item_id,this.state.quantity);
                 }}/>
             </View>  
         );
@@ -134,7 +138,7 @@ export default class MenuScreen extends React.Component {
         dollars = dollars.toLocaleString("en-US", {style:"currency", currency:"USD"});
         return dollars;
     }
-    createTwoButtonAlert = (name, price, item_id, quantity) => {
+    createTwoButtonAlert = (name,size,price, item_id, quantity) => {
         const { model} = this.state;
         const { lineItem } = this.state;
 
@@ -151,7 +155,7 @@ export default class MenuScreen extends React.Component {
                     },
                 },
                 { text: "Yes", onPress: () =>  {
-                    model.addItem(name, price, item_id, quantity), 
+                    model.addItem(name,size, price, item_id, quantity), 
                     this.setItemModalVisible(!this.state.itemModalVisible)
                     }
                 }
@@ -167,24 +171,25 @@ export default class MenuScreen extends React.Component {
         let merchantId = this.props.route.params.merchant.id;
         model.location_id = merchantId;
         const renderItemVar = ({ item }) => (
-            <this.Item name={item.item_variation_data.name} price={item.item_variation_data.price_money.amount} item_id={item.item_variation_data.item_id}/>
+            <this.Item size={item.item_variation_data.name} price={item.item_variation_data.price_money.amount} item_id={item.item_variation_data.item_id}/>
         );
         const renderOrder = ({ item }) => (
-            <this.OrderItem size={item.name} price={item.price} quantity={item.quantity}/>
+            <this.OrderItem size={item.name} price={item.base_price_money.amount} quantity={item.quantity}/>
         );
 
         let menuItems = this.state.menuItems.map((val,key) => {
             
             let image = this.getImageById(val.image_id);
-            let variation = this.getVariationsById(val.id);
+            let variations = this.getVariationsById(val.id);
+            let itemName = val.item_data.name;
             return (
                 <TouchableOpacity style={styles.item} onPress={() => {
-                    this.props.navigation.navigate("ItemVariationScreen", {variation})
-                    this.setVariation(variation);
+                    this.setVariation(variations);
+                    this.setItemName(itemName);
                     this.setItemModalVisible(true);
                 }}>
                     <View key={key} style={styles.card}>
-                        <Text style={{fontSize:28}}>{val.item_data.name}</Text>
+                        <Text style={{fontSize:28}}>{itemName}</Text>
                         <Image style={styles.img} source={{uri:image}}/>
                         <Text style={styles.desc}>{val.item_data.description}</Text>
                     </View> 
@@ -223,18 +228,18 @@ export default class MenuScreen extends React.Component {
                     transparent={true}
                     visible={itemModalVisible}
                     onRequestClose={() => {
-                        this.setItemModalVisible(!orderModalVisible);
+                        this.setItemModalVisible(!itemModalVisible);
                 }}>
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text>Choose your size</Text>
+                        <Text>Choose your size {this.state.itemName} </Text>
                         <FlatList
                             data={this.state.variation}
                             renderItem={renderItemVar}
                             keyExtractor={item => item.id}
                         />         
                         
-                        <Button title="Cancel" onPress={() => this.setOrderModalVisible(!orderModalVisible)}></Button>
+                        <Button title="Cancel" onPress = {() => this.setItemModalVisible(!itemModalVisible)}></Button>
                     </View>
                 </View>
                 </Modal>
@@ -255,7 +260,25 @@ export default class MenuScreen extends React.Component {
                             keyExtractor={item => item.item_id}
                         />
                         <Text style={styles.title}>Total: {model.getTotalInDollars()}</Text>
-                        <Button title="Pay"></Button>
+                        <Button title="Pay" onPress = {() => {
+                            Alert.alert(
+                                "Comfirmation",
+                                "Are you ready to place your order?",
+                                [
+                                {
+                                text: "No",
+                                style: "cancel"
+                                },
+                                { text: "Yes", onPress: () =>  {
+                                    model.completeOrder();
+                                    model.clear();
+                                    this.setOrderModalVisible(!orderModalVisible);
+                                    }
+                                }
+                                ],
+                                { cancelable: false }
+                            ) 
+                        }}></Button>
                         <Button title="Cancel" onPress={() => this.setOrderModalVisible(!orderModalVisible)}></Button>
                         
                     </View>

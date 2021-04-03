@@ -1,5 +1,9 @@
 import LineItem from './LineItem';
- 
+import * as firebase from 'firebase';
+import '@firebase/firestore';
+import { firebaseApp } from '../api/firebase';
+
+
 export default class OrderModel {
 
   constructor(
@@ -20,8 +24,8 @@ export default class OrderModel {
     this.location_id = '';
     this.totalCost = 0;
   }
-  addItem(name, price, item_id, quantity){
-    let item = new LineItem(name, price, item_id, quantity);
+  addItem(name,size,price, item_id, quantity){
+    let item = new LineItem(name, size, price, item_id, quantity);
     this.lineItems.push(item);
     this.calculateOrder();
   }
@@ -37,7 +41,7 @@ export default class OrderModel {
     else {
       for (let i = 0; i < this.lineItems.length; i++) {
         let q = this.lineItems[i].quantity;
-        let p = this.lineItems[i].price;
+        let p = this.lineItems[i].base_price_money.amount;
         let itemTotal = p * q;
         cost += itemTotal;
        
@@ -45,6 +49,16 @@ export default class OrderModel {
       this.totalCost = cost;
       return this.totalCost;
     }
+  }
+  completeOrder(){
+    let body = {
+      idempotency_key: "akjdnvasjvnvsdvvs",
+      order: {
+        location_id: this.location_id,
+        line_items: JSON.parse(JSON.stringify(this.lineItems))
+      }
+    }
+    firebaseApp.createOrder(body);
   }
   getLineItems() {
     return this.lineItems;

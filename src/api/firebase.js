@@ -25,6 +25,22 @@ class FirebaseAPI {
       firebase.app();
     }
   }
+  createOrder(body) {
+    // let data = body.order.line_items;
+    // console.log(data);
+
+    // let dictionary = Object.assign({}, ...data.map((x) => ({
+    //   [x.name]: x.country
+    // })));
+    
+    firebase.firestore()
+    .collection('order')
+    .doc()
+    .set({body})
+    .then(() => {
+      console.log('Order added!', body);
+    });
+  }
   getUser() {
     const user = firebase.auth().currentUser;
     return user;
