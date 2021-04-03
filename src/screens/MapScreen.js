@@ -6,8 +6,8 @@ import { SafeAreaView } from 'react-navigation';
 import Map from '../components/MapScreenComps/Map'
 import OrderMenu from './MenuScreen'
 import {imgs} from '../components/UniversalComps/Images'
-
 import style from '../constants/Styles'
+import Geocoder from 'react-native-geocoding'
 
 export default class MapScreen extends React.Component {
     constructor(props) {
@@ -15,8 +15,11 @@ export default class MapScreen extends React.Component {
         this.state = {
             locations: null,
             menu: null,
-            merchantName: 'test'
+            merchantName: 'test',
+            BusinessAddress: ""
         }
+        Geocoder.init("AIzaSyDm3DBYsnyBoA1Gf_r74G9EHok45roCFNw");
+        
     }
     componentDidMount() {
         this.getLocations();
@@ -24,6 +27,7 @@ export default class MapScreen extends React.Component {
     getMerchantName(){
         alert(this.state.merchantName)
     }
+
     async getLocations() {
         while(this.state.locations == [] || this.state.locations == null) {
             let resp = await fetch("https://us-central1-squareoauth-99eb5.cloudfunctions.net/app/getMerchantsLocations")
@@ -36,6 +40,7 @@ export default class MapScreen extends React.Component {
             this.setState({menu: respJson});
         }
     }
+
     renderItem = ({ item }) => {
         let merchant = {
             id: item.merchant_id,
@@ -51,9 +56,23 @@ export default class MapScreen extends React.Component {
             </TouchableOpacity>     
         ) 
     }
+
+    async attemptGeocodeAsync() {
+        this.setState({ inProgress: true, error: null });
+        try {
+            let BusinessAddress = await Location.geocodeAsync(this.state.locations.map(item));
+            this.setState({ BusinessAddress });
+        } catch (e) {
+            this.setState({ error: e.message });
+        } finally {
+            this.setState({ inProgress: false });
+        }
+    }
+
     render() {
         const { navigate } = this.props.navigation;
         let img = imgs.getCityImage();
+        console.log(this.state);
         return (
             //Will return null until datasource is properly saved to state
             <ImageBackground style={style.mapScreenBackgroundImg} source={img} blurRadius={20}>
@@ -64,8 +83,9 @@ export default class MapScreen extends React.Component {
                 </SafeAreaView>
             </ImageBackground>
         ) 
-    }   
+    } 
 }
+
 const Location = ({title, address}) => {
     return (
         <View style={style.mapScreenLocationContainer}>
