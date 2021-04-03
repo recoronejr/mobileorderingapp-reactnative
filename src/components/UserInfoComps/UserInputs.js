@@ -2,7 +2,6 @@ import React from 'react'
 import {TextInput} from 'react-native'
 
 import style from '../../constants/Styles'
-
 export default class UserInputs extends React.Component{
     constructor(props){
         super(props);
@@ -18,8 +17,7 @@ export default class UserInputs extends React.Component{
                 secureTextEntry={this.props.secureTextEntry} 
                 multiline={this.props.multiline}
                 numberOfLines={this.props.numberOfLines}
-                maxLength={this.props.maxLength}
-                />
+                maxLength={this.props.maxLength}/>
         )
     }
 }

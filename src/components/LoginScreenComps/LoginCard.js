@@ -10,12 +10,12 @@ import {BurgerIcon} from '../UniversalComps/Icons'
 import PasswordComp from '../UserInfoComps/PasswordComp'
 import LoginButton, { SignUpButton } from '../UniversalComps/ButtonComp'
 
-import MainNavigation from '../../navigation/MainNavigation'
 import UserInputs from '../UserInfoComps/UserInputs'
 
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faUserLock } from '@fortawesome/free-solid-svg-icons'
+import { firebaseApp } from '../../api/firebase'
 const LoginCard = ({ navigation }) =>{
 
     const [email, setEmail] = useState('');
@@ -49,17 +49,7 @@ const LoginCard = ({ navigation }) =>{
                 </View>
 
                 <View style={style.loginScreenBtns}>
-                    <LoginButton onPress={() => {    
-                        auth()
-                        .signInWithEmailAndPassword(email,password)
-                        .then(() => {
-                            // Go to MainScreen
-                            <MainNavigation />    
-                        })
-                        .catch(error => {
-                            alert(error)
-                        })
-                    }}/>
+                    <LoginButton email={email} password={password}/>
                     <SignUpButton />
                 </View>
             </View>   

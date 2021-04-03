@@ -27,7 +27,7 @@ const ReviewModal = (props) =>{
         setMerchantName(props.name)
     })
 
-    return <View style={style.reviewModalCenteredView}>
+    return <View>
             <Modal animationType="slide" transparent={true} visible={modalVisible}
                 onRequestClose={() => {
                 setModalVisible(!modalVisible);}}>

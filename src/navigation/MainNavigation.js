@@ -19,7 +19,7 @@ const MainNavigation = ({navigation}) => {
     return (
         <NavigationContainer>
             <Tab.Navigator headerMode="none" 
-            initialRouteName="Home"
+            initialRouteName="LoginScreen"
             screenOptions={{
             }}>
                 <Tab.Screen name="Home" component={MainScreen} options={{

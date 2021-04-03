@@ -46,6 +46,11 @@ const style = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5
     },
+    modalCenteredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
     //Home Screen
     homeScreenContainer:{
         
@@ -305,6 +310,59 @@ const style = StyleSheet.create({
         fontSize: 15,
         fontFamily: 'Optima'
     },
+    //Edit Account Modal 
+    modalCenteredView:{
+        margin: 20,
+        marginTop: '50%',
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        height: '50%'
+    },
+    userInfoUpdateModalBtnContainer:{
+        borderRadius: 10,
+        padding: 10,
+        width: 225,
+        backgroundColor: "white",
+        marginTop: 20,
+        borderRadius: 5,
+        borderWidth: 1
+    },  
+    userInfoModalUpdateBtn:{
+        
+    },
+    userInfoModalUpdateBtnTxt:{
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    modalAddBtn:{
+        borderRadius: 10,
+        padding: 10,
+        width: 250,
+        backgroundColor: "white",
+        marginTop: 20
+    },
+    modalAddBtnTxt:{
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    userInfoModalInputContainer:{
+        
+    },
+    userInfoInputsHeaderTxt:{
+        fontSize: 24,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        marginBottom: 30
+    },
+    userInfoModalInput:{
+        borderRadius: 5,
+        borderWidth: 1,
+        width: 250,
+        marginTop: 10,
+        padding: 5
+    },
     //Main Screen
     mainScreenNavigator:{
         backgroundColor: '#000000',
@@ -488,7 +546,6 @@ const style = StyleSheet.create({
         backgroundColor: 'rgba(230, 230, 230, 0.8)',
         width: '87%',
         height: "90%",
-        justifyContent: "center",
         alignItems: "center",
         borderRadius:10,
     },
@@ -517,9 +574,8 @@ const style = StyleSheet.create({
     reviewInfoText:{
         fontSize: 12
     },
-    reviewScreenScroll:{
-        width: '90%',
-        height: 325
+    revScrollContainer:{
+        height: 350
     },
             //Customer Reviews
     reviewContainer: {
@@ -568,14 +624,9 @@ const style = StyleSheet.create({
 
     },
             // Review Modal
-    reviewModalCenteredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 22
-    },
     reviewModalView: {
         margin: 20,
+        marginTop: '50%',
         backgroundColor: "white",
         borderRadius: 20,
         padding: 35,
@@ -610,6 +661,7 @@ const style = StyleSheet.create({
     },
     reviewModalOpenButton:{
         borderRadius: 10,
+        marginTop: 40,
         padding: 10,
         width: 250,
         backgroundColor: "white",

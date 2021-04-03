@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react'
 import * as firebase from 'firebase';
 import '@firebase/firestore';
 
 import {firebaseConfig} from './config';
-import { revScrn } from '../screens/ReviewScreen';
-
 
 class FirebaseAPI {
   constructor() {
@@ -35,6 +32,19 @@ class FirebaseAPI {
     .doc(uid)
     .get();
   }
+  createUserDocumentAndStore() {
+    let user = this.getUser();
+    const userDocument = firebase.firestore()
+      .collection('Users').doc(user.uid)
+      .onSnapshot(doc => {
+        this.firstName = doc.data().firstName;
+        this.lastName = doc.data().lastName;
+        this.phoneNumber = doc.data().phoneNumber;
+        this.email = doc.data().email;
+        this.address = doc.data().address;
+        this.payment = doc.data().payment;
+    })
+  }
   signOut(){
     firebase.auth().signOut();
   }
@@ -55,7 +65,9 @@ class FirebaseAPI {
       lastName: lastName,
       phoneNumber: phoneNumber,
       email: email,
-      password: password
+      password: password,
+      address: '',
+      payment: ''
     })
     .then(() => {
       console.log('User added!');
@@ -107,17 +119,21 @@ class FirebaseAPI {
       .collection('Users').doc(user.uid)
       .update({email: email})
   }
-  createUserDocumentAndStore() {
+  updateCustomerAddress(street, city, state, zip){
     let user = this.getUser();
     const userDocument = firebase.firestore()
       .collection('Users').doc(user.uid)
-      .onSnapshot(doc => {
-        this.firstName = doc.data().firstName;
-        this.lastName = doc.data().lastName;
-        this.phoneNumber = doc.data().phoneNumber;
-        this.email = doc.data().email;
-    })
+      .update({address: street + ' ' + city + ' ' + state + ' ' + zip})
+    .then(console.log('success'))
   }
+  updatePaymentInfo(cardNumber, expiration, securityCode){
+    let user = this.getUser();
+    const userDocument = firebase.firestore()
+      .collection('Users').doc(user.uid)
+      .update({payment: cardNumber + ' ' + expiration + ' ' + securityCode})
+    .then(console.log('success'))
+  }
+  
   createNewReview(merchantID, subject, body, rating){
     let user = this.getUser();
     let date = new Date().toDateString();
@@ -151,6 +167,22 @@ class FirebaseAPI {
     
     console.log(reviewInfo)
     return reviewInfo
+  }
+  checkForAddress(){
+    this.createUserDocumentAndStore()
+    if(this.address === undefined || this.address === ''){
+      return false;
+    }else{
+      return true
+    }
+  }
+  checkForPaymentInfo(){
+    this.createUserDocumentAndStore()
+    if(this.payment === undefined || this.payment === ''){
+      return false;
+    }else{
+      return true
+    }
   }
 }
 

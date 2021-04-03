@@ -25,10 +25,6 @@ export default class MainScreen extends React.Component {
             dataSource: null,
         }
     }
-    componentDidMount() {
-      
-    }
-    
     render() {
         const { navigation: { navigate } } = this.props;
         if  (this.state.isLoading) {
