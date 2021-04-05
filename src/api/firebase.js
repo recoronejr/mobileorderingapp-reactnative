@@ -45,7 +45,8 @@ class FirebaseAPI {
   createUserDocumentAndStore() {
     let user = this.getUser();
     const userDocument = firebase.firestore()
-      .collection('Users').doc(user.uid)
+      .collection('Users')
+      .doc(user.uid)
       .onSnapshot(doc => {
         firstName = doc.data().firstName;
         lastName = doc.data().lastName;
@@ -76,8 +77,6 @@ class FirebaseAPI {
       phoneNumber: phoneNumber,
       email: email,
       password: password,
-      address: '',
-      payment: ''
     })
     .then(() => {
       console.log('User added!');

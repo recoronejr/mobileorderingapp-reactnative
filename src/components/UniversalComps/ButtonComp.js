@@ -8,6 +8,7 @@ import {auth} from 'firebase';
 import style from '../../constants/Styles'
 import { firebaseApp } from '../../api/firebase';
 import * as firebase from 'firebase';
+import MainScreen from '../../screens/MainScreen';
 
 export default class LoginButton extends React.Component{
     render(){
@@ -25,6 +26,16 @@ export default class LoginButton extends React.Component{
     }
 }
 
+export const CreateAccountButton = ({firstName,lastName, phoneNumber, email,password,verifyPassword}) =>{
+        return <TouchableOpacity style={style.signUpBtn} onPress={()=>{
+            if (password === verifyPassword) {
+                firebaseApp.signUp(firstName,lastName, phoneNumber, email,password)
+                return(<MainScreen/>)
+            }
+        }}>
+            <Text style={style.signUpBtnTxt} >Sign Up</Text>
+        </TouchableOpacity>
+}
 export const SignUpButton = () =>{
     const navigation = useNavigation();
         return <TouchableOpacity style={style.signUpBtn}>
