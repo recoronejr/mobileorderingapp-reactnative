@@ -11,13 +11,15 @@ import OrderModel from '../model/Order';
 
 export default class MapScreen extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             locations: null,
             menu: null,
             merchantName: 'test',
             order: new OrderModel(),
-        }   
+        }
+        Geocoder.init("AIzaSyDm3DBYsnyBoA1Gf_r74G9EHok45roCFNw");
+        
     }
     componentDidMount() {
         this.getLocations();
@@ -27,7 +29,6 @@ export default class MapScreen extends React.Component {
     getMerchantName(){
         alert(this.state.merchantName)
     }
-
     async getLocations() {
         while(this.state.locations == [] || this.state.locations == null) {
             let resp = await fetch("https://us-central1-squareoauth-99eb5.cloudfunctions.net/app/getMerchantsLocations")
@@ -40,7 +41,6 @@ export default class MapScreen extends React.Component {
             this.setState({menu: respJson});
         }
     }
-
     renderItem = ({ item }) => {
         let merchant = {
             id: item.merchant_id,
@@ -58,6 +58,18 @@ export default class MapScreen extends React.Component {
         ) 
     }
 
+    async attemptGeocodeAsync() {
+        this.setState({ inProgress: true, error: null });
+        try {
+            let BusinessAddress = await Location.geocodeAsync(this.state.locations.map(item));
+            this.setState({ BusinessAddress });
+        } catch (e) {
+            this.setState({ error: e.message });
+        } finally {
+            this.setState({ inProgress: false });
+        }
+    }
+
     render() {
         const { navigate } = this.props.navigation;
         let img = imgs.getCityImage();
@@ -72,9 +84,8 @@ export default class MapScreen extends React.Component {
                 </SafeAreaView>
             </ImageBackground>
         ) 
-    } 
+    }   
 }
-
 const Location = ({title, address}) => {
     return (
         <View style={style.mapScreenLocationContainer}>
