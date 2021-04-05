@@ -77,8 +77,6 @@ class FirebaseAPI {
       phoneNumber: phoneNumber,
       email: email,
       password: password,
-      address: '',
-      payment: ''
     })
     .then(() => {
       console.log('User added!');

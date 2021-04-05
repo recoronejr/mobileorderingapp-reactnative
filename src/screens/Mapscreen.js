@@ -17,7 +17,12 @@ export default class MapScreen extends React.Component {
             menu: null,
             merchantName: 'test',
             order: new OrderModel(),
+<<<<<<< HEAD
         }        
+=======
+        }
+        
+>>>>>>> afac51b9f5c08f1d5c49b2ba6af5742b41e24fe7
     }
     componentDidMount() {
         this.getLocations();
@@ -54,18 +59,6 @@ export default class MapScreen extends React.Component {
                 <Location title={merchant.name} address={item.address.address_line_1}/>  
             </TouchableOpacity>     
         ) 
-    }
-
-    async attemptGeocodeAsync() {
-        this.setState({ inProgress: true, error: null });
-        try {
-            let BusinessAddress = await Location.geocodeAsync(this.state.locations.map(item));
-            this.setState({ BusinessAddress });
-        } catch (e) {
-            this.setState({ error: e.message });
-        } finally {
-            this.setState({ inProgress: false });
-        }
     }
 
     render() {
