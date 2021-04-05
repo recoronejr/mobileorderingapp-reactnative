@@ -10,6 +10,8 @@ import {imgs} from '../components/UniversalComps/Images'
 import style from '../constants/Styles'
 
 import {ReviewsButton} from '../components/UniversalComps/ButtonComp'
+import AddOrderModal from '../components/OrderModals/AddOrderModal';
+import ConfirmOrderModal from '../components/OrderModals/ConfirmOrderModal';
 
 const {height} = Dimensions.get('window')
 
@@ -200,91 +202,37 @@ export default class MenuScreen extends React.Component {
 
         return (
             <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
-            <SafeAreaView style={style.backgroundContainer}>
-                <View style={style.merchantTextWrapper}>
-                    <Text style={style.merchantNameText}>{merchantName}</Text>
+                <SafeAreaView style={style.backgroundContainer}>
+                    <View style={style.merchantTextWrapper}>
+                        <Text style={style.merchantNameText}>{merchantName}</Text>
+                        
+                        <TouchableOpacity>
+                            <Button title="Reviews" hasText transparent onPress={()=>{
+                            this.props.navigation.navigate('Reviews', {merchantName})}}/> 
+                        </TouchableOpacity>
                     
-                    <TouchableOpacity>
-                        <Button title="Reviews" hasText transparent onPress={()=>{
-                        this.props.navigation.navigate('Reviews', {merchantName})}}/> 
-                    </TouchableOpacity>
-                
-                </View>
-                <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
+                    </View>
+                    <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
+                            
+                        {menuItems}    
                         
-                    {menuItems}    
+                    </ScrollView> 
+                    <View style={style.menuScreenFooter}>
+                        <Text style={style.menuOrderTotalTxt}>Order Total: {model.getTotalInDollars()}</Text>
+                        <TouchableOpacity style={style.menuOrderBtn} onPress={() => {
+                            this.setOrderModalVisible(true);
+                        }}>
+                            <Text style={style.menuOrderBtnText}>Place Order</Text>
+                        </TouchableOpacity>
+                    </View>
                     
-                </ScrollView> 
-                <View style={style.menuScreenFooter}>
-                    <Text style={style.menuOrderTotalTxt}>Order Total: {model.getTotalInDollars()}</Text>
-                    <TouchableOpacity style={style.menuOrderBtn} onPress={() => {
-                        this.setOrderModalVisible(true);
-                    }}>
-                        <Text style={style.menuOrderBtnText}>Place Order</Text>
-                    </TouchableOpacity>
-                </View>
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={itemModalVisible}
-                    onRequestClose={() => {
-                        this.setItemModalVisible(!itemModalVisible);
-                }}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text>Choose your size {this.state.itemName} </Text>
-                        <FlatList
-                            data={this.state.variation}
-                            renderItem={renderItemVar}
-                            keyExtractor={item => item.id}
-                        />         
-                        
-                        <Button title="Cancel" onPress = {() => this.setItemModalVisible(!itemModalVisible)}></Button>
-                    </View>
-                </View>
-                </Modal>
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={orderModalVisible}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been closed.");
-                        this.setOrderModalVisible(!orderModalVisible);
-                }}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text>Confirm your order</Text>
-                        <FlatList
-                            data={model.lineItems}
-                            renderItem={renderOrder}
-                            keyExtractor={item => item.item_id}
-                        />
-                        <Text style={styles.title}>Total: {model.getTotalInDollars()}</Text>
-                        <Button title="Pay" onPress = {() => {
-                            Alert.alert(
-                                "Comfirmation",
-                                "Are you ready to place your order?",
-                                [
-                                {
-                                text: "No",
-                                style: "cancel"
-                                },
-                                { text: "Yes", onPress: () =>  {
-                                    model.completeOrder();
-                                    model.clear();
-                                    this.setOrderModalVisible(!orderModalVisible);
-                                    }
-                                }
-                                ],
-                                { cancelable: false }
-                            ) 
-                        }}></Button>
-                        <Button title="Cancel" onPress={() => this.setOrderModalVisible(!orderModalVisible)}></Button>
-                        
-                    </View>
-                </View>
-                </Modal>
-            </SafeAreaView>
+                    {/*Select Size / Add To Order*/}
+                    <AddOrderModal />
+                    
+                    {/*Modal to confirm order*/}
+                    <ConfirmOrderModal />
+
+                </SafeAreaView>
             </ImageBackground>
         )
     }

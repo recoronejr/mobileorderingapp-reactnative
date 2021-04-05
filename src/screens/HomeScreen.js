@@ -1,8 +1,9 @@
 import React from 'react'
-import {View, Text, Image, ImageBackground} from 'react-native'
+import {View, Text, Image, ImageBackground, Button} from 'react-native'
 
 import style from '../constants/Styles'
 import {imgs} from '../components/UniversalComps/Images'
+import {SetAddressBtn, SetPaymentBtn} from '../components/UniversalComps/ButtonComp'
 
 export default class HomeScreen extends React.Component{
     render(){
@@ -20,7 +21,8 @@ export default class HomeScreen extends React.Component{
                             </Text>
                         </View>
                         <View style={style.homeScreenMiddleContainer}>
-                            <Text style={style.homeScreenMiddleContainerText}>This is where I would like to put what they need to do for their account</Text>
+                            <SetAddressBtn />
+                            <SetPaymentBtn />
                         </View>
                         <View style={style.homeScreenBottomContainer}>
                             <Text style={style.homeScreenBottomContainerText}>This is where I would like to display any open orders</Text>

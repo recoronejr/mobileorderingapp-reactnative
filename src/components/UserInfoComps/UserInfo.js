@@ -1,3 +1,4 @@
+import firebase from 'firebase'
 import React, {Component, useEffect} from 'react'
 import {View, Text, TextInput} from 'react-native'
 import { firebaseApp } from '../../api/firebase'
@@ -5,10 +6,9 @@ import { firebaseApp } from '../../api/firebase'
 import style from '../../constants/Styles'
 export default class GetUserInfo extends React.Component{
     render(){
-        firebaseApp.createUserDocumentAndStore();
         return(
             <View style={style.accountInfoCard}>
-                <UserName />
+                <Text style={style.accountInfoContainer}><Text style={style.accountInfoLabel}>Name: </Text><Text style={style.accountInfo}>{firebaseApp.firstName}{' '}{firebaseApp.lastName}</Text></Text>
                 <UserEmail />
                 <UserPhone />
             </View>
@@ -17,9 +17,6 @@ export default class GetUserInfo extends React.Component{
 }
 
 //return any User info we may need throughout the app
-export const UserName = () =>{
-    return <Text style={style.accountInfoContainer}><Text style={style.accountInfoLabel}>Name: </Text><Text style={style.accountInfo}>{firebaseApp.firstName}{' '}{firebaseApp.lastName}</Text></Text>
-}
 export const UserFName = () =>{
     return <Text style={style.accountInfoContainer}><Text style={style.accountInfoLabel}>First Name: </Text><Text style={style.accountInfo}>{firebaseApp.firstName}</Text></Text>
 }

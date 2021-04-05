@@ -18,6 +18,8 @@ export default class MapScreen extends React.Component {
             merchantName: 'test',
             order: new OrderModel(),
         }
+        Geocoder.init("AIzaSyDm3DBYsnyBoA1Gf_r74G9EHok45roCFNw");
+        
     }
     componentDidMount() {
         this.getLocations();
@@ -55,9 +57,23 @@ export default class MapScreen extends React.Component {
             </TouchableOpacity>     
         ) 
     }
+
+    async attemptGeocodeAsync() {
+        this.setState({ inProgress: true, error: null });
+        try {
+            let BusinessAddress = await Location.geocodeAsync(this.state.locations.map(item));
+            this.setState({ BusinessAddress });
+        } catch (e) {
+            this.setState({ error: e.message });
+        } finally {
+            this.setState({ inProgress: false });
+        }
+    }
+
     render() {
         const { navigate } = this.props.navigation;
         let img = imgs.getCityImage();
+        console.log(this.state);
         return (
             //Will return null until datasource is properly saved to state
             <ImageBackground style={style.mapScreenBackgroundImg} source={img} blurRadius={20}>

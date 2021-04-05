@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Dimensions, StyleSheet } from 'react-native'
-import MapView from 'react-native-maps'
+import MapView, { Marker } from 'react-native-maps'
 
 import style from '../../constants/Styles'
 
 const Map = ({navigation}) => {
+    const [region, setRegion] = useState({
+        latitude: 38.898819,
+        longitude: -77.036690,
+        latitudeDelta: 0.015*5,
+        longitudeDelta: 0.0121*5
+    });
     return (
         <MapView
             style={style.map}
             loadingEnabled={true}
-            region={{
-                latitude: 39.134119,
-                longitude: -84.513016,
-                latitudeDelta: 0.0200,
-                longitudeDelta: 0.0200
-            }}/>
+            region={region}
+            onRegionChangeComplete={region => setRegion(region)}
+        >
+            <Marker coordinate={{ latitude: 38.898819, longitude: -77.036690}} title="Sam's Subs" />
+            <Marker coordinate={{ latitude: 38.878410, longitude: -76.980430}} title="Mike's Pizza" />
+        
+        </MapView>
     )
 }
 

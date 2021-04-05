@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigator, View, Button, ImageBackground, Text, StyleSheet, TextInput, Image } from 'react-native';
+import { View, ImageBackground, Text} from 'react-native';
 
 import GetUserInfo from '../components/UserInfoComps/UserInfo'
 import { SignOutButton, EditButton } from '../components/UniversalComps/ButtonComp';
@@ -7,6 +7,7 @@ import { SignOutButton, EditButton } from '../components/UniversalComps/ButtonCo
 import {imgs} from '../components/UniversalComps/Images'
 
 import style from '../constants/Styles'
+import { firebaseApp } from '../api/firebase';
 export default class AccountScreen extends React.Component {
     render() {
         let img = imgs.getCustomBackground();

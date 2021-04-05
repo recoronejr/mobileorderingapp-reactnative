@@ -11,13 +11,13 @@ import OrderModel from '../model/Order';
 
 export default class MapScreen extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             locations: null,
             menu: null,
             merchantName: 'test',
             order: new OrderModel(),
-        }
+        }   
     }
     componentDidMount() {
         this.getLocations();
@@ -27,6 +27,7 @@ export default class MapScreen extends React.Component {
     getMerchantName(){
         alert(this.state.merchantName)
     }
+
     async getLocations() {
         while(this.state.locations == [] || this.state.locations == null) {
             let resp = await fetch("https://us-central1-squareoauth-99eb5.cloudfunctions.net/app/getMerchantsLocations")
@@ -39,6 +40,7 @@ export default class MapScreen extends React.Component {
             this.setState({menu: respJson});
         }
     }
+
     renderItem = ({ item }) => {
         let merchant = {
             id: item.merchant_id,
@@ -55,9 +57,11 @@ export default class MapScreen extends React.Component {
             </TouchableOpacity>     
         ) 
     }
+
     render() {
         const { navigate } = this.props.navigation;
         let img = imgs.getCityImage();
+        console.log(this.state);
         return (
             //Will return null until datasource is properly saved to state
             <ImageBackground style={style.mapScreenBackgroundImg} source={img} blurRadius={20}>
@@ -68,8 +72,9 @@ export default class MapScreen extends React.Component {
                 </SafeAreaView>
             </ImageBackground>
         ) 
-    }   
+    } 
 }
+
 const Location = ({title, address}) => {
     return (
         <View style={style.mapScreenLocationContainer}>
