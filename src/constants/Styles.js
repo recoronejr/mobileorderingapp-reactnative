@@ -46,10 +46,18 @@ const style = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5
     },
-    modalCenteredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+    btnContainer:{
+        borderRadius: 10,
+        marginTop: 10,
+        padding: 10,
+        paddingHorizontal: 20,
+        backgroundColor: "white",
+        alignSelf: 'center'
+    },
+    btnText:{
+        color: "black",
+        fontWeight: "bold",
+        textAlign: "center"
     },
     //Home Screen
     homeScreenContainer:{
@@ -79,7 +87,7 @@ const style = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 38,
         fontFamily: 'Optima',
-        marginTop: -100
+        marginTop: -70
     },
     homeScreenDesc:{
         textAlign: 'center',
@@ -90,7 +98,7 @@ const style = StyleSheet.create({
         borderWidth: 1,
         width: "75%",
         height: 150,
-        marginTop: -100,
+        marginTop: -140,
         marginBottom: 10,
         padding: 10
     },
@@ -134,7 +142,9 @@ const style = StyleSheet.create({
     }, 
     accountHeader:{
         fontFamily: 'Optima-Bold',
-        fontSize: 20
+        fontSize: 32,
+        marginTop: -100,
+        marginBottom: 100
     },
     //Update User Account
     updateInfoBtn:{
@@ -200,7 +210,8 @@ const style = StyleSheet.create({
         padding: 10
     }, 
     updateAllBtn:{
-        paddingTop: 10
+        paddingTop: 10,
+        marginHorizontal: 10
     },
     updateAllText:{
         marginTop: 15,
@@ -329,6 +340,13 @@ const style = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 1
     },  
+    userInfoModalExitBtnContainer:{
+        
+    },
+    userInfoModalExitBtnTxt:{
+        textAlign: 'right',
+        fontSize: 20
+    },
     userInfoModalUpdateBtn:{
         
     },
@@ -432,9 +450,6 @@ const style = StyleSheet.create({
         fontSize: 15
     },
     //MENU SCREEN
-    menuItem:{
-        
-    },
     menuCard: {
         backgroundColor: 'rgba(230, 230, 230, 0.8)',
         width: '85%',
@@ -476,11 +491,12 @@ const style = StyleSheet.create({
         backgroundColor: 'rgba(0, 100, 200, .7)',
         borderWidth: 1,
         borderColor: '#FFF',
-        borderRadius: 10
+        borderRadius: 10,
+        padding: 10,
+        margin: 10
     },
     menuItemDesc: {
-        marginTop: 10,
-        marginBottom: 10,
+        
         padding: 15,
         fontFamily: 'Optima',
         fontSize: 15,
@@ -489,26 +505,38 @@ const style = StyleSheet.create({
     merchantTextWrapper:{
         backgroundColor: 'rgba(0, 100, 200, .7)',
         width: '100%',
-        height: 80,
+        height: 90,
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
         borderColor: '#FFF',
         borderWidth: 1,
-        flexDirection: 'row'
     },
     merchantNameText:{
         fontSize: 45,
         textAlign: 'center',
-        fontFamily: 'Optima',
         padding: 20,
         color: '#FFF'
+    },
+    goToReviewScreenContainer:{
+        marginTop: 10,
+        borderWidth: 1,
+        borderRadius: 5,
+        width: 325,
+        alignSelf: 'center',
+        backgroundColor: 'white',
+        padding: 5,
+        marginBottom: 5
+    },
+    goToReviewScreenText:{
+        fontSize: 24,
+        textAlign: 'center'
     },
     menuScreenScrollView: {
         flexGrow: 1,
         marginTop: 10
     },
     menuScreenScroll: {
-        flex:1,
+        flex:1
     },
     menuScreenFooter:{
         flexDirection: 'row',
@@ -539,6 +567,107 @@ const style = StyleSheet.create({
         fontFamily: 'Optima',
         color: '#FFF'
     },
+    menuCard:{
+        borderRadius: 10,
+        backgroundColor: '#ffffff',
+        width: '80%',
+        alignSelf: "center",
+        flexGrow: 1,
+        marginBottom: 10,
+    },
+    menuItem:{
+        alignSelf:'stretch'
+    },
+    menuItemImg: {
+        alignSelf: 'center',
+        width: '90%',
+        height: 150,
+        margin: 10
+    },
+    menuTitle:{
+
+    },
+    // Order Modals
+    orderModalCenteredView:{
+        margin: 20,
+        marginTop: '35%',
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        justifyContent: 'center',
+        height: '60%'
+    },
+    orderModalHeader:{
+        fontSize: 24,
+        marginBottom: 20,
+        textAlign: 'center'
+    },  
+    orderContainer:{
+        borderWidth: 1,
+        borderRadius: 5,
+        marginTop: 10,
+        width: 275,
+    },
+    orderSizeText:{
+        fontSize: 18,
+        margin: 10
+    },
+    orderPrice:{
+        fontSize: 14,
+        margin: 14
+    },
+    orderQuantityContainer:{
+        marginTop: 14,
+        borderBottomWidth: 1,
+        borderBottomColor: 'black',
+        height: 20
+    },
+    orderQuantityInput:{
+
+    },
+    modalAddToOrderBtn:{
+        
+    },
+    modalAddToOrderBtnTxt:{
+        textAlign: 'center',
+        fontSize: 16,
+        padding: 10
+    },
+    closeModalBtn:{
+        marginTop: 20,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    closeModalBtnTxt:{
+        fontSize: 20,
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    orderItemsText:{
+        fontSize: 16
+    },
+    orderItemContainer:{
+        padding: 10
+    },
+    orderTotalText:{
+        marginTop: 10,
+        fontSize: 20
+    },
+    finalizeOrderBtn:{
+        
+    },
+    finalizeOrderBtnTxt:{
+        fontSize: 20,
+        padding: 10
+    },
+    orderConfirmationView:{
+        height: '60%'
+    },
+    orderConfirmationContainer:{
+
+    },
+
     //Review Screen
     reviewScreenBackgroundCard:{
         marginTop: 40,
@@ -662,6 +791,7 @@ const style = StyleSheet.create({
     reviewModalOpenButton:{
         borderRadius: 10,
         marginTop: 40,
+        marginBottom: 10,
         padding: 10,
         width: 250,
         backgroundColor: "white",

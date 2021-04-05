@@ -13,12 +13,6 @@ import {SetAddressBtn} from '../components/UniversalComps/ButtonComp'
 import style from '../constants/Styles'
 import PaymentInfoModal from '../components/UserInfoComps/PaymentInfoModal'
 
-class EditAccount extends React.Component{
-    render(){
-
-    }
-}
-
 const EditAccountScreen = () =>{
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -80,7 +74,7 @@ const EditAccountScreen = () =>{
                             validatePhoneNumber(phoneNum)
                             validateFirstName(firstName)
                             validateLastName(lastName)}}>
-                        <Text style={style.updateAllText}>Update All</Text>
+                            <Text style={style.updateAllText}>Update All</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

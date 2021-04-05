@@ -25,6 +25,16 @@ export default class LoginButton extends React.Component{
     }
 }
 
+export const CreateAccountButton = ({firstName,lastName, phoneNumber, email,password,verifyPassword}) =>{
+    return <TouchableOpacity style={style.signUpBtn} onPress={()=>{
+        if (password === verifyPassword) {
+            firebaseApp.signUp(firstName,lastName, phoneNumber, email,password)
+            return(<MainScreen/>)
+        }
+    }}>
+        <Text style={style.signUpBtnTxt} >Sign Up</Text>
+    </TouchableOpacity>
+}
 export const SignUpButton = () =>{
     const navigation = useNavigation();
         return <TouchableOpacity style={style.signUpBtn}>
@@ -35,32 +45,22 @@ export const SignUpButton = () =>{
 
 export const SignOutButton = () =>{
     const navigation = useNavigation();
-    return <TouchableOpacity style={style.signOutBtn} > 
-        <Button title='Sign Out' onPress={() => {
-            auth()
-            .signOut()
-            .then(() => {
-                return (<AuthenticationNavigation/>)
-            })}}/>
+    return <TouchableOpacity style={style.updateAllBtn} onPress={() => {
+        auth()
+        .signOut()
+        .then(() => {
+            return (<AuthenticationNavigation/>)
+        })}}> 
+        <Text style={style.updateAllText}>Sign Out</Text>
     </TouchableOpacity>
 } 
 
 export const EditButton = () =>{
     const navigation = useNavigation();
     return(
-    <TouchableOpacity style={style.editBtn}>
-        <Button title="Edit Account" hasText transparent onPress={()=>
-            navigation.navigate("EditAccount")}/>
-    </TouchableOpacity>
-    )
-}
-
-export const AddAddressButton = () =>{
-    const navigation = useNavigation();
-    return(
-    <TouchableOpacity style={style.addressBtn}>
-        <Button title="Add Address" hasText transparent onPress={()=>
-            navigation.navigate("EditAccount")}/>
+    <TouchableOpacity style={style.updateAllBtn} onPress={()=>
+        navigation.navigate("EditAccount")}>
+        <Text style={style.updateAllText}>Edit Account</Text>
     </TouchableOpacity>
     )
 }
@@ -69,9 +69,13 @@ export const SetAddressBtn = () =>{
     const navigation = useNavigation();
     let status = firebaseApp.checkForAddress();
     if(status === false){
-        return <Button title="Add Your Address" onPress={() => navigation.navigate('EditAccount')}/>
+        return <TouchableOpacity style={style.btnContainer} onPress={() => navigation.navigate('EditAccount')}>
+            <Text style={style.btnText}>Add Your Address</Text>
+        </TouchableOpacity>
     }else{
-        return <Text>Address Exists</Text>
+        return <TouchableOpacity style={style.btnContainer} onPress={() => navigation.navigate('EditAccount')}>
+            <Text style={style.btnText}>Edit Address</Text>
+        </TouchableOpacity>
     }
 }
 
@@ -79,8 +83,12 @@ export const SetPaymentBtn = () =>{
     const navigation = useNavigation();
     let status = firebaseApp.checkForPaymentInfo();
     if(status === false){
-        return <Button title="Add Payment Info" onPress={() => navigation.navigate('EditAccount')}/>
+        return <TouchableOpacity style={style.btnContainer} onPress={() => navigation.navigate('EditAccount')}>
+        <Text style={style.btnText}>Add Payment Info</Text>
+    </TouchableOpacity>
     }else{
-        return <Text>Payment Info Exists</Text>
+        return <TouchableOpacity style={style.btnContainer} onPress={() => navigation.navigate('EditAccount')}>
+            <Text style={style.btnText}>Edit Payment Info</Text>
+        </TouchableOpacity>
     }
 }

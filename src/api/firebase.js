@@ -45,14 +45,15 @@ class FirebaseAPI {
   createUserDocumentAndStore() {
     let user = this.getUser();
     const userDocument = firebase.firestore()
-      .collection('Users').doc(user.uid)
+      .collection('Users')
+      .doc(user.uid)
       .onSnapshot(doc => {
-        firstName = doc.data().firstName;
-        lastName = doc.data().lastName;
-        phoneNumber = doc.data().phoneNumber;
-        email = doc.data().email;
-        address = doc.data().address;
-        payment = doc.data().payment;
+        this.firstName = doc.data().firstName;
+        this.lastName = doc.data().lastName;
+        this.phoneNumber = doc.data().phoneNumber;
+        this.email = doc.data().email;
+        this.address = doc.data().address;
+        this.payment = doc.data().payment;
     })
   }
   signOut(){
@@ -164,7 +165,7 @@ class FirebaseAPI {
     });
   }
 
-  async GetUserWhoLeftReview(merchantName){ 
+  async GetReviews(merchantName){ 
     let reviewInfo = []
     let document = await firebase.firestore()
     .collection('Reviews')
@@ -175,7 +176,6 @@ class FirebaseAPI {
       reviewInfo.push(doc.data());
     })
     
-    console.log(reviewInfo)
     return reviewInfo
   }
   checkForAddress(){

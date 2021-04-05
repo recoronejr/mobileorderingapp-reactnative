@@ -11,6 +11,7 @@ export default class GetUserInfo extends React.Component{
                 <Text style={style.accountInfoContainer}><Text style={style.accountInfoLabel}>Name: </Text><Text style={style.accountInfo}>{firebaseApp.firstName}{' '}{firebaseApp.lastName}</Text></Text>
                 <UserEmail />
                 <UserPhone />
+                <UserAddress />
             </View>
         );
     }
@@ -28,6 +29,13 @@ export const UserEmail = () =>{
 }
 export const UserPhone = () =>{
     return <Text style={style.accountInfoContainer}><Text style={style.accountInfoLabel}>Phone: </Text><Text style={style.accountInfo}>{firebaseApp.phoneNumber}</Text></Text>
+}
+export const UserAddress = () =>{
+    if(firebaseApp.checkForAddress() === true){
+        return <Text style={style.accountInfoContainer}><Text style={style.accountInfoLabel}>Address: </Text><Text style={style.accountInfo}>{firebaseApp.address}</Text></Text>
+    }else{
+        return <Text style={style.accountInfoContainer}><Text style={style.accountInfoLabel}>Address: </Text><Text style={style.accountInfo}>None on file</Text></Text>
+    }
 }
 
 //Return inputs for each field

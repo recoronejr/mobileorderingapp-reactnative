@@ -8,14 +8,10 @@ export default class OrderScreen extends React.Component {
     
     constructor(props) {
         super(props)
-        this.state = {
-           
-        }; 
     }
     componentDidMount() {
     
     }
-    
     render() {
         
         const { navigation: { navigate } } = this.props;

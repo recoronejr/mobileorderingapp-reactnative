@@ -35,7 +35,6 @@ export default class Star extends React.Component{
         <View style={style.starsWrapper}>
           <View style={style.sideBySideContainer}>
             <FiveStarRating />
-            <Text style={style.totalStars}>Total Ratings: 10</Text>
           </View>
         </View>
     )

@@ -9,7 +9,7 @@ import {imgs} from '../components/UniversalComps/Images'
 import style from '../constants/Styles'
 
 import UserInputs from '../components/UserInfoComps/UserInputs'
-import LoginButton from '../components/UniversalComps/ButtonComp'
+import LoginButton, { CreateAccountButton } from '../components/UniversalComps/ButtonComp'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SignUpScreen = ({ navigation }) => {
@@ -66,16 +66,7 @@ const SignUpScreen = ({ navigation }) => {
                     <UserInputs style={style.txtInput} defaultValue = {verifyPassword} onChangeText={verifyPassword => setVerifyPassword(verifyPassword)} secureTextEntry= {true} />
                 </View>
                 <View style={style.signUpButtons}>
-                    <LoginButton title = 'Login' rounded style={style.loginbtn} onPress={() => {
-                    // Sign Up
-                    if (password == verifyPassword) {
-                      firebaseApp.signUp(firstName,lastName,phoneNumber,email,password)
-                      return (
-                        <MainScreen/>
-                      )
-                    }else {
-                      console.log("Password Do Not Match");
-                    }}}/>
+                    <CreateAccountButton rounded style={style.loginbtn} firstName = {firstName} lastName = {lastName} phoneNumber = {phoneNumber} email = {email} password ={password} verifyPassword={verifyPassword}/>
                     <TouchableOpacity style={style.signInBtn} onPress={() => { return (navigation.navigate("Login"))}}>
                             <Text style={style.signInBtnText}>Have an Account?</Text>
                     </TouchableOpacity>

@@ -17,9 +17,7 @@ export default class MapScreen extends React.Component {
             menu: null,
             merchantName: 'test',
             order: new OrderModel(),
-        }
-        Geocoder.init("AIzaSyDm3DBYsnyBoA1Gf_r74G9EHok45roCFNw");
-        
+        }        
     }
     componentDidMount() {
         this.getLocations();
@@ -73,7 +71,6 @@ export default class MapScreen extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         let img = imgs.getCityImage();
-        console.log(this.state);
         return (
             //Will return null until datasource is properly saved to state
             <ImageBackground style={style.mapScreenBackgroundImg} source={img} blurRadius={20}>

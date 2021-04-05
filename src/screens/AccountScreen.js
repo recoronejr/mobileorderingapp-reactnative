@@ -10,6 +10,7 @@ import style from '../constants/Styles'
 import { firebaseApp } from '../api/firebase';
 export default class AccountScreen extends React.Component {
     render() {
+        console.log(firebaseApp.firstName)
         let img = imgs.getCustomBackground();
         return (
             <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>

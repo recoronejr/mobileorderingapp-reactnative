@@ -22,7 +22,7 @@ const PaymentInfoModal = () =>{
                 <View style={style.userInfoModalCenteredView}>
                     <View style={style.userInfoModalExitBtnContainer}>
                         <Pressable onPress={() => setModalVisible(!modalVisible)}>
-                            <Text style={style.userInfoModalExitBtn}>X</Text>
+                            <Text style={style.userInfoModalExitBtnTxt}>X</Text>
                         </Pressable>
                     </View>
 

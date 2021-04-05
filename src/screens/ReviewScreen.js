@@ -21,7 +21,7 @@ export default class ReviewScreen extends React.Component {
         }
     }
     async componentDidMount(){
-        this.setState({review: await firebaseApp.GetUserWhoLeftReview(this.props.route.params.merchantName)})
+        this.setState({review: await firebaseApp.GetReviews(this.props.route.params.merchantName)})
     }
 
     showReviews = () =>{

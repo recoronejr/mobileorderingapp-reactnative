@@ -1,21 +1,30 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState, useEffect } from 'react';
-import { render } from 'react-dom';
+import React from 'react';
 import { Alert, View, Text, FlatList, StyleSheet, Button, TouchableOpacity, Image, Dimensions, SafeAreaView, Modal, Pressable, ImageBackground, TextInput} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { color } from 'react-native-reanimated';
 import OrderModel from '../model/Order';
 import LineItemModel from '../model/LineItem';
 import {imgs} from '../components/UniversalComps/Images'
 import style from '../constants/Styles'
-
-import {ReviewsButton} from '../components/UniversalComps/ButtonComp'
-import AddOrderModal from '../components/OrderModals/AddOrderModal';
-import ConfirmOrderModal from '../components/OrderModals/ConfirmOrderModal';
+import { setStatusBarStyle } from 'expo-status-bar';
 
 const {height} = Dimensions.get('window')
 
 export default class MenuScreen extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            menu: this.props.route.params.menu,
+            menuItems: [],
+            menuImages: [],
+            orderModalVisible: false,
+            itemModalVisible: false,
+            variations: [],
+            variation: [],
+            model: new OrderModel(),
+            lineItem: new LineItemModel(),
+            quantity: 0,
+        }
+    }
     onContentSizeChange = (contentWidth, contentHeight) => {
         // Save the content height in state
         this.setState({ screenHeight: contentHeight });
@@ -26,57 +35,39 @@ export default class MenuScreen extends React.Component {
     setVariation = (variation) => {
         this.setState({ variation: variation});
     }
-    setItemName = (name) => {
-        this.setState({ itemName: name});
-    }
     setItemModalVisible = (visible) => {
         this.setState({ itemModalVisible: visible });
     }
-    constructor(props) {
-        super(props)
-        this.state = {
-            menu: this.props.route.params.menu,
-            menuItems: [],
-            menuImages: [],
-            orderModalVisible: false,
-            itemModalVisible: false,
-            itemName:'',
-            variations: [],
-            variation: [],
-            model: new OrderModel(),
-            lineItem: new LineItemModel(),
-            quantity: 0,
-        }
-    }
-    componentWillMount() {
-        this.setState({menu: this.props.route.params.menu})
-        const { model } = this.state;
-
-    }
-    Item = ({size, price, item_id}) => {
+    Item = ({name, price, item_id}) => {
         const { lineItem,quantity } = this.state;
 
         return (
-            <View style={styles.item}>
-                <Text style={styles.title}>{size}</Text>
-                <Text style={styles.price}>{this.convertToDollars(price)}</Text>
-                <TextInput
-                    style={{height: 40,width:150,marginLeft: 10, position:"relative"}}
-                    placeholder="How many?"
-                    keyboardType="number-pad"
-                    onChangeText={text => this.setState({quantity:text})}
-                />
-                <Button title="Add to Order" onPress = {() => {
-                    this.createTwoButtonAlert(this.state.itemName,size,price,item_id,this.state.quantity);
-                }}/>
+            <View style={style.orderContainer}>
+                <View style={style.sideBySideContainer}>
+                    <Text style={style.orderSizeText}>{name}</Text>
+                    <Text style={style.orderPrice}>{this.convertToDollars(price)}</Text>
+                    <View style={style.orderQuantityContainer}>
+                        <TextInput
+                            style={style.orderQuantityInput}
+                            placeholder="Quantity"
+                            keyboardType="number-pad"
+                            onChangeText={text => this.setState({quantity:text})}
+                        />
+                    </View>
+                </View>
+                <TouchableOpacity style={style.modalAddToOrderBtn} onPress = {() => {
+                    this.createTwoButtonAlert(name,price,item_id,this.state.quantity);
+                }}>
+                    <Text style={style.modalAddToOrderBtnTxt}>Add to Order</Text>
+                </TouchableOpacity>
             </View>  
         );
     }
     OrderItem = ({size, price, quantity}) => {
         const { model } = this.state;
         return (
-            <View style={styles.item}>
-                <Text style={styles.title}>{quantity} x {size} at {this.convertToDollars(price)}/piece</Text>
+            <View style={style.orderItemContainer}>
+                <Text style={style.orderItemsText}>{quantity} x {size} at {this.convertToDollars(price)} each</Text>
             </View>  
         );
     }
@@ -97,24 +88,22 @@ export default class MenuScreen extends React.Component {
         }
         return variation;
     } 
-       componentDidMount() {
-        let items = [];
-        let images = [];
-        let { variations } = this.state;
-
-        for (var i = 0; i < this.state.menu.length; i++) {
-            if (this.state.menu[i].type == "ITEM") {
+    componentDidMount() {
+    let items = [];
+    let images = [];
+    let { variations } = this.state;
+        for(var i = 0; i < this.state.menu.length; i++) {
+            if(this.state.menu[i].type == "ITEM") {
                 items.push(this.state.menu[i]);
                 this.state.menu[i].item_data.variations.forEach(e => {
-                    if (e.type == "ITEM_VARIATION") {
+                    if(e.type == "ITEM_VARIATION") {
                         variations.push(e);
                     }
                 });
-
-            }
-            else if (this.state.menu[i].type == "IMAGE") {
+            }else if(this.state.menu[i].type == "IMAGE") {
                 images.push(this.state.menu[i])
             }
+            this.setState({menu: this.props.route.params.menu})
             this.setState({menuItems: items});
             this.setState({menuImages: images});
             this.setState({variations: variations});
@@ -140,7 +129,7 @@ export default class MenuScreen extends React.Component {
         dollars = dollars.toLocaleString("en-US", {style:"currency", currency:"USD"});
         return dollars;
     }
-    createTwoButtonAlert = (name,size,price, item_id, quantity) => {
+    createTwoButtonAlert = (name, price, item_id, quantity) => {
         const { model} = this.state;
         const { lineItem } = this.state;
 
@@ -157,7 +146,7 @@ export default class MenuScreen extends React.Component {
                     },
                 },
                 { text: "Yes", onPress: () =>  {
-                    model.addItem(name,size, price, item_id, quantity), 
+                    model.addItem(name, price, item_id, quantity), 
                     this.setItemModalVisible(!this.state.itemModalVisible)
                     }
                 }
@@ -172,28 +161,29 @@ export default class MenuScreen extends React.Component {
         let merchantName = this.props.route.params.merchant.name;
         let merchantId = this.props.route.params.merchant.id;
         model.location_id = merchantId;
+        
         const renderItemVar = ({ item }) => (
-            <this.Item size={item.item_variation_data.name} price={item.item_variation_data.price_money.amount} item_id={item.item_variation_data.item_id}/>
+            <this.Item name={item.item_variation_data.name} price={item.item_variation_data.price_money.amount} item_id={item.item_variation_data.item_id}/>
         );
         const renderOrder = ({ item }) => (
-            <this.OrderItem size={item.name} price={item.base_price_money.amount} quantity={item.quantity}/>
+            <this.OrderItem size={item.name} price={item.price} quantity={item.quantity}/>
         );
 
         let menuItems = this.state.menuItems.map((val,key) => {
             
             let image = this.getImageById(val.image_id);
-            let variations = this.getVariationsById(val.id);
-            let itemName = val.item_data.name;
+            let variation = this.getVariationsById(val.id);
             return (
-                <TouchableOpacity style={styles.item} onPress={() => {
-                    this.setVariation(variations);
-                    this.setItemName(itemName);
-                    this.setItemModalVisible(true);
+                <TouchableOpacity key={key} style={style.menuItem} onPress={() => {
+                    this.setVariation(variation);
+                    this.setItemModalVisible(!this.state.itemModalVisible);
                 }}>
-                    <View key={key} style={styles.card}>
-                        <Text style={{fontSize:28}}>{itemName}</Text>
-                        <Image style={styles.img} source={{uri:image}}/>
-                        <Text style={styles.desc}>{val.item_data.description}</Text>
+                    <View key={key} style={style.menuCard}>
+                        <Text style={style.menuItemName}>{val.item_data.name}</Text>
+                        <Image style={style.menuItemImg} source={{uri:image}}/>
+                        <View style={style.menuItemDescContainer}>
+                            <Text style={style.menuItemDesc}>{val.item_data.description}</Text>
+                        </View>
                     </View> 
                 </TouchableOpacity>
             ) 
@@ -205,13 +195,11 @@ export default class MenuScreen extends React.Component {
                 <SafeAreaView style={style.backgroundContainer}>
                     <View style={style.merchantTextWrapper}>
                         <Text style={style.merchantNameText}>{merchantName}</Text>
-                        
-                        <TouchableOpacity>
-                            <Button title="Reviews" hasText transparent onPress={()=>{
-                            this.props.navigation.navigate('Reviews', {merchantName})}}/> 
-                        </TouchableOpacity>
-                    
                     </View>
+                    <TouchableOpacity style={style.goToReviewScreenContainer} onPress={()=>{
+                        this.props.navigation.navigate('Reviews', {merchantName})}}>
+                        <Text style={style.goToReviewScreenText}>Reviews for {merchantName}</Text> 
+                    </TouchableOpacity>
                     <ScrollView style={style.menuScreenScroll} contentContainerStyle={style.menuScreenScrollView} scrollEnabled={scrollEnabled} onContentSizeChange={this.onContentSizeChange}>
                             
                         {menuItems}    
@@ -220,98 +208,64 @@ export default class MenuScreen extends React.Component {
                     <View style={style.menuScreenFooter}>
                         <Text style={style.menuOrderTotalTxt}>Order Total: {model.getTotalInDollars()}</Text>
                         <TouchableOpacity style={style.menuOrderBtn} onPress={() => {
-                            this.setOrderModalVisible(true);
+                            this.setOrderModalVisible(!this.state.orderModalVisible);
                         }}>
                             <Text style={style.menuOrderBtnText}>Place Order</Text>
                         </TouchableOpacity>
                     </View>
                     
                     {/*Select Size / Add To Order*/}
-                    <AddOrderModal />
+                    <View>
+                        <Modal animationType="slide" transparent={true} visible={itemModalVisible} onRequestClose={() => {this.setItemModalVisible(!this.state.orderModalVisible)}}>
+                            <View style={style.orderModalCenteredView}>
+                                <View style={style.userInfoModalCenteredView}>
+                                    <View style={style.userInfoModalExitBtnContainer}>
+                                        <Pressable onPress={() => this.setItemModalVisible(!itemModalVisible)}>
+                                            <Text style={style.userInfoModalExitBtnTxt}>X</Text>
+                                        </Pressable>
+                                    </View>
+                                    <Text style={style.orderModalHeader}>Choose your size</Text>
+                                    <FlatList data={this.state.variation} renderItem={renderItemVar} keyExtractor={item => item.id}/>         
+                                    <TouchableOpacity style={style.closeModalBtn} onPress={() => this.setItemModalVisible(!itemModalVisible)}>
+                                        <Text style={style.closeModalBtnTxt}>Cancel</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </Modal>
+                    </View>
                     
                     {/*Modal to confirm order*/}
-                    <ConfirmOrderModal />
+                    <View style={style.userInfoModalContainer}>
+                        <Modal animationType="slide" transparent={true} visible={orderModalVisible} onRequestClose={() => {
+                            Alert.alert("Modal has been closed.")
+                            this.setOrderModalVisible(!this.state.orderModalVisible)}}>
 
+                            <View style={style.modalCenteredView}>
+                                <View>
+                                    <View style={style.userInfoModalExitBtnContainer}>
+                                        <Pressable onPress={() => this.setOrderModalVisible(!orderModalVisible)}>
+                                            <Text style={style.userInfoModalExitBtnTxt}>X</Text>
+                                        </Pressable>
+                                    </View>
+                                    <Text style={style.orderModalHeader}>Confirm your order</Text>
+                                    <View style={style.orderConfirmationView}>
+                                        <FlatList style={style.orderConfirmationContainer} data={model.lineItems} renderItem={renderOrder} keyExtractor={item => item.item_id}/>
+                                    </View>
+                                    <View style={style.sideBySideContainer}>
+                                        <Text style={style.orderTotalText}>Total: {model.getTotalInDollars()}</Text>
+                                        <TouchableOpacity style={style.finalizeOrderBtn}>
+                                            <Text style={style.finalizeOrderBtnTxt}>Finalize Order</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                    <TouchableOpacity style={style.closeModalBtn} onPress={() => this.setOrderModalVisible(!orderModalVisible)}>
+                                        <Text style={style.closeModalBtnTxt}>Cancel</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </Modal>
+                    </View>
                 </SafeAreaView>
             </ImageBackground>
         )
     }
 }
-const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-    },
-    card: {
-        backgroundColor: '#ffffff',
-        width: '80%',
-        height: 240,
-        alignSelf: "center",
-        flexGrow: 1,
-        marginBottom: 10,
-        padding: 10,
-    },
-    item:{
-        alignSelf:'stretch'
-    },
-    desc: {
-        marginTop: 10,
-    },
-    scrollview: {
-        flexGrow:1,
-    },
-    scroll: {
-        flex:1,
-    },
-    img: {
-        alignSelf: 'center',
-        width: '100%',
-        height: 100
-    },
-    orderBtn: {
-        height:50,
-        backgroundColor: 'lightgray',
-    },
-    centeredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "flex-start",
-        marginTop: 22
-      },
-      modalView: {
-        width: '75%',
-        height: '50%',
-        margin: 20,
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5
-      },
-      button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2
-      },
-      buttonOpen: {
-        backgroundColor: "#F194FF",
-      },
-      buttonClose: {
-        backgroundColor: "#2196F3",
-      },
-      textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
-      },
-      modalText: {
-        marginBottom: 15,
-        textAlign: "center"
-      }
-})
