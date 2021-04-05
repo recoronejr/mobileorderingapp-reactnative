@@ -27,7 +27,7 @@ const MainNavigation = ({navigation}) => {
                         <FontAwesomeIcon style={style.navIcon} icon={faHome}/>
                     )
                 }}/>
-                <Tab.Screen name="OrderMenu" component={OrderScreen} options={{
+                <Tab.Screen name="My Order" component={OrderScreen} options={{
                     tabBarIcon:()=>(
                         <FontAwesomeIcon style={style.navIcon} icon={faUtensils}/>
                     )

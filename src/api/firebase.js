@@ -48,12 +48,12 @@ class FirebaseAPI {
       .collection('Users')
       .doc(user.uid)
       .onSnapshot(doc => {
-        firstName = doc.data().firstName;
-        lastName = doc.data().lastName;
-        phoneNumber = doc.data().phoneNumber;
-        email = doc.data().email;
-        address = doc.data().address;
-        payment = doc.data().payment;
+        this.firstName = doc.data().firstName;
+        this.lastName = doc.data().lastName;
+        this.phoneNumber = doc.data().phoneNumber;
+        this.email = doc.data().email;
+        this.address = doc.data().address;
+        this.payment = doc.data().payment;
     })
   }
   signOut(){
@@ -142,7 +142,7 @@ class FirebaseAPI {
       .update({payment: cardNumber + ' ' + expiration + ' ' + securityCode})
     .then(console.log('success'))
   }
-  
+
   createNewReview(merchantID, subject, body, rating){
     let user = this.getUser();
     let date = new Date().toDateString();
@@ -162,7 +162,21 @@ class FirebaseAPI {
       console.log('Review submitted!');
     });
   }
+  async GetOrders(merchantName){ 
+    let user = this.getUser();
+    let orders = [];
+    let document = await firebase.firestore()
+    .collection('orders')
+    .doc(user.uid)
+    .get()
 
+    document.forEach(doc => {
+      orders.push(doc.data());
+    })
+    
+    console.log(reviewInfo)
+    return orders
+  }
   async GetUserWhoLeftReview(merchantName){ 
     let reviewInfo = []
     let document = await firebase.firestore()
@@ -173,8 +187,6 @@ class FirebaseAPI {
     document.forEach(doc => {
       reviewInfo.push(doc.data());
     })
-    
-    console.log(reviewInfo)
     return reviewInfo
   }
   checkForAddress(){
