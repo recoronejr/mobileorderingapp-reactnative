@@ -26,6 +26,7 @@ export default class OrderModel {
   }
   addItem(name,size,price, item_id, quantity){
     let item = new LineItem(name, size, price, item_id, quantity);
+    console.log(item)
     this.lineItems.push(item);
     this.calculateOrder();
   }

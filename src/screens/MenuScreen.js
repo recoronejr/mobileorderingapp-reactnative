@@ -23,6 +23,7 @@ export default class MenuScreen extends React.Component {
             model: new OrderModel(),
             lineItem: new LineItemModel(),
             quantity: 0,
+            size: ''
         }
     }
     onContentSizeChange = (contentWidth, contentHeight) => {
@@ -38,7 +39,7 @@ export default class MenuScreen extends React.Component {
     setItemModalVisible = (visible) => {
         this.setState({ itemModalVisible: visible });
     }
-    Item = ({name, price, item_id}) => {
+    Item = ({name, size, price, item_id}) => {
         const { lineItem,quantity } = this.state;
 
         return (
@@ -56,7 +57,7 @@ export default class MenuScreen extends React.Component {
                     </View>
                 </View>
                 <TouchableOpacity style={style.modalAddToOrderBtn} onPress = {() => {
-                    this.createTwoButtonAlert(name,price,item_id,this.state.quantity);
+                    this.createTwoButtonAlert(name,this.state.size,price,item_id,this.state.quantity);
                 }}>
                     <Text style={style.modalAddToOrderBtnTxt}>Add to Order</Text>
                 </TouchableOpacity>
@@ -129,7 +130,7 @@ export default class MenuScreen extends React.Component {
         dollars = dollars.toLocaleString("en-US", {style:"currency", currency:"USD"});
         return dollars;
     }
-    createTwoButtonAlert = (name, price, item_id, quantity) => {
+    createTwoButtonAlert = (name,size, price, item_id, quantity) => {
         const { model} = this.state;
         const { lineItem } = this.state;
 
@@ -146,7 +147,7 @@ export default class MenuScreen extends React.Component {
                     },
                 },
                 { text: "Yes", onPress: () =>  {
-                    model.addItem(name, price, item_id, quantity), 
+                    model.addItem(name,size,price, item_id, quantity), 
                     this.setItemModalVisible(!this.state.itemModalVisible)
                     }
                 }
@@ -166,7 +167,7 @@ export default class MenuScreen extends React.Component {
             <this.Item name={item.item_variation_data.name} price={item.item_variation_data.price_money.amount} item_id={item.item_variation_data.item_id}/>
         );
         const renderOrder = ({ item }) => (
-            <this.OrderItem size={item.name} price={item.price} quantity={item.quantity}/>
+            <this.OrderItem name={item.name} size={item.size} price={item.price} quantity={item.quantity}/>
         );
 
         let menuItems = this.state.menuItems.map((val,key) => {
