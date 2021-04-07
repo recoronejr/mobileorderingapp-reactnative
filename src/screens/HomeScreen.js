@@ -24,9 +24,6 @@ export default class HomeScreen extends React.Component{
                             <SetAddressBtn />
                             <SetPaymentBtn />
                         </View>
-                        <View style={style.homeScreenBottomContainer}>
-                            <Text style={style.homeScreenBottomContainerText}>This is where I would like to display any open orders</Text>
-                        </View>
                     </View>
                 </ImageBackground>
             </View>

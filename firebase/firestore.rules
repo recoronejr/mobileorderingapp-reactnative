@@ -1,46 +1,7 @@
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match users/{userID} {
-    //Accounts
+allow read, write: if request.auth != null && request.auth.uid == userId;
+        ///auth function?///
 
-      allow create: if request.resource.data.email is string &&
-      request.resource.data.email.size() > 2 &&
-      request.resource.data.email.size() < 320 &&
-      request.resource.data.firstName is string &&
-      request.resource.data.firstName.size() > 2 &&
-      request.resource.data.firstName.size() < 26 &&
-      request.resource.data.lastName is string &&
-      request.resource.data.lastName.size() > 2 &&
-      request.resource.data.lastName.size() < 26 &&
-      request.resource.data.password is string &&
-      request.resource.data.password.size() > 8 &&
-      request.resource.data.password.size() < 25 &&
-      request.resource.data.phoneNumber is string &&
-      request.resource.data.phoneNumber.size() > 9 &&
-      request.resource.data.phoneNumber.size() < 11 &&
-      //request.resource.data.userid == request.auth.uid;
-
-      allow update: if request.resource.data.email is string &&
-      request.resource.data.email.size() > 2 &&
-      request.resource.data.email.size() < 320 &&
-      request.resource.data.firstName is string &&
-      request.resource.data.firstName.size() > 2 &&
-      request.resource.data.firstName.size() < 26 &&
-      request.resource.data.lastName is string &&
-      request.resource.data.lastName.size() > 2 &&
-      request.resource.data.lastName.size() < 26 &&
-      request.resource.data.password is string &&
-      request.resource.data.password.size() > 8 &&
-      request.resource.data.password.size() < 25 &&
-      request.resource.data.phoneNumber is string &&
-      request.resource.data.phoneNumber.size() > 9 &&
-      request.resource.data.phoneNumber.size() < 11 &&
-      //request.resource.data.userid == request.auth.uid;
-
-    }
-        match reviews/{reviewID} {
-        //Reviews
+ 
 
         allow create: if request.resource.data.body is string &&
         request.resource.data.body.size() > 1 &&
@@ -59,6 +20,8 @@ service cloud.firestore {
         request.resource.data.subject.size() < 80 &&
         //request.resource.data.userid == request.auth.uid;
 
+ 
+
         allow update: if request.resource.data.body is string &&
         request.resource.data.body.size() > 1 &&
         request.resource.data.body.size() < 500 &&
@@ -75,6 +38,4 @@ service cloud.firestore {
         request.resource.data.subject.size() > 2 &&
         request.resource.data.subject.size() < 80 &&
         //request.resource.data.userid == request.auth.uid;
-        }
     }
-}

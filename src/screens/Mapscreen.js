@@ -11,18 +11,13 @@ import OrderModel from '../model/Order';
 
 export default class MapScreen extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             locations: null,
             menu: null,
             merchantName: 'test',
             order: new OrderModel(),
-<<<<<<< HEAD
-        }        
-=======
-        }
-        
->>>>>>> afac51b9f5c08f1d5c49b2ba6af5742b41e24fe7
+        };
     }
     componentDidMount() {
         this.getLocations();

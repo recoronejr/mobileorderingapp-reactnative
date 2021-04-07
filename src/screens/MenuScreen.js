@@ -167,7 +167,7 @@ export default class MenuScreen extends React.Component {
             <this.Item name={item.item_variation_data.name} price={item.item_variation_data.price_money.amount} item_id={item.item_variation_data.item_id}/>
         );
         const renderOrder = ({ item }) => (
-            <this.OrderItem name={item.name} size={item.size} price={item.price} quantity={item.quantity}/>
+            <this.OrderItem name={item.name} size={item.name} price={item.base_price_money.amount} quantity={item.quantity}/>
         );
 
         let menuItems = this.state.menuItems.map((val,key) => {
@@ -250,7 +250,7 @@ export default class MenuScreen extends React.Component {
                                     </View>
                                     <Text style={style.orderModalHeader}>Confirm your order</Text>
                                     <View style={style.orderConfirmationView}>
-                                        <FlatList style={style.orderConfirmationContainer} data={model.lineItems} renderItem={renderOrder} keyExtractor={item => item.item_id}/>
+                                        <FlatList key={1} style={style.orderConfirmationContainer} data={model.lineItems} renderItem={renderOrder} keyExtractor={item => item.item_id}/>
                                     </View>
                                     <View style={style.sideBySideContainer}>
                                         <Text style={style.orderTotalText}>Total: {model.getTotalInDollars()}</Text>

@@ -13,6 +13,8 @@ import {firebaseApp} from '../api/firebase'
 import { ScrollView } from "react-native-gesture-handler";
 import { setStatusBarStyle } from "expo-status-bar";
 
+import AuthenticationNavigation from '../navigation/AuthenticationNavigation'
+
 export default class ReviewScreen extends React.Component {
     constructor(props){
         super(props);  
@@ -46,22 +48,28 @@ export default class ReviewScreen extends React.Component {
         })
     }
 
+    //SECURITY - Check to make sure the user is signed in before showing them the screen
     render(){
         let merchantName = this.props.route.params.merchantName;
         let img = imgs.getCustomBackground()
-
-        return (
-            <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
-                <View style={style.reviewScreenBackgroundCard}>
-                    <Text style={style.reviewScreenTitle}>Reviews for {merchantName}</Text>
-                    <Star />
-                        <ScrollView style={style.reviewScreenScroll}>
-                            {this.showReviews()}
-                        </ScrollView>
-                    <ReviewModal name={merchantName}/>
-                </View>
-            </ImageBackground>
-        );
+        if(firebaseApp.getUser()){
+            console.log("Success: Review Screen")
+            return (
+                <ImageBackground source={img} style={style.imgBackground} blurRadius={20}>
+                    <View style={style.reviewScreenBackgroundCard}>
+                        <Text style={style.reviewScreenTitle}>Reviews for {merchantName}</Text>
+                        <Star />
+                            <ScrollView style={style.reviewScreenScroll}>
+                                {this.showReviews()}
+                            </ScrollView>
+                        <ReviewModal name={merchantName}/>
+                    </View>
+                </ImageBackground>
+            );
+        }else{
+            alert('Something went wrong, please try again')
+            return <AuthenticationNavigation />
+        }
     }
 }
 

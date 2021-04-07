@@ -32,6 +32,20 @@ class FirebaseAPI {
       console.log('Order added!', body);
     });
   }
+  async getOrders(){ 
+    let user = this.getUser()
+    let orders = []
+    let document = await firebase.firestore()
+    .collection('order')
+    .doc(user.uid)
+    .get()
+
+    document.forEach(doc => {
+      orders.push(doc.data());
+    })
+    
+    return orders
+  }
   getUser() {
     const user = firebase.auth().currentUser;
     return user;
@@ -55,7 +69,7 @@ class FirebaseAPI {
         this.address = doc.data().address;
         this.payment = doc.data().payment;
     })
-  }
+  } 
   signOut(){
     firebase.auth().signOut();
   }
