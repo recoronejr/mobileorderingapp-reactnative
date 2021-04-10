@@ -1,7 +1,58 @@
-allow read, write: if request.auth != null && request.auth.uid == userId;
-        ///auth function?///
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /Users/{email} {
+    
+    //Accounts
+      allow read, write;
+      ///auth function/// 
+      allow create: if request.resource.data.address is string &&
+      request.resource.data.address.size() > 2 &&
+      request.resource.data.address.size() < 100 &&
+      request.resource.data.email.size() > 2 &&
+      request.resource.data.email.size() < 320 &&
+      request.resource.data.firstName is string &&
+      request.resource.data.firstName.size() > 2 &&
+      request.resource.data.firstName.size() < 26 &&
+      request.resource.data.lastName is string &&
+      request.resource.data.lastName.size() > 2 &&
+      request.resource.data.lastName.size() < 26 &&
+      request.resource.data.password is string &&
+      request.resource.data.password.size() > 8 &&
+      request.resource.data.password.size() < 25 &&
+      request.resource.data.payment is string &&
+      request.resource.data.payment.size() > 25 &&
+      request.resource.data.payment.size() < 27 &&
+      request.resource.data.phoneNumber is string &&
+      request.resource.data.phoneNumber.size() > 9 &&
+      request.resource.data.phoneNumber.size() < 11 &&
+      request.resource.data.userid == request.auth.uid;
 
- 
+      allow update: if request.resource.data.address is string &&
+      request.resource.data.address.size() > 2 &&
+      request.resource.data.address.size() < 100 &&
+      request.resource.data.email.size() > 2 &&
+      request.resource.data.email.size() < 320 &&
+      request.resource.data.firstName is string &&
+      request.resource.data.firstName.size() > 2 &&
+      request.resource.data.firstName.size() < 26 &&
+      request.resource.data.lastName is string &&
+      request.resource.data.lastName.size() > 2 &&
+      request.resource.data.lastName.size() < 26 &&
+      request.resource.data.password is string &&
+      request.resource.data.password.size() > 8 &&
+      request.resource.data.password.size() < 25 &&
+      request.resource.data.payment is string &&
+      request.resource.data.payment.size() > 25 &&
+      request.resource.data.payment.size() < 27 &&
+      request.resource.data.phoneNumber is string &&
+      request.resource.data.phoneNumber.size() > 9 &&
+      request.resource.data.phoneNumber.size() < 11 &&
+      request.resource.data.email == request.auth.uid;
+    }    
+     match /Reviews/{email} {
+        //Reviews
+        allow read, write;
 
         allow create: if request.resource.data.body is string &&
         request.resource.data.body.size() > 1 &&
@@ -18,9 +69,7 @@ allow read, write: if request.auth != null && request.auth.uid == userId;
         request.resource.data.subject is string &&
         request.resource.data.subject.size() > 2 &&
         request.resource.data.subject.size() < 80 &&
-        //request.resource.data.userid == request.auth.uid;
-
- 
+        request.resource.data.userid == request.auth.uid;
 
         allow update: if request.resource.data.body is string &&
         request.resource.data.body.size() > 1 &&
@@ -37,5 +86,8 @@ allow read, write: if request.auth != null && request.auth.uid == userId;
         request.resource.data.subject is string &&
         request.resource.data.subject.size() > 2 &&
         request.resource.data.subject.size() < 80 &&
-        //request.resource.data.userid == request.auth.uid;
+        request.resource.data.userid == request.auth.uid;
     }
+    
+	}    
+}
